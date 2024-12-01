@@ -5,177 +5,222 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Juego {
-    private Tablero tablero;
-    private final Jugador[] jugadores;
     private int turnoActual;
-    Controlador controlador;
-    private final Scanner scanner = new Scanner(System.in);
+    private Jugador jugadorActual;
+    private boolean primeraJugada;
+    private boolean primeraFichaPuesta;
+    private boolean jugadaCompleta;
+    private boolean turnoPasado;
+    private boolean palabraCancelada;
+    private ArrayList<int[]> indiceFichasPuestas;
+    private BolsaFichas bolsaFichas;
+    private Controlador controlador;
+    private Tablero tablero;
     private Tablero tableroAuxiliar;
-    private final PalabraExtractor palabraExtractor;
+    private final Jugador[] jugadores;
+    private final Scanner scanner = new Scanner(System.in);
+    private final PalabraExtractor palabraExtractor = new PalabraExtractor();
 
-    public Juego(Tablero tablero, Jugador[] jugadores) {
-        this.tablero = tablero;
+
+    public void iniciarNuevaPartida() {
+        inicializarJuego();
+        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
+            gestionarTurno();
+        }
+        mostrarResultadoFinal();
+    }
+
+    public Juego(Jugador[] jugadores, Tablero tablero) {
         this.jugadores = jugadores;
-        this.tableroAuxiliar = new Tablero(this.tablero);;
+        this.tablero = tablero;
+        this.tableroAuxiliar = new Tablero(tablero);
         this.turnoActual = 0;
+        this.jugadorActual = null;
+        this.primeraJugada = true;
+        this.primeraFichaPuesta = false;
+        this.jugadaCompleta = false;
+        this.turnoPasado = false;
+        this.palabraCancelada = false;
+        this.indiceFichasPuestas = new ArrayList<>();
+        this.bolsaFichas = new BolsaFichas();
         this.controlador = new Controlador(tableroAuxiliar);
-        this.palabraExtractor = new PalabraExtractor();
     }
 
     public Juego(Jugador[] jugadores) {
         this.jugadores = jugadores;
-        this.turnoActual = 0;
         this.tablero = new Tablero();
-        this.tableroAuxiliar = new Tablero(this.tablero);
+        this.tableroAuxiliar = new Tablero(tablero);
+        this.turnoActual = 0;
+        this.jugadorActual = null;
+        this.primeraJugada = true;
+        this.primeraFichaPuesta = false;
+        this.jugadaCompleta = false;
+        this.turnoPasado = false;
+        this.palabraCancelada = false;
+        this.indiceFichasPuestas = new ArrayList<>();
+        this.bolsaFichas = new BolsaFichas();
         this.controlador = new Controlador(tableroAuxiliar);
-        this.palabraExtractor = new PalabraExtractor();
     }
 
-    public void iniciarNuevaPartida() {
-        turnoActual = new Random().nextInt(jugadores.length);
-        Jugador jugadorActual = jugadores[turnoActual];
-        boolean primeraJugada = true;
-        boolean primeraFichaPuesta = false;
-        ArrayList<int[]> indiceFichasPuestas;
-        boolean jugadaCompleta;
-        boolean turnoPasado;
-        boolean palabraCancelada;
 
+
+    private void inicializarJuego() {
+        turnoActual = new Random().nextInt(jugadores.length);
+        jugadorActual = jugadores[turnoActual];
+        primeraJugada = true;
+        primeraFichaPuesta = false;
+        jugadaCompleta = false;
+        turnoPasado = false;
+        palabraCancelada = false;
+        indiceFichasPuestas = new ArrayList<>();
 
         System.out.println("¡Nueva partida iniciada!");
-        System.out.println("Empieza el jugador: "+ jugadorActual.getAlias());
-        BolsaFichas bolsaFichas = new BolsaFichas();
+        System.out.println("Empieza el jugador: " + jugadorActual.getAlias());
+        bolsaFichas = new BolsaFichas();
+        controlador = new Controlador(tableroAuxiliar);
+    }
 
+    private void gestionarTurno() {
+        rellenarFichasJugadores(jugadores, bolsaFichas);
+        jugadorActual = jugadores[turnoActual];
+        Ficha[] atrilCopia = jugadorActual.clonarFichas();
+        jugadaCompleta = false;
+        turnoPasado = false;
+        palabraCancelada = false;
+        indiceFichasPuestas = new ArrayList<>();
 
-        while (!partidaTerminada(jugadorActual, bolsaFichas)) {
-            this.controlador = new Controlador(tableroAuxiliar);
-            rellenarFichasJugadores(jugadores, bolsaFichas);
-            jugadorActual = jugadores[turnoActual];
-            Ficha[] atrilCopia = jugadorActual.clonarFichas();
+        System.out.println("\nTurno de: " + jugadorActual.getAlias());
+        System.out.println("Puntos: " + jugadorActual.getScore());
 
-            jugadaCompleta = false;
-            turnoPasado = false;
-            palabraCancelada = false;
+        if (primeraJugada) {
+            manejarPrimeraJugada();
+        } else {
+            manejarJugadaRegular();
+        }
 
-            indiceFichasPuestas = new ArrayList<>();
+        manejarFinTurno(atrilCopia);
+    }
 
+    private void manejarPrimeraJugada() {
+        tablero.mostrarTablero();
+        System.out.println("Debe colocar la primera Ficha en el centro del tablero.");
+        System.out.println("Utilice las teclas (W A S D) para moverse en el tablero, debe presionar ENTER después de usar cada letra.");
+        System.out.println("Para colocar una Ficha presione la letra P y luego ENTER.");
+        mostrarFichasEIndices(jugadorActual);
 
-            System.out.println("\nTurno de: " + jugadorActual.getAlias());
-            System.out.println("Puntos: "+ jugadorActual.getScore());
+        indiceFichasPuestas.add(ponerPrimeraFicha(jugadorActual));
+        tableroAuxiliar.mostrarTablero();
+        mostrarFichasEIndices(jugadorActual);
+
+        if (indiceFichasPuestas.getFirst() != null) {
+            primeraFichaPuesta = true;
+        }
+
+        gestionarEntradaUsuario();
+    }
+
+    private void manejarJugadaRegular() {
+        tablero.mostrarTablero();
+        mostrarFichasEIndices(jugadorActual);
+        gestionarEntradaUsuario();
+    }
+
+    private void gestionarEntradaUsuario() {
+        while (!jugadaCompleta && primeraFichaPuesta) {
+            System.out.println("Presione cualquier tecla y luego Enter para poner otra Ficha.");
+            System.out.println("Presione L para verificar su palabra.");
+            System.out.println("Presione C para CANCELAR su palabra.");
 
             if (!primeraJugada) {
-                tablero.mostrarTablero();
-                mostrarFichasEIndices(jugadorActual);
+                System.out.println("Presione 9 para pasar su turno");
             }
 
-            if (primeraJugada) {
-                tablero.mostrarTablero();
-                System.out.println("Debe colocar la primera Ficha en el centro del tablero");
-                System.out.println("Utilice las teclas ( W A S D ) para moverse en el tablero, debe presionar ENTER despues de usar cada letra");
-                System.out.println("La casilla en donde se encuentra actualmente se pondra de color amarillo");
-                System.out.println("Para colocar una Ficha presione la letra P y luego ENTER");
-                System.out.println("Estas son sus fichas, para utilizarlas debe usar los inidices que se ven debajo");
-                mostrarFichasEIndices(jugadorActual);
-                indiceFichasPuestas.add(ponerPrimeraFicha(jugadorActual));
-                tableroAuxiliar.mostrarTablero();
-                mostrarFichasEIndices(jugadorActual);
-                if (indiceFichasPuestas.getFirst() != null){
-                    primeraFichaPuesta= true;
-                }
-            }
+            String option = scanner.nextLine().toLowerCase();
 
-            while (!jugadaCompleta && primeraFichaPuesta) {
-                System.out.println("Presione cualquier tecla y luego Enter para poner otra Ficha");
-                System.out.println("Presione L para verificar su palabra");
-                System.out.println("Presione C para CANCELAR su palabra");
-
-                if (!primeraJugada) {
-                    System.out.println("Presione 9 para pasar su turno");
-                }
-
-                String option = scanner.nextLine().toLowerCase();
-
-                if (option.equals("l")) {
+            switch (option) {
+                case "l":
                     jugadaCompleta = true;
-
-                } else if (!option.isEmpty() && !option.equals("9") && !option.equals("c")) {
-                    System.out.println("Utilice (W A S D) para seleccionar la posicion donde quiere poner la ficha");
-                    System.out.println("La ficha debe estar adyacente a otra");
-
-                    indiceFichasPuestas.add(ponerFicha(jugadorActual));
-                    tableroAuxiliar.mostrarTablero();
-                    mostrarFichasEIndices(jugadorActual);
-
-                } else if (option.equals("9") && !primeraJugada) {
-                    System.out.println("Estas seguro de querer pasar turno? Y/N");
-                    while (true) {
-                        String option2 = scanner.nextLine().toLowerCase();
-                        if (option2.equals("y")) {
-                            jugadaCompleta = true;
-                            turnoPasado = true;
-                            break;
-                        } else if (option2.equals("n")) {
-                            System.out.println("Usted NO ha saltado su turno");
-                            break;
-                        } else {
-                            System.out.println("Responda Y/N (SI o NO)");
-                        }
+                    break;
+                case "9":
+                    if (!primeraJugada) {
+                        confirmarPasarTurno();
                     }
-
-                } else if (option.equals("c")) {
+                    break;
+                case "c":
                     jugadaCompleta = true;
                     palabraCancelada = true;
-                } else{
-                    System.out.println("Entrada vacía, esperando otra entrada.");
-                }
+                    break;
+                default:
+                    if (!option.isEmpty()) {
+                        System.out.println("Utilice (W A S D) para seleccionar la posición donde quiere poner la ficha.");
+                        System.out.println("La ficha debe estar adyacente a otra.");
+                        indiceFichasPuestas.add(ponerFicha(jugadorActual));
+                        tableroAuxiliar.mostrarTablero();
+                        mostrarFichasEIndices(jugadorActual);
+                    } else {
+                        System.out.println("Entrada vacía, esperando otra entrada.");
+                    }
+                    break;
             }
+        }
+    }
 
-            if (turnoPasado){
-                System.out.println("Usted ha pasado su turno!");
+    private void confirmarPasarTurno() {
+        System.out.println("Estas seguro de querer pasar turno? Y/N");
+        while (true) {
+            String option2 = scanner.nextLine().toLowerCase();
+            if (option2.equals("y")) {
+                jugadaCompleta = true;
+                turnoPasado = true;
+                break;
+            } else if (option2.equals("n")) {
+                System.out.println("Usted NO ha saltado su turno");
+                break;
+            } else {
+                System.out.println("Responda Y/N (SI o NO)");
+            }
+        }
+    }
+
+    private void manejarFinTurno(Ficha[] atrilCopia) {
+        if (turnoPasado) {
+            System.out.println("Usted ha pasado su turno!");
+            jugadorActual.setFichas(atrilCopia);
+            tableroAuxiliar = new Tablero(this.tablero);
+            turnoActual = (turnoActual + 1) % jugadores.length;
+            return;
+        } else if (palabraCancelada) {
+            System.out.println("Usted cancelo su palabra, coloque otra!");
+            jugadorActual.setFichas(atrilCopia);
+            if (primeraJugada) {
+                primeraFichaPuesta = false;
+            }
+            tableroAuxiliar = new Tablero(this.tablero);
+            return;
+        }
+
+        if (!indiceFichasPuestas.isEmpty()) {
+            if (!verificarIndicesValidos(indiceFichasPuestas)) {
+                System.out.println("Usted hizo una jugada inválida!");
                 jugadorActual.setFichas(atrilCopia);
                 tableroAuxiliar = new Tablero(this.tablero);
+            } else if (palabraExtractor.verificarPalabrasFormadas(indiceFichasPuestas, tableroAuxiliar, jugadorActual)) {
                 turnoActual = (turnoActual + 1) % jugadores.length;
-                continue;
-            } else if (palabraCancelada) {
-                System.out.println("Usted cancelo su palabra, coloque otra!");
+                primeraJugada = false;
+                tablero = new Tablero(this.tableroAuxiliar);
+            } else {
+                System.out.println("La palabra que puso no es válida!");
                 jugadorActual.setFichas(atrilCopia);
                 if (primeraJugada) {
                     primeraFichaPuesta = false;
                 }
                 tableroAuxiliar = new Tablero(this.tablero);
-                continue;
             }
-
-
-            if(!indiceFichasPuestas.isEmpty()) {
-                if (!verificarIndicesValidos(indiceFichasPuestas)) {
-                    System.out.println("Usted hizo una jugada invalida!");
-                    jugadorActual.setFichas(atrilCopia);
-                    tableroAuxiliar = new Tablero(this.tablero);
-
-                } else if (palabraExtractor.verificarPalabrasFormadas(indiceFichasPuestas, tableroAuxiliar, jugadorActual)) {
-                    turnoActual = (turnoActual + 1) % jugadores.length;
-                    primeraJugada = false;
-                    tablero = new Tablero(this.tableroAuxiliar);
-
-                }else{
-                    System.out.println("La palabra que puso no es una palabra valida!");
-                    jugadorActual.setFichas(atrilCopia);
-                    if (primeraJugada) {
-                        primeraFichaPuesta = false;
-                    }
-                    tableroAuxiliar = new Tablero(this.tablero);
-                }
-
-            }else{
-                System.out.println("No ha ingresado una palabra!");
-                jugadorActual.setFichas(atrilCopia);
-                tableroAuxiliar = new Tablero(this.tablero);
-            }
-
-
+        } else {
+            System.out.println("No ha ingresado una palabra!");
+            jugadorActual.setFichas(atrilCopia);
+            tableroAuxiliar = new Tablero(this.tablero);
         }
-        mostrarResultadoFinal();
     }
 
     private boolean verificarIndicesValidos(ArrayList<int[]> indices) {
@@ -297,7 +342,7 @@ public class Juego {
         jugador.mostrarFichas();
         int contadorIndices = 0;
         StringBuilder indices = new StringBuilder();
-        for (Ficha ficha : jugador.getFichas()) {
+        for (Ficha _ : jugador.getFichas()) {
             indices.append("[").append(contadorIndices).append(" ]");
             contadorIndices++;
         }
@@ -329,3 +374,4 @@ public class Juego {
         }
     }
 }
+
