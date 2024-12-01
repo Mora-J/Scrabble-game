@@ -8,6 +8,10 @@ public class RaeVerificador {
     private static final String RAE_URL = "https://dle.rae.es/";
 
     public static boolean verificarPalabra(String palabra) {
+        if (palabra.contains("#")){
+            return false;
+        }
+
         ArrayList<String>variantes = VariantesPalabra.generarVariantes(palabra);
         for (String variante : variantes) {
             if(verificarVariante(variante)){

@@ -5,8 +5,8 @@ public class BolsaFichas {
     private final ArrayList<Ficha> listaFichas;
 
     public BolsaFichas() {
-        String[] letras = new String[]{"A ", "B ", "C ", "CH", "D ", "E ", "F ", "G ", "H ", "I ",
-                "J ", "L ", "LL", "M ", "N ", "Ñ ", "O ", "P ", "Q ", "R ", "RR", "S ", "T ", "U ", "V ", "X ", "Y ", "Z ", "# "};
+        String[] letras = new String[]{"A", "B", "C", "CH", "D", "E", "F", "G", "H", "I",
+                "J", "L", "LL", "M", "N", "Ñ", "O", "P", "Q", "R", "RR", "S", "T", "U", "V", "X", "Y", "Z", "#"};
 
         int[] cantidadFichas = new int[]{12, 2, 4, 1, 5, 12, 1, 2, 2, 6, 1, 4, 1, 2, 5, 1,
                 9, 2, 1, 5, 1, 6, 4, 5, 1, 1, 1, 1, 2};

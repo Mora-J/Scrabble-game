@@ -1,4 +1,4 @@
-public class Ficha {
+public class Ficha implements Cloneable {
     private int valor;
     private String letra;
     private String simbolo;
@@ -6,7 +6,12 @@ public class Ficha {
     public Ficha(int valor, String letra) {
         this.valor = valor;
         this.letra = letra;
-        this.simbolo = "\033[1;30;107m["+letra+"]\033[0m";
+
+        if (letra.length() == 1){
+            this.simbolo = "\033[1;30;107m["+letra+" ]\033[0m";
+        }else {
+            this.simbolo = "\033[1;30;107m[" + letra + "]\033[0m";
+        }
     }
 
     public Ficha() {
@@ -21,7 +26,20 @@ public class Ficha {
 
     public void setLetra(String letra) {
         this.letra = letra;
-        this.simbolo = "\033[1;30;107m["+letra+"]\033[0m";
+        if (letra.length() == 1){
+            this.simbolo = "\033[1;30;107m["+letra+" ]\033[0m";
+        }else {
+            this.simbolo = "\033[1;30;107m[" + letra + "]\033[0m";
+        }
+    }
+
+    @Override
+    public Ficha clone() {
+        try {
+            return (Ficha) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e.getMessage() + " - Se jodio el programa, te debo un helado, Joselito :c");
+            return null;}
     }
 
     public String getLetra() {

@@ -13,13 +13,13 @@ public record Controlador(Tablero tablero) {
 
 
     private int[] actualizarPosicion(int i, int j, int key) {
-        if (key == 'w' && i > 0) {
+        if ((key == 'w' || key == 'W') && i > 0) {
             i--;
-        } else if (key == 's' && i < tablero.getTablero().length - 1) {
+        } else if ((key == 's' || key == 'S') && i < tablero.getTablero().length - 1) {
             i++;
-        } else if (key == 'a' && j > 0) {
+        } else if ((key == 'a' || key == 'A') && j > 0) {
             j--;
-        } else if (key == 'd' && j < tablero.getTablero()[0].length - 1) {
+        } else if ((key == 'd' || key == 'D') && j < tablero.getTablero()[0].length - 1) {
             j++;
         }
         return new int[]{i, j};
@@ -30,8 +30,8 @@ public record Controlador(Tablero tablero) {
         int[] nuevaPosicion = actualizarPosicion(i, j, key);
 
         if (i != nuevaPosicion[0] || j != nuevaPosicion[1]) {
-            tablero.resaltarPosicion(nuevaPosicion[0], nuevaPosicion[1]);
-            tablero.desresaltarPosicion(i, j);
+            this.tablero.resaltarPosicion(nuevaPosicion[0], nuevaPosicion[1]);
+            this.tablero.desresaltarPosicion(i, j);
         }
 
         return nuevaPosicion;

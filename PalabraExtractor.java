@@ -5,8 +5,8 @@ public class PalabraExtractor {
     public PalabraExtractor() {
     }
 
-    private ListaFichas extraerPalabraVertical(int fila, int columna, Tablero tablero) {
-        ListaFichas palabraVertical = new ListaFichas(true);
+    private Palabra extraerPalabraVertical(int fila, int columna, Tablero tablero) {
+        Palabra palabraVertical = new Palabra(true);
 
         // Extraer palabra vertical hacia abajo
         for (int i = fila; i < tablero.getTablero().length; i++) {
@@ -24,8 +24,8 @@ public class PalabraExtractor {
         return palabraVertical;
     }
 
-    private ListaFichas extraerPalabraHorizontal(int fila, int columna, Tablero tablero) {
-        ListaFichas palabraHorizontal = new ListaFichas(false);
+    private Palabra extraerPalabraHorizontal(int fila, int columna, Tablero tablero) {
+        Palabra palabraHorizontal = new Palabra(false);
 
         // Extraer palabra horizontal hacia la derecha
         for (int j = columna; j < tablero.getTablero()[0].length; j++) {
@@ -45,17 +45,17 @@ public class PalabraExtractor {
         return palabraHorizontal;
     }
 
-    private HashSet<ListaFichas> extraerPalabrasFormadas(ArrayList<int[]> IndiceFichasPuestas, Tablero tablero) {
-        HashSet<ListaFichas> palabrasFormadas = new HashSet<>();
+    private HashSet<Palabra> extraerPalabrasFormadas(ArrayList<int[]> IndiceFichasPuestas, Tablero tablero) {
+        HashSet<Palabra> palabrasFormadas = new HashSet<>();
         for(int[] indices : IndiceFichasPuestas){
-            ListaFichas palabraVertical = extraerPalabraVertical(indices[0], indices[1], tablero);
-            ListaFichas palabraHorizontal = extraerPalabraHorizontal(indices[0], indices[1], tablero);
+            Palabra palabraVertical = extraerPalabraVertical(indices[0], indices[1], tablero);
+            Palabra palabraHorizontal = extraerPalabraHorizontal(indices[0], indices[1], tablero);
 
             if (palabraVertical.size() > 1) {
-                palabrasFormadas.add(new ListaFichas(palabraVertical));
+                palabrasFormadas.add(new Palabra(palabraVertical));
             }
             if (palabraHorizontal.size() > 1) {
-                palabrasFormadas.add(new ListaFichas(palabraHorizontal));
+                palabrasFormadas.add(new Palabra(palabraHorizontal));
             }
         }
         if (!palabrasFormadas.isEmpty()) {
@@ -65,22 +65,28 @@ public class PalabraExtractor {
     }
 
     public boolean verificarPalabrasFormadas(ArrayList<int[]> IndiceFichasPuestas, Tablero tablero, Jugador jugador){
-        HashSet<ListaFichas> palabrasSet = extraerPalabrasFormadas(IndiceFichasPuestas, tablero);
+        HashSet<Palabra> palabrasSet = extraerPalabrasFormadas(IndiceFichasPuestas, tablero);
         int puntosPalabras = 0;
 
         if (palabrasSet == null) {
             return false;
         } else {
 
-            for (ListaFichas palabra : palabrasSet) {
-               if (!RaeVerificador.verificarPalabra(palabra.toString())){
+            for (Palabra palabra : palabrasSet) {
+               if (!RaeVerificador.verificarPalabra(palabra.toString().toLowerCase())){
+                   System.out.println("Palabra invalida: " + palabra);
                    return false;
                }
                puntosPalabras += palabra.getPuntaje();
             }
 
         }
-        jugador.addToScoreTotal(puntosPalabras);
+        jugador.addToScore(puntosPalabras);
+        System.out.print("Palabras valida: ");
+        for (Palabra palabra : palabrasSet) {
+            System.out.print(palabra.toString() + ", ");
+        }
+        System.out.println();
         return true;
     }
 }

@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class MenuScrabble {
@@ -39,7 +38,7 @@ public class MenuScrabble {
 
             switch (opcion) {
                 case "1":
-                    jugarNuevaPartida();
+                    jugarNuevaPartida(ingresarUsuario(1), ingresarUsuario(2));
                     break;
                 case "2":
                     continuarPartidaAnterior();
@@ -57,7 +56,9 @@ public class MenuScrabble {
         }
     }
 
-    private void jugarNuevaPartida() {
+    private void jugarNuevaPartida(Jugador jugador1, Jugador jugador2) {
+        Juego nuevoJuego = new Juego(new Jugador[]{jugador1, jugador2});
+        nuevoJuego.iniciarNuevaPartida();
     }
 
     private void continuarPartidaAnterior() {
@@ -74,4 +75,5 @@ public class MenuScrabble {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
 }

@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Tablero {
     private final Ficha[][] tablero;
     private int filaCentral;
@@ -10,7 +13,12 @@ public class Tablero {
     public void resaltarPosicion(int fila, int columna) {
         Ficha ficha = tablero[fila][columna];
         String letra = ficha.getLetra();
-        ficha.setSimbolo("\033[30;43m[" + letra + "]\033[0m");
+        if (letra.length() == 1){
+            ficha.setSimbolo("\033[30;43m[" + letra + " ]\033[0m");
+        }else{
+            ficha.setSimbolo("\033[30;43m[" + letra + "]\033[0m");
+        }
+
     }
 
     public void desresaltarPosicion(int fila, int columna) {
@@ -36,6 +44,18 @@ public class Tablero {
         this.columnaCentral = (tablero[0].length - 1)/2;
     }
 
+    public Tablero(Tablero original) {
+        this.tablero = new Ficha[original.getTablero().length][original.getTablero()[0].length];
+        for (int i = 0; i < original.getTablero().length; i++) {
+            for(int j = 0; j < original.getTablero().length; j++){
+                this.tablero[i][j] = original.getTablero()[i][j].clone();
+            }
+        }
+        this.filaCentral = original.getFilaCentral();
+        this.columnaCentral = original.getColumnaCentral();
+    }
+
+
     public boolean validarFichaPosicion(int fila, int columna) {
         if (fila >= 0 && fila < tablero.length && columna >= 0 && columna < tablero.length) {
             return tablero[fila][columna].getLetra().equals("  ");
@@ -43,12 +63,47 @@ public class Tablero {
         return false;
     }
 
-    public boolean colocarPrimeraFicha(Ficha ficha) {
-        if (validarFichaPosicion(7, 7) && ficha != null) {
-            this.tablero[7][7] = ficha;
+    private boolean asignarComodin(Ficha ficha) {
+        String[] fichasValidas = new String[]{"A", "B", "C", "CH", "D", "E", "F", "G", "H", "I",
+                "J", "L", "LL", "M", "N", "Ñ", "O", "P", "Q", "R", "RR", "S", "T", "U", "V", "X", "Y", "Z"};
+
+        Scanner scanner = new Scanner(System.in);
+        boolean letraValida = false;
+
+        if (ficha.getLetra().equals("#")) {
+            while (!letraValida) {
+                System.out.println("Ingrese que en que Ficha quiere convertir su comodin: (recuerde que tambien estan LL, CH, RR)");
+                System.out.println("Ingrese 9 para cancelar");
+                String fichaIngresada = scanner.nextLine().toUpperCase().trim();
+                if (fichaIngresada.equals("9")) {
+                    return false;
+                }
+                if (esFichaValida(fichaIngresada, fichasValidas)) {
+                    System.out.println("La ficha " + fichaIngresada + " es válida.");
+                    ficha.setLetra(fichaIngresada);
+                    letraValida = true;
+
+                } else {
+                    System.out.println("La ficha " + fichaIngresada + " no es válida. Inténtelo nuevamente.");
+                }
+
+            }
             return true;
         }
-        return false;
+        return true;
+    }
+
+    private static boolean esFichaValida(String ficha, String[] fichasValidas) {
+        return Arrays.asList(fichasValidas).contains(ficha);
+    }
+
+    public boolean colocarPrimeraFicha(Ficha ficha) {
+        if (validarFichaPosicion(7, 7) && ficha != null && asignarComodin(ficha)) {
+            this.tablero[7][7] = ficha;
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public boolean colocarFicha(int fila, int columna, Ficha ficha) {
@@ -57,11 +112,12 @@ public class Tablero {
                 (columna > 0 && !tablero[fila][columna - 1].getLetra().equals("  ")) ||
                 (columna < tablero[0].length - 1 && !tablero[fila][columna + 1].getLetra().equals("  "));
 
-        if (validarFichaPosicion(fila, columna) && hayFichaAdyacente) {
+        if (validarFichaPosicion(fila, columna) && hayFichaAdyacente && ficha != null && asignarComodin(ficha)) {
             this.tablero[fila][columna] = ficha;
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
 
     public void mostrarTablero() {
@@ -85,5 +141,9 @@ public class Tablero {
 
     public int getColumnaCentral() {
         return columnaCentral;
+    }
+
+    public void setColumnaCentral(int columnaCentral) {
+        this.columnaCentral = columnaCentral;
     }
 }
