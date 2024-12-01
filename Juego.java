@@ -37,8 +37,9 @@ public class Juego {
         boolean primeraJugada = true;
         boolean primeraFichaPuesta = false;
         ArrayList<int[]> indiceFichasPuestas;
-        boolean palabraCompleta;
-        boolean turnoPasado = false;
+        boolean jugadaCompleta;
+        boolean turnoPasado;
+        boolean palabraCancelada;
 
 
         System.out.println("¡Nueva partida iniciada!");
@@ -47,12 +48,15 @@ public class Juego {
 
 
         while (!partidaTerminada(jugadorActual, bolsaFichas)) {
-
             this.controlador = new Controlador(tableroAuxiliar);
             rellenarFichasJugadores(jugadores, bolsaFichas);
             jugadorActual = jugadores[turnoActual];
             Ficha[] atrilCopia = jugadorActual.clonarFichas();
-            palabraCompleta = false;
+
+            jugadaCompleta = false;
+            turnoPasado = false;
+            palabraCancelada = false;
+
             indiceFichasPuestas = new ArrayList<>();
 
 
@@ -80,9 +84,10 @@ public class Juego {
                 }
             }
 
-            while (!palabraCompleta && primeraFichaPuesta) {
+            while (!jugadaCompleta && primeraFichaPuesta) {
                 System.out.println("Presione cualquier tecla y luego Enter para poner otra Ficha");
                 System.out.println("Presione L para verificar su palabra");
+                System.out.println("Presione C para CANCELAR su palabra");
 
                 if (!primeraJugada) {
                     System.out.println("Presione 9 para pasar su turno");
@@ -91,9 +96,9 @@ public class Juego {
                 String option = scanner.nextLine().toLowerCase();
 
                 if (option.equals("l")) {
-                    palabraCompleta = true;
+                    jugadaCompleta = true;
 
-                } else if (!option.isEmpty() && !option.equals("9")) {
+                } else if (!option.isEmpty() && !option.equals("9") && !option.equals("c")) {
                     System.out.println("Utilice (W A S D) para seleccionar la posicion donde quiere poner la ficha");
                     System.out.println("La ficha debe estar adyacente a otra");
 
@@ -102,9 +107,24 @@ public class Juego {
                     mostrarFichasEIndices(jugadorActual);
 
                 } else if (option.equals("9") && !primeraJugada) {
-                    palabraCompleta = true;
-                    turnoPasado = true;
+                    System.out.println("Estas seguro de querer pasar turno? Y/N");
+                    while (true) {
+                        String option2 = scanner.nextLine().toLowerCase();
+                        if (option2.equals("y")) {
+                            jugadaCompleta = true;
+                            turnoPasado = true;
+                            break;
+                        } else if (option2.equals("n")) {
+                            System.out.println("Usted NO ha saltado su turno");
+                            break;
+                        } else {
+                            System.out.println("Responda Y/N (SI o NO)");
+                        }
+                    }
 
+                } else if (option.equals("c")) {
+                    jugadaCompleta = true;
+                    palabraCancelada = true;
                 } else{
                     System.out.println("Entrada vacía, esperando otra entrada.");
                 }
@@ -116,6 +136,14 @@ public class Juego {
                 tableroAuxiliar = new Tablero(this.tablero);
                 turnoActual = (turnoActual + 1) % jugadores.length;
                 continue;
+            } else if (palabraCancelada) {
+                System.out.println("Usted cancelo su palabra, coloque otra!");
+                jugadorActual.setFichas(atrilCopia);
+                if (primeraJugada) {
+                    primeraFichaPuesta = false;
+                }
+                tableroAuxiliar = new Tablero(this.tablero);
+                continue;
             }
 
 
@@ -126,7 +154,6 @@ public class Juego {
                     tableroAuxiliar = new Tablero(this.tablero);
 
                 } else if (palabraExtractor.verificarPalabrasFormadas(indiceFichasPuestas, tableroAuxiliar, jugadorActual)) {
-                    System.out.println("Las palabras que has puesto es valida!");
                     turnoActual = (turnoActual + 1) % jugadores.length;
                     primeraJugada = false;
                     tablero = new Tablero(this.tableroAuxiliar);
@@ -182,7 +209,9 @@ public class Juego {
                     if (indice == 9){
                         return null;
                     }
-                    jugador.jugarPrimeraFicha(tableroAuxiliar, indice);
+                    if (!jugador.jugarPrimeraFicha(tableroAuxiliar, indice)) {
+                        return null;
+                    }
                     break;
                 }else{
                     System.out.println("Presiona 'P' para poder escoger una ficha");
@@ -209,6 +238,7 @@ public class Juego {
                     System.out.println("¡Has presionado 'P'! Escoge que Ficha poner...");
                     int indice = obtenerEntradaNumerica();
                     tableroAuxiliar.desresaltarPosicion(i, j);
+
                     if (indice == 9){
                         return null;
                     }

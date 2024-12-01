@@ -28,9 +28,12 @@ public class Jugador {
         return clon;
     }
 
-    public void jugarPrimeraFicha(Tablero tablero, int indexFichas) {
+    public boolean jugarPrimeraFicha(Tablero tablero, int indexFichas) {
         if (tablero.colocarPrimeraFicha(fichas[indexFichas])) {
             fichas[indexFichas] = null;
+            return true;
+        }else {
+            return false;
         }
     }
 

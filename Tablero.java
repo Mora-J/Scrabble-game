@@ -72,7 +72,7 @@ public class Tablero {
 
         if (ficha.getLetra().equals("#")) {
             while (!letraValida) {
-                System.out.println("Ingrese que en que Ficha quiere convertir su comodin: (recuerde que tambien estan LL, CH, RR)");
+                System.out.println("Ingrese en que Ficha quiere convertir su comodin: (recuerde que tambien estan LL, CH, RR)");
                 System.out.println("Ingrese 9 para cancelar");
                 String fichaIngresada = scanner.nextLine().toUpperCase().trim();
                 if (fichaIngresada.equals("9")) {

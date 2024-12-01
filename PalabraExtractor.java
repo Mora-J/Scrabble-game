@@ -82,11 +82,11 @@ public class PalabraExtractor {
 
         }
         jugador.addToScore(puntosPalabras);
-        System.out.print("Palabras valida: ");
+        System.out.print("Palabras validas: ");
         for (Palabra palabra : palabrasSet) {
             System.out.print(palabra.toString() + ", ");
         }
-        System.out.println();
+        System.out.println("\nHas ganado: " + puntosPalabras + " puntos!!!");
         return true;
     }
 }
