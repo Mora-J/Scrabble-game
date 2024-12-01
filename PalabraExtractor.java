@@ -67,6 +67,7 @@ public class PalabraExtractor {
     public boolean verificarPalabrasFormadas(ArrayList<int[]> IndiceFichasPuestas, Tablero tablero, Jugador jugador){
         HashSet<Palabra> palabrasSet = extraerPalabrasFormadas(IndiceFichasPuestas, tablero);
         int puntosPalabras = 0;
+        int cantidadPalabras = 0;
 
         if (palabrasSet == null) {
             return false;
@@ -78,14 +79,18 @@ public class PalabraExtractor {
                    return false;
                }
                puntosPalabras += palabra.getPuntaje();
+               cantidadPalabras++;
             }
 
         }
         jugador.addToScore(puntosPalabras);
+        jugador.addToCantidadPalabrasColocadas(cantidadPalabras);
+
         System.out.print("Palabras validas: ");
         for (Palabra palabra : palabrasSet) {
             System.out.print(palabra.toString() + ", ");
         }
+
         System.out.println("\nHas ganado: " + puntosPalabras + " puntos!!!");
         return true;
     }

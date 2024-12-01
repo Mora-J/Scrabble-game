@@ -1,8 +1,6 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Juego {
     private int turnoActual;
@@ -21,25 +19,10 @@ public class Juego {
     private transient Scanner scanner = new Scanner(System.in);
     private final PalabraExtractor palabraExtractor = new PalabraExtractor();
     private boolean partidaTerminada = false;
+    private transient boolean salir = false;
 
     public void reInicializarScanner(){
         scanner = new Scanner(System.in);
-    }
-
-    public Juego(Jugador[] jugadores, Tablero tablero) {
-        this.jugadores = jugadores;
-        this.tablero = tablero;
-        this.tableroAuxiliar = new Tablero(tablero);
-        this.turnoActual = 0;
-        this.jugadorActual = null;
-        this.primeraJugada = true;
-        this.primeraFichaPuesta = false;
-        this.jugadaCompleta = false;
-        this.turnoPasado = false;
-        this.palabraCancelada = false;
-        this.indiceFichasPuestas = new ArrayList<>();
-        this.bolsaFichas = new BolsaFichas();
-        this.controlador = new Controlador(tableroAuxiliar);
     }
 
     public Juego(Jugador[] jugadores) {
@@ -60,7 +43,7 @@ public class Juego {
 
     public void iniciarNuevaPartida() {
         inicializarNuevoJuego();
-        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
+        while (partidaTerminada(jugadores[turnoActual], bolsaFichas) || salir) {
             gestionarTurno();
         }
         mostrarResultadoFinal();
@@ -68,7 +51,7 @@ public class Juego {
 
     public void continuarPartida() {
         inicializarJuegoAnterior();
-        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
+        while (partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
             gestionarTurno();
         }
         mostrarResultadoFinal();
@@ -105,6 +88,8 @@ public class Juego {
         turnoPasado = false;
         palabraCancelada = false;
         indiceFichasPuestas = new ArrayList<>();
+        salir = false;
+        JsonUtil.guardarPartidaPendiente(this);
 
         System.out.println("\nTurno de: " + jugadorActual.getAlias());
         System.out.println("Puntos: " + jugadorActual.getScore());
@@ -121,6 +106,7 @@ public class Juego {
     private void manejarPrimeraJugada() {
         tablero.mostrarTablero();
         System.out.println("Debe colocar la primera Ficha en el centro del tablero.");
+        System.out.println("\u001B[33m"+"Para regresar al menu principal debe poner primero la ficha central"+"\u001B[0m");
         System.out.println("Utilice las teclas (W A S D) para moverse en el tablero, debe presionar ENTER después de usar cada letra.");
         System.out.println("Para colocar una Ficha presione la letra P y luego ENTER.");
         mostrarFichasEIndices(jugadorActual);
@@ -151,6 +137,7 @@ public class Juego {
             if (!primeraJugada) {
                 System.out.println("Presione 9 para pasar su turno");
             }
+            System.out.println("Escriba \u001B[31mSALIR\u001B[0m para salir y guardar. Regresara al menu principal");
 
             String option = scanner.nextLine().toLowerCase();
 
@@ -160,17 +147,25 @@ public class Juego {
                     break;
                 case "9":
                     if (!primeraJugada) {
-                        confirmarPasarTurno();
+                        confirmarSalirOPasarTurno(true);
                     }
                     break;
                 case "c":
                     jugadaCompleta = true;
                     palabraCancelada = true;
                     break;
+                case "salir":
+                    confirmarSalirOPasarTurno(false);
+                    jugadaCompleta = true;
+                    palabraCancelada = true;
+                    salir = true;
+                    break;
                 default:
                     if (!option.isEmpty()) {
                         System.out.println("Utilice (W A S D) para seleccionar la posición donde quiere poner la ficha.");
-                        System.out.println("La ficha debe estar adyacente a otra.");
+                        System.out.println("La ficha debe estar adyacente a otra o sera una jugada invalida.");
+                        System.out.println("Presione P y luego 9 para cancelar");
+
                         indiceFichasPuestas.add(ponerFicha(jugadorActual));
                         tableroAuxiliar.mostrarTablero();
                         mostrarFichasEIndices(jugadorActual);
@@ -182,8 +177,17 @@ public class Juego {
         }
     }
 
-    private void confirmarPasarTurno() {
-        System.out.println("Estas seguro de querer pasar turno? Y/N");
+    private void confirmarSalirOPasarTurno(boolean pasarturno) {
+        String mensaje1; String mensaje2;
+        if (pasarturno) {
+            mensaje1 = "Estas seguro de querer pasar turno? Y/N";
+            mensaje2 = "Usted NO ha saltado su turno";
+        }else{
+            mensaje1 = "Estas seguro de querer Salir y Guardar? Y/N";
+            mensaje2 = "Usted NO ha salido, la partida se guarda automaticamente cada palabra";
+        }
+
+        System.out.println(mensaje1);
         while (true) {
             String option2 = scanner.nextLine().toLowerCase();
             if (option2.equals("y")) {
@@ -191,7 +195,7 @@ public class Juego {
                 turnoPasado = true;
                 break;
             } else if (option2.equals("n")) {
-                System.out.println("Usted NO ha saltado su turno");
+                System.out.println(mensaje2);
                 break;
             } else {
                 System.out.println("Responda Y/N (SI o NO)");
@@ -312,6 +316,7 @@ public class Juego {
 
                 } else if (key != 'w' && key != 'W' && key != 'S' && key != 's' && key != 'a' && key != 'A' && key != 'd' && key != 'D') {
                     System.out.println("Presione alguna de estas teclas para moverse W A S D, presione P para escoger que ficha poner");
+                    System.out.println("Para cancelar presione P y luego 9");
                 }
 
                 // Mueve el jugador y actualiza la posición
@@ -375,14 +380,14 @@ public class Juego {
     private boolean partidaTerminada(Jugador jugadorActual, BolsaFichas bolsaFichas) {
         if (jugadorActual.fichasIsEmpty() && bolsaFichas.getListaFichas().isEmpty()){
         partidaTerminada = true;
-        return true;
+        return false;
         }else{
-            return false;
+            return true;
         }
     }
 
     private void mostrarResultadoFinal() {
-        System.out.println("La partida ha terminado y el ganador es:");
+        System.out.println("\nLa partida ha terminado y el ganador es:");
         int mayor = 0;
         Jugador ganador = null;
         for (Jugador jugador : jugadores) {
@@ -394,11 +399,16 @@ public class Juego {
         if (ganador != null) {
             System.out.println(ganador.getAlias());
             System.out.println("Con " + ganador.getScore() + "puntos !!!");
+            System.out.println("Y con " + ganador.getCantidadPalabrasColocadas() + " Palabras colocadas!!!");
         }
     }
 
     public boolean isPartidaTerminada() {
         return partidaTerminada;
+    }
+
+    public String getClaveJugadores() {
+        return Arrays.stream(jugadores).map(Jugador::getAlias).sorted().collect(Collectors.joining("_"));
     }
 }
 

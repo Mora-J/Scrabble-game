@@ -2,6 +2,7 @@ public class Jugador {
     private final String alias;
     private int scoreTotal;
     private String tiempoJugado;
+    private int cantidadPalabrasColocadas;
     private final Ficha[] fichas = new Ficha[7];
 
     public Ficha[] getFichas() {
@@ -99,6 +100,14 @@ public class Jugador {
 
     public void setTiempoJugado(String tiempoJugado) {
         this.tiempoJugado = tiempoJugado;
+    }
+
+    public int getCantidadPalabrasColocadas() {
+        return cantidadPalabrasColocadas;
+    }
+
+    public void addToCantidadPalabrasColocadas(int cantidadPalabras) {
+        this.cantidadPalabrasColocadas += cantidadPalabrasColocadas;
     }
 }
 

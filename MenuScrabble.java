@@ -3,10 +3,12 @@ import java.util.Scanner;
 public class MenuScrabble {
     private final Scanner scanner;
     private boolean salir;
+    private Jugador[] jugadores;
 
     public MenuScrabble() {
         scanner = new Scanner(System.in);
         salir = false;
+        this.jugadores = new Jugador[]{ingresarUsuario(1), ingresarUsuario(2)};
     }
 
     private String menuPrincipal() {
@@ -38,7 +40,7 @@ public class MenuScrabble {
 
             switch (opcion) {
                 case "1":
-                    jugarNuevaPartida(ingresarUsuario(1), ingresarUsuario(2));
+                    jugarNuevaPartida();
                     break;
                 case "2":
                     continuarPartidaAnterior();
@@ -56,14 +58,26 @@ public class MenuScrabble {
         }
     }
 
-    private void jugarNuevaPartida(Jugador jugador1, Jugador jugador2) {
-        Juego nuevoJuego = new Juego(new Jugador[]{jugador1, jugador2});
+    private void jugarNuevaPartida() {
+        Juego nuevoJuego = new Juego(jugadores);
         nuevoJuego.iniciarNuevaPartida();
     }
 
     private void continuarPartidaAnterior() {
-        // Implementa la lógica para continuar la partida anterior aquí
         System.out.println("Continuando la partida anterior...");
+        Juego continuarJuego = new Juego(jugadores);
+        continuarJuego = JsonUtil.cargarPartidaPendiente(continuarJuego.getClaveJugadores());
+        try {
+            if (!continuarJuego.isPartidaTerminada()) {
+                continuarJuego.reInicializarScanner();
+                continuarJuego.continuarPartida();
+            }else{
+                System.out.println("Estos jugadores no tienen partidas pendientes, la Partida fue Terminada, porfavor inicien una nueva partida");
+            }
+        }catch (NullPointerException e) {
+            System.out.println("Estos jugadores no tienen una partida guardada o su partida fue eliminada, porfavor inicien una nueva partida");
+        }
+
     }
 
     private void verScoreJugadores() {
