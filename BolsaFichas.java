@@ -27,4 +27,5 @@ public class BolsaFichas {
     public ArrayList<Ficha> getListaFichas() {
         return listaFichas;
     }
+
 }

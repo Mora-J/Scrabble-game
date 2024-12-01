@@ -13,21 +13,17 @@ public class Juego {
     private boolean turnoPasado;
     private boolean palabraCancelada;
     private ArrayList<int[]> indiceFichasPuestas;
-    private BolsaFichas bolsaFichas;
+    private final BolsaFichas bolsaFichas;
     private Controlador controlador;
     private Tablero tablero;
     private Tablero tableroAuxiliar;
     private final Jugador[] jugadores;
-    private final Scanner scanner = new Scanner(System.in);
+    private transient Scanner scanner = new Scanner(System.in);
     private final PalabraExtractor palabraExtractor = new PalabraExtractor();
+    private boolean partidaTerminada = false;
 
-
-    public void iniciarNuevaPartida() {
-        inicializarJuego();
-        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
-            gestionarTurno();
-        }
-        mostrarResultadoFinal();
+    public void reInicializarScanner(){
+        scanner = new Scanner(System.in);
     }
 
     public Juego(Jugador[] jugadores, Tablero tablero) {
@@ -62,9 +58,31 @@ public class Juego {
         this.controlador = new Controlador(tableroAuxiliar);
     }
 
+    public void iniciarNuevaPartida() {
+        inicializarNuevoJuego();
+        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
+            gestionarTurno();
+        }
+        mostrarResultadoFinal();
+    }
 
+    public void continuarPartida() {
+        inicializarJuegoAnterior();
+        while (!partidaTerminada(jugadores[turnoActual], bolsaFichas)) {
+            gestionarTurno();
+        }
+        mostrarResultadoFinal();
+    }
 
-    private void inicializarJuego() {
+    private void inicializarJuegoAnterior() {
+        jugadorActual = jugadores[turnoActual];
+        indiceFichasPuestas = new ArrayList<>();
+
+        System.out.println("¡Continua la partida anterior!");
+        System.out.println("Le toca al jugador: " + jugadorActual.getAlias());
+    }
+
+    private void inicializarNuevoJuego() {
         turnoActual = new Random().nextInt(jugadores.length);
         jugadorActual = jugadores[turnoActual];
         primeraJugada = true;
@@ -76,11 +94,10 @@ public class Juego {
 
         System.out.println("¡Nueva partida iniciada!");
         System.out.println("Empieza el jugador: " + jugadorActual.getAlias());
-        bolsaFichas = new BolsaFichas();
-        controlador = new Controlador(tableroAuxiliar);
     }
 
     private void gestionarTurno() {
+        controlador = new Controlador(tableroAuxiliar);
         rellenarFichasJugadores(jugadores, bolsaFichas);
         jugadorActual = jugadores[turnoActual];
         Ficha[] atrilCopia = jugadorActual.clonarFichas();
@@ -356,11 +373,16 @@ public class Juego {
     }
 
     private boolean partidaTerminada(Jugador jugadorActual, BolsaFichas bolsaFichas) {
-        return jugadorActual.fichasIsEmpty() && bolsaFichas.getListaFichas().isEmpty();
+        if (jugadorActual.fichasIsEmpty() && bolsaFichas.getListaFichas().isEmpty()){
+        partidaTerminada = true;
+        return true;
+        }else{
+            return false;
+        }
     }
 
     private void mostrarResultadoFinal() {
-        System.out.println("La partida ha terminado y el ganador es");
+        System.out.println("La partida ha terminado y el ganador es:");
         int mayor = 0;
         Jugador ganador = null;
         for (Jugador jugador : jugadores) {
@@ -371,7 +393,12 @@ public class Juego {
         }
         if (ganador != null) {
             System.out.println(ganador.getAlias());
+            System.out.println("Con " + ganador.getScore() + "puntos !!!");
         }
+    }
+
+    public boolean isPartidaTerminada() {
+        return partidaTerminada;
     }
 }
 
