@@ -6,16 +6,55 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import ve.edu.ucab.models.Casilla;
 import ve.edu.ucab.models.Game;
+import ve.edu.ucab.models.Jugador;
 
 public class ScrabbleController {
     @FXML
     private GridPane scrabbleBoard;
+
+    @FXML
+    private Label ficha1;
+
+    @FXML
+    private Label ficha2;
+
+    @FXML
+    private Label ficha3;
+
+    @FXML
+    private Label ficha4;
+
+    @FXML
+    private Label ficha5;
+
+    @FXML
+    private Label ficha6;
+
+    @FXML
+    private Label ficha7;
+
+    private Label[] atril;
+
     private Game game;
 
     @FXML
     void initialize() {
+        atril = new Label[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
+
         game = new Game();
         configureBoard();
+        rellenarAtrilJugadores();
+        configureAtrilJugadores();
+    }
+
+    void rellenarAtrilJugadores() {
+        game.actualizarAtrilJugadores();
+    }
+
+    private void configureAtrilJugadores() {
+        for (int i = 0; i < 7; i++){
+            atril[i].setText(game.getJugadores()[0].getAtril()[i].toString());
+        }
     }
 
     private void configureBoard() {

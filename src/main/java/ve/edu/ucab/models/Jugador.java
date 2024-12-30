@@ -56,6 +56,16 @@ public class Jugador {
         return atril;
     }
 
+    public void rellenarFichas(BolsaFichas bolsaFichas) {
+        for (int i = 0; i < 7; i++) {
+            int randomIndex = (int) (Math.random() * (bolsaFichas.getListaFichas().size() - 1));
+            if (atril[i] == null && !bolsaFichas.getListaFichas().isEmpty()) {
+                atril[i] = bolsaFichas.getListaFichas().get(randomIndex).clone();
+                bolsaFichas.getListaFichas().remove(randomIndex);
+            }
+        }
+    }
+
     public int getMinutosJugados() {
         return minutosJugados;
     }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefHeight="798.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.ScrabbleController">
    <children>
@@ -11,6 +13,63 @@
          <children>
             <GridPane fx:id="scrabbleBoard">
             </GridPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="625.0" prefHeight="58.0" prefWidth="982.0" AnchorPane.bottomAnchor="115.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha1" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha2" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha3" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha4" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha5" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="ficha6" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
+               <children>
+                  <Label fx:id="ficha7" layoutX="11.0" layoutY="17.0" text="Label" />
+               </children>
+            </Pane>
          </children>
       </HBox>
    </children>
