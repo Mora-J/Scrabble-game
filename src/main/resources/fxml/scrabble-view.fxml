@@ -22,7 +22,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha1" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha1" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
@@ -30,7 +30,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha2" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha2" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
@@ -38,7 +38,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha3" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha3" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
@@ -46,7 +46,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha4" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha4" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
@@ -54,7 +54,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha5" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha5" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
@@ -62,12 +62,12 @@
                   <Insets right="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="ficha6" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha6" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
                <children>
-                  <Label fx:id="ficha7" layoutX="11.0" layoutY="17.0" text="Label" />
+                  <Label fx:id="ficha7" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
                </children>
             </Pane>
          </children>

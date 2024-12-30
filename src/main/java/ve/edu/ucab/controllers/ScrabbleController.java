@@ -33,6 +33,8 @@ public class ScrabbleController {
     @FXML
     private Label ficha7;
 
+    private Label fichaSeleccionada = new Label();
+
     private Label[] atril;
 
     private Game game;
@@ -73,6 +75,21 @@ public class ScrabbleController {
         }
     }
 
+    //¡Jesús! Esto es muy importante, esto no será efectivo, no funcionara, solo estás poniendo los label en el tablero, pero la matriz que se encargara de la logica
+    //no está siendo actualizada, necesitas corregir esto. ¡Mucha suerte! De tu más grande amigo -Tú mismo- 👍👍👍
+
+    private void colocarFichaEnCasilla(int row, int col) {
+        if (!fichaSeleccionada.getText().isEmpty()) {
+            Label casillaLabel = game.getBoard().getCasillas()[row][col].getFicha().getLetraLabel();
+            casillaLabel.setText(fichaSeleccionada.getText());
+            fichaSeleccionada = new Label(""); // Restablecer la ficha seleccionada
+            System.out.println("Ficha colocada en [" + row + "][" + col + "]");
+        } else {
+            System.out.println("No hay ficha seleccionada");
+        }
+    }
+
+
     private void styleCell(Label cell) {
         cell.setStyle("-fx-border-color: black; -fx-pref-width: 35; -fx-pref-height: 35;");
     }
@@ -83,14 +100,17 @@ public class ScrabbleController {
         scrabbleBoard.getChildren().add(cell);
     }
 
-    private void addClickEvent(Label cell, int row, int col) {
-        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> handleCellClick(row, col));
+    @FXML
+    private void seleccionarFicha(MouseEvent event) {
+        fichaSeleccionada.setText(((Label) event.getSource()).getText());
+        ((Label) event.getSource()).setText("");
+        System.out.println("Ficha seleccionada: " + fichaSeleccionada.getText());
     }
 
-    private void handleCellClick(int row, int col) {
-        System.out.println("Clic en la celda [" + row + "][" + col + "]");
-        // Lógica adicional aquí
+    private void addClickEvent(Label cell, int row, int col) {
+        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> colocarFichaEnCasilla(row, col));
     }
+
 
     public Game getGame() {
         return game;
