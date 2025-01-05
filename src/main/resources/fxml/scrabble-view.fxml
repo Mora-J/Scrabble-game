@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefHeight="798.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.ScrabbleController">
    <children>
@@ -15,61 +14,43 @@
             </GridPane>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="625.0" prefHeight="58.0" prefWidth="982.0" AnchorPane.bottomAnchor="115.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutY="652.0" prefHeight="58.0" prefWidth="982.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha1" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha2" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha3" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha4" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha5" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <children>
-                  <Label fx:id="ficha6" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: green;">
-               <children>
-                  <Label fx:id="ficha7" layoutX="11.0" layoutY="17.0" onMouseClicked="#seleccionarFicha" text="Label" />
-               </children>
-            </Pane>
+            <ImageView fx:id="ficha1" fitHeight="75.0" fitWidth="75.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha2" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha3" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha4" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha5" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha6" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ficha7" fitHeight="75.0" fitWidth="97.0" onMouseClicked="#seleccionarFicha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/atrilVacio.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
    </children>

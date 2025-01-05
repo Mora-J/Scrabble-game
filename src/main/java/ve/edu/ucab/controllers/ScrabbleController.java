@@ -2,6 +2,8 @@ package ve.edu.ucab.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import ve.edu.ucab.models.Casilla;
@@ -13,35 +15,35 @@ public class ScrabbleController {
     private GridPane scrabbleBoard;
 
     @FXML
-    private Label ficha1;
+    private ImageView ficha1;
 
     @FXML
-    private Label ficha2;
+    private ImageView ficha2;
 
     @FXML
-    private Label ficha3;
+    private ImageView ficha3;
 
     @FXML
-    private Label ficha4;
+    private ImageView ficha4;
 
     @FXML
-    private Label ficha5;
+    private ImageView ficha5;
 
     @FXML
-    private Label ficha6;
+    private ImageView ficha6;
 
     @FXML
-    private Label ficha7;
+    private ImageView ficha7;
 
-    private Label fichaSeleccionada = new Label();
+    private ImageView fichaSeleccionada;
 
-    private Label[] atril;
+    private ImageView[] atril;
 
     private Game game;
 
     @FXML
     void initialize() {
-        atril = new Label[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
+        atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
 
         game = new Game();
         configureBoard();
@@ -55,7 +57,7 @@ public class ScrabbleController {
 
     private void configureAtrilJugadores() {
         for (int i = 0; i < 7; i++){
-            atril[i].setText(game.getJugadores()[0].getAtril()[i].toString());
+            atril[i].setImage(game.getJugadores()[0].getAtril()[i].getImagen());
         }
     }
 
@@ -64,25 +66,24 @@ public class ScrabbleController {
             for (int col = 0; col < 15; col++) {
                 Casilla casilla = game.getBoard().getCasillas()[row][col];
                 if (casilla != null && casilla.getFicha() != null) {
-                    Label letraLabel = casilla.getFicha().getLetraLabel();
-                    if (letraLabel != null) {
-                        styleCell(letraLabel);
-                        placeCellInGrid(letraLabel, col, row);
-                        addClickEvent(letraLabel, row, col);
+                    Image image = casilla.getImagen();
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitHeight(35);
+                    imageView.setFitWidth(35);
+                    if (image != null) {
+                        styleCell(imageView);
+                        placeCellInGrid(imageView, col, row);
+                        addClickEvent(imageView, row, col);
                     }
                 }
             }
         }
     }
 
-    //¡Jesús! Esto es muy importante, esto no será efectivo, no funcionara, solo estás poniendo los label en el tablero, pero la matriz que se encargara de la logica
-    //no está siendo actualizada, necesitas corregir esto. ¡Mucha suerte! De tu más grande amigo -Tú mismo- 👍👍👍
-
-    private void colocarFichaEnCasilla(int row, int col) {
-        if (!fichaSeleccionada.getText().isEmpty()) {
-            Label casillaLabel = game.getBoard().getCasillas()[row][col].getFicha().getLetraLabel();
-            casillaLabel.setText(fichaSeleccionada.getText());
-            fichaSeleccionada = new Label(""); // Restablecer la ficha seleccionada
+    private void colocarFichaEnCasilla(int row, int col, ImageView cell) {
+        if (fichaSeleccionada != null) {
+            cell.setImage(fichaSeleccionada.getImage());
+            fichaSeleccionada = null; // Restablecer la ficha seleccionada
             System.out.println("Ficha colocada en [" + row + "][" + col + "]");
         } else {
             System.out.println("No hay ficha seleccionada");
@@ -90,11 +91,11 @@ public class ScrabbleController {
     }
 
 
-    private void styleCell(Label cell) {
+    private void styleCell(ImageView cell) {
         cell.setStyle("-fx-border-color: black; -fx-pref-width: 35; -fx-pref-height: 35;");
     }
 
-    private void placeCellInGrid(Label cell, int col, int row) {
+    private void placeCellInGrid(ImageView cell, int col, int row) {
         GridPane.setColumnIndex(cell, col);
         GridPane.setRowIndex(cell, row);
         scrabbleBoard.getChildren().add(cell);
@@ -102,13 +103,19 @@ public class ScrabbleController {
 
     @FXML
     private void seleccionarFicha(MouseEvent event) {
-        fichaSeleccionada.setText(((Label) event.getSource()).getText());
-        ((Label) event.getSource()).setText("");
-        System.out.println("Ficha seleccionada: " + fichaSeleccionada.getText());
+        Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
+        String atrilVacioUrl = atrilVacio.getUrl();
+        if(((ImageView) event.getSource()).getImage().getUrl().equals(atrilVacioUrl)) {
+            return;
+        }
+        fichaSeleccionada = new ImageView();
+        fichaSeleccionada.setImage(((ImageView) event.getSource()).getImage());
+        ((ImageView) event.getSource()).setImage(atrilVacio);
+        System.out.println("Ficha seleccionada: " + fichaSeleccionada.getImage().toString());
     }
 
-    private void addClickEvent(Label cell, int row, int col) {
-        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> colocarFichaEnCasilla(row, col));
+    private void addClickEvent(ImageView cell, int row, int col) {
+        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> colocarFichaEnCasilla(row, col, cell));
     }
 
 

@@ -1,6 +1,7 @@
 package ve.edu.ucab.models;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 
 /**
  * La clase Ficha representa una fecha de juego con un valor, una letra y un simbolo.
@@ -18,6 +19,7 @@ public class Ficha implements Cloneable {
      */
     private String letra;
     private Label letraLabel;
+    private Image imagenFicha;
 
     /**
      * Constructor que inicializa el valor y la letra de la ficha.
@@ -25,16 +27,18 @@ public class Ficha implements Cloneable {
      * @param valor el valor de la ficha
      * @param letra la letra representada en la ficha
      */
-    public Ficha(int valor, String letra) {
+    public Ficha(int valor, String letra, Image imagenFicha) {
         this.valor = valor;
         this.letra = letra;
         this.letraLabel = new Label(letra);
+        this.imagenFicha = imagenFicha;
     }
 
     /**
      * Constructor por defecto que inicializa la ficha con un valor de 0 y una letra vacia
      */
     public Ficha() {
+        this.imagenFicha = null;
         this.valor = 0;
         this.letra = " ";
         this.letraLabel = new Label(" ");
@@ -107,5 +111,13 @@ public class Ficha implements Cloneable {
 
     public void setLetraLabel(Label letraLabel) {
         this.letraLabel = letraLabel;
+    }
+
+    public Image getImagen() {
+        return imagenFicha;
+    }
+
+    public void setImagen(Image imagenFicha) {
+        this.imagenFicha = imagenFicha;
     }
 }

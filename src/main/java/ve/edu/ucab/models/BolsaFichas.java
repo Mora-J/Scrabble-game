@@ -1,7 +1,10 @@
 package ve.edu.ucab.models;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 /**
  * La clase BolsaFichas crea y almacena todas las fichas del juego.
@@ -29,7 +32,8 @@ public class BolsaFichas {
         listaFichas = new ArrayList<>();
         for (int i = 0; i < letras.length; i++) {
             for (int j = 0; j < cantidadFichas[i]; j++) {
-                this.listaFichas.add(new Ficha(valorFichas[i], letras[i]));
+                Image image = new Image(Objects.requireNonNull(getClass().getResource("/images/fichas/ficha" + letras[i] + ".png")).toExternalForm());
+                this.listaFichas.add(new Ficha(valorFichas[i], letras[i], image));
             }
         }
 
