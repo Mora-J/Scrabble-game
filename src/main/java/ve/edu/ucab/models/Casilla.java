@@ -8,6 +8,7 @@ public class Casilla implements Cloneable {
     private Ficha ficha;
     private String bonificacion;
     private Image imagen;
+    private boolean isMovable = false;
 
     public Casilla(Ficha ficha, String bonificacion) {
         this.ficha = ficha;
@@ -58,5 +59,13 @@ public class Casilla implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public boolean isMovable() {
+        return isMovable;
+    }
+
+    public void setMovable(boolean movable) {
+        isMovable = movable;
     }
 }
