@@ -47,7 +47,7 @@ public class RaeVerificador {
         try {
             Document doc = Jsoup.connect(url).userAgent("Mozilla").get();
             Elements elementos = doc.select("#resultados");
-            return !elementos.text().startsWith("Aviso");
+            return !elementos.text().startsWith("La palabra «");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

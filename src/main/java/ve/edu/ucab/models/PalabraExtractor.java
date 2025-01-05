@@ -28,7 +28,7 @@ public class PalabraExtractor {
 
         // Extraer palabra vertical hacia abajo
         for (int i = fila; i < board.getCasillas().length; i++) {
-            if (!board.getCasillas()[i][columna].getFicha().getLetra().isEmpty()) {
+            if (!board.getCasillas()[i][columna].getFicha().isEmpty()) {
                 palabraVertical.add(board.getCasillas()[i][columna].getFicha());
             } else break;
         }

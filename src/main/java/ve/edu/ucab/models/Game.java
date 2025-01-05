@@ -72,6 +72,7 @@ public class Game {
             siguienteTurno();
             return true;
         }else{
+            System.out.println("Usted hizo una jugada inválida!");
             return false;
         }
     }
