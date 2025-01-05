@@ -1,6 +1,7 @@
 package ve.edu.ucab.models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Game {
     private Jugador[] jugadores;
@@ -12,10 +13,12 @@ public class Game {
 
     public Game() {
         this.indiceFichasPuestas = new ArrayList<>();
+
         jugadores = new Jugador[2];
         for (int i = 0; i < jugadores.length; i++) {
             jugadores[i] = new Jugador();
         }
+
         bolsaFichas = new BolsaFichas();
         board = new Board();
         this.turnoActual = 0;
@@ -35,6 +38,27 @@ public class Game {
         }
     }
 
+    public void ponerFicha(int i, int j, Ficha ficha) {
+        this.board.getCasillas()[i][j].setFicha(ficha);
+        indiceFichasPuestas.add(new int[]{i, j});
+    }
+
+    private boolean verificarIndicesValidos(ArrayList<int[]> indices) {
+        indices.removeIf(Objects::isNull);
+        if (indices.isEmpty()){
+            return false;
+        }
+
+        int i = indices.getFirst()[0];
+        int j = indices.getFirst()[1];
+
+        for(int[] indice : indices) {
+            if (indice[0] != i && indice[1] != j) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     public Jugador[] getJugadores() {

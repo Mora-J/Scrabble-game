@@ -19,4 +19,14 @@ public class Board {
             }
         }
     }
+
+    public Board(Board board) {
+        this.casillas = new Casilla[board.getCasillas().length][board.getCasillas().length];
+        for (int i = 0; i < board.getCasillas().length; i++) {
+            for (int j = 0; j < board.getCasillas().length; j++) {
+                this.casillas[i][j] = board.getCasillas()[i][j].clone();
+            }
+        }
+
+    }
 }

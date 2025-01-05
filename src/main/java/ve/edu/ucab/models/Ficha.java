@@ -120,4 +120,8 @@ public class Ficha implements Cloneable {
     public void setImagen(Image imagenFicha) {
         this.imagenFicha = imagenFicha;
     }
+
+    public boolean isEmpty() {
+        return (letra.equals(" "));
+    }
 }

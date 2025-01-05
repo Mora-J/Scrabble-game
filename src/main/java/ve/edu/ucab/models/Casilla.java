@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-public class Casilla {
+public class Casilla implements Cloneable {
     private Ficha ficha;
     private String bonificacion;
     private Image imagen;
@@ -48,5 +48,15 @@ public class Casilla {
 
     public void setImagen(Image imagen) {
         this.imagen = imagen;
+    }
+
+    @Override
+    public Casilla clone() {
+        try {
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return (Casilla) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
