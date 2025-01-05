@@ -1,13 +1,17 @@
 package ve.edu.ucab.models;
 
+import java.util.ArrayList;
+
 public class Game {
     private Jugador[] jugadores;
     private final BolsaFichas bolsaFichas;
     private final Board board;
     private int turnoActual;
     private Jugador jugadorActual;
+    private ArrayList<int[]> indiceFichasPuestas;
 
     public Game() {
+        this.indiceFichasPuestas = new ArrayList<>();
         jugadores = new Jugador[2];
         for (int i = 0; i < jugadores.length; i++) {
             jugadores[i] = new Jugador();
@@ -19,6 +23,7 @@ public class Game {
 
     public Game(Jugador[] jugadores) {
         this.jugadores = jugadores;
+        this.indiceFichasPuestas = new ArrayList<>();
         bolsaFichas = new BolsaFichas();
         board = new Board();
         this.turnoActual = 0;
@@ -29,6 +34,8 @@ public class Game {
             j.rellenarFichas(bolsaFichas);
         }
     }
+
+
 
     public Jugador[] getJugadores() {
         return jugadores;
@@ -52,5 +59,13 @@ public class Game {
 
     public void setTurnoActual(int turnoActual) {
         this.turnoActual = turnoActual;
+    }
+
+    public ArrayList<int[]> getIndiceFichasPuestas() {
+        return indiceFichasPuestas;
+    }
+
+    public void setIndiceFichasPuestas(ArrayList<int[]> indiceFichasPuestas) {
+        this.indiceFichasPuestas = indiceFichasPuestas;
     }
 }

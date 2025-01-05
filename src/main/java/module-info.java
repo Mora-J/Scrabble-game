@@ -8,6 +8,7 @@ module ve.edu.ucab.application {
     requires org.kordamp.ikonli.javafx;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires org.jsoup;
 
     opens ve.edu.ucab.application to javafx.fxml;
     exports ve.edu.ucab.application;
