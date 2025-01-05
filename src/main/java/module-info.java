@@ -15,4 +15,5 @@ module ve.edu.ucab.application {
     exports ve.edu.ucab.controllers;
     exports ve.edu.ucab.models;
     opens ve.edu.ucab.controllers to javafx.fxml;
+    exports ve.edu.ucab.models.bonificadoresStrategy;
 }

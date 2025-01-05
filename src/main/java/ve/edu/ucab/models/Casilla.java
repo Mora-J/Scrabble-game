@@ -1,33 +1,53 @@
 package ve.edu.ucab.models;
 
 import javafx.scene.image.Image;
+import ve.edu.ucab.models.bonificadoresStrategy.BonificacionStrategy;
+import ve.edu.ucab.models.bonificadoresStrategy.SinBonificacionStrategy;
 
 import java.util.Objects;
 
 public class Casilla implements Cloneable {
     private Ficha ficha;
-    private String bonificacion;
+    private BonificacionStrategy bonificacion;
+    private boolean bonificacionIndividualActivada;
     private Image imagen;
     private boolean isMovable = true;
+    private int puntaje;
 
-    public Casilla(Ficha ficha, String bonificacion) {
-        this.ficha = ficha;
+    public Casilla(BonificacionStrategy bonificacion) {
         this.bonificacion = bonificacion;
+        this.ficha = new Ficha();
+        this.puntaje = ficha.getValor();
+        String casillaPath = "/images/"+this.bonificacion.obtenerPathImagen();
+        this.imagen = new Image(Objects.requireNonNull(getClass().getResource(casillaPath)).toString());
+        this.bonificacionIndividualActivada = bonificacion.isIndividual();
     }
+
+    public int getPuntaje() {
+        if (!this.bonificacionIndividualActivada) {
+            return this.puntaje;
+        } else{
+            bonificacionIndividualActivada = false;
+            return bonificacion.obtenerbonificacion(ficha.getValor());
+        }
+    }
+
 
     public Casilla() {
         this.ficha = new Ficha();
-        this.bonificacion = "";
-        String casillaVaciaPath = "/images/casillaVacia.png";
-        this.imagen = new Image(Objects.requireNonNull(getClass().getResource(casillaVaciaPath)).toString());
+        this.puntaje = ficha.getValor();
+        this.bonificacion = new SinBonificacionStrategy();
+        String casillaPath = "/images/"+this.bonificacion.obtenerPathImagen();
+        this.imagen = new Image(Objects.requireNonNull(getClass().getResource(casillaPath)).toString());
+        this.bonificacionIndividualActivada = bonificacion.isIndividual();
     }
 
 
-    public String getBonificacion() {
+    public BonificacionStrategy getBonificacion() {
         return bonificacion;
     }
 
-    public void setBonificacion(String bonificacion) {
+    public void setBonificacion(BonificacionStrategy bonificacion) {
         this.bonificacion = bonificacion;
     }
 
@@ -67,5 +87,17 @@ public class Casilla implements Cloneable {
 
     public void setMovable(boolean movable) {
         isMovable = movable;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public boolean isBonificacionIndividualActivada() {
+        return bonificacionIndividualActivada;
+    }
+
+    public void setBonificacionIndividualActivada(boolean bonificacionIndividualActivada) {
+        this.bonificacionIndividualActivada = bonificacionIndividualActivada;
     }
 }
