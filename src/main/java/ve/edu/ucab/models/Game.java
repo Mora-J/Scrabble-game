@@ -10,6 +10,8 @@ public class Game {
     private int turnoActual;
     private Jugador jugadorActual;
     private ArrayList<int[]> indiceFichasPuestas;
+    private final PalabraExtractor palabraExtractor = new PalabraExtractor();
+    private boolean esPrimeraJugada = true;
 
     public Game() {
         this.indiceFichasPuestas = new ArrayList<>();
@@ -62,6 +64,38 @@ public class Game {
         }
     }
 
+    public boolean confirmarJugada(){
+        if (indiceFichasPuestas.isEmpty()) {
+            System.out.println("Usted hizo una jugada inválida!");
+            return false;
+        } else if (verificarPosicionValida(indiceFichasPuestas) && palabraExtractor.verificarPalabrasFormadas(indiceFichasPuestas, board, jugadorActual)) {
+            siguienteTurno();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private void siguienteTurno() {
+        turnoActual = (turnoActual + 1) % jugadores.length;
+        jugadorActual = jugadores[turnoActual];
+        fijarCasillas(indiceFichasPuestas);
+        indiceFichasPuestas = new ArrayList<>();
+        if(esPrimeraJugada) {
+            esPrimeraJugada = false;
+        }
+    }
+
+    private void fijarCasillas(ArrayList<int[]> indices){
+        for (int[] indice : indices) {
+            board.getCasillas()[indice[0]][indice[1]].setMovable(false);
+        }
+    }
+
+    private boolean verificarPosicionValida(ArrayList<int[]> indices) {
+        return verificarIndicesValidos(indices) && (verificarFichasConectadas(indices) || esPrimeraJugada);
+    }
+
     private boolean verificarIndicesValidos(ArrayList<int[]> indices) {
         indices.removeIf(Objects::isNull);
         if (indices.isEmpty()){
@@ -78,6 +112,28 @@ public class Game {
         }
         return true;
     }
+
+    private boolean verificarFichasConectadas(ArrayList<int[]> indices) {
+        indices.removeIf(Objects::isNull);
+        if (indices.isEmpty()) {
+            return false;
+        }
+
+        for (int[] indice : indices) {
+            int fila = indice[0];
+            int columna = indice[1];
+
+            // Verificar casillas adyacentes
+            if ((fila > 0 && !board.getCasillas()[fila - 1][columna].isMovable()) ||
+                    (fila < 14 && !board.getCasillas()[fila + 1][columna].isMovable()) ||
+                    (columna > 0 && !board.getCasillas()[fila][columna - 1].isMovable()) ||
+                    (columna < 14 && !board.getCasillas()[fila][columna + 1].isMovable())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public Jugador[] getJugadores() {
@@ -120,5 +176,11 @@ public class Game {
         this.jugadorActual = jugadorActual;
     }
 
+    public boolean isEsPrimeraJugada() {
+        return esPrimeraJugada;
+    }
 
+    public void setEsPrimeraJugada(boolean esPrimeraJugada) {
+        this.esPrimeraJugada = esPrimeraJugada;
+    }
 }

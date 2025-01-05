@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import ve.edu.ucab.models.Casilla;
 import ve.edu.ucab.models.Ficha;
 import ve.edu.ucab.models.Game;
@@ -13,6 +14,9 @@ import ve.edu.ucab.models.Game;
 import java.util.Arrays;
 
 public class ScrabbleController {
+    @FXML
+    private Button playButton;
+
     @FXML
     private GridPane scrabbleBoard;
 
@@ -58,16 +62,24 @@ public class ScrabbleController {
         configureAtrilJugadores();
     }
 
+    private void siguienteTurno(){
+        if (game.confirmarJugada()){
+            rellenarAtrilJugadores();
+            configureAtrilJugadores();
+        }else System.out.println("Jugada no confirmada");
+    }
+
     void rellenarAtrilJugadores() {
         game.actualizarAtrilJugadores();
     }
 
     private void configureAtrilJugadores() {
         for (int i = 0; i < 7; i++){
-            if(game.getJugadores()[0].getAtril()[i] == null){
+            if(game.getJugadorActual().getAtril()[i] == null){
                 atril[i].setImage(new Image(String.valueOf(ScrabbleController.class.getResource("/images/atrilVacio.png"))));
             }else {
-                atril[i].setImage(game.getJugadores()[0].getAtril()[i].getImagen());
+                System.out.println("Actualizando casilla en posición: " + i + " con imagen: " + game.getJugadorActual().getAtril()[i].getImagen());
+                atril[i].setImage(game.getJugadorActual().getAtril()[i].getImagen());
             }
         }
     }
@@ -185,6 +197,10 @@ public class ScrabbleController {
         }
     }
 
+    @FXML
+    private void playPalabra(){
+        siguienteTurno();
+    }
 
     private void addClickEvent(ImageView cell, int row, int col) {
         cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTablero(row, col, cell));
