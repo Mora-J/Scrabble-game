@@ -1,14 +1,16 @@
 package ve.edu.ucab.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import ve.edu.ucab.models.Casilla;
+import ve.edu.ucab.models.Ficha;
 import ve.edu.ucab.models.Game;
-import ve.edu.ucab.models.Jugador;
+
+import java.util.Arrays;
 
 public class ScrabbleController {
     @FXML
@@ -35,8 +37,12 @@ public class ScrabbleController {
     @FXML
     private ImageView ficha7;
 
-    private ImageView fichaSeleccionada;
-    private ImageView fichaSeleccionadaAux = new ImageView();
+    @FXML
+    private HBox hboxAtril;
+
+    private ImageView ImagefichaSeleccionada;
+    private ImageView ImagefichaSeleccionadaAux = new ImageView();
+    private Ficha fichaSeleccionada;
 
     private ImageView[] atril;
 
@@ -58,7 +64,11 @@ public class ScrabbleController {
 
     private void configureAtrilJugadores() {
         for (int i = 0; i < 7; i++){
-            atril[i].setImage(game.getJugadores()[0].getAtril()[i].getImagen());
+            if(game.getJugadores()[0].getAtril()[i] == null){
+                atril[i].setImage(new Image(String.valueOf(ScrabbleController.class.getResource("/images/atrilVacio.png"))));
+            }else {
+                atril[i].setImage(game.getJugadores()[0].getAtril()[i].getImagen());
+            }
         }
     }
 
@@ -91,47 +101,93 @@ public class ScrabbleController {
         scrabbleBoard.getChildren().add(cell);
     }
 
-    private void colocarFichaEnCasilla(int row, int col, ImageView cell) {
-        if (fichaSeleccionada != null) {
-            cell.setImage(fichaSeleccionada.getImage());
-            fichaSeleccionada = null; // Restablecer la ficha seleccionada
-            fichaSeleccionadaAux.setImage(new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png"))));
-            System.out.println("Ficha colocada en [" + row + "][" + col + "]");
-        } else {
-            System.out.println("No hay ficha seleccionada");
+    private void eventoDeMouseEnTablero(int row, int col, ImageView cell){
+
+        if(game.getBoard().getCasillas()[row][col].isMovable() && !game.getBoard().getCasillas()[row][col].getFicha().isEmpty()){
+            recogerFichaEnCasilla(row, col, cell);
+        }else if (game.getBoard().getCasillas()[row][col].getFicha().isEmpty()){
+            colocarFichaEnCasilla(row, col, cell);
         }
+        game.getJugadorActual().mostrarAtrilEnConsola();
+        game.getBoard().mostrarTableroEnConsola();
+
     }
 
     @FXML
     private void seleccionarFicha(MouseEvent event) {
         Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
         String atrilVacioUrl = atrilVacio.getUrl();
-        String urlImage = ((ImageView) event.getSource()).getImage().getUrl();
+        ImageView sourceImageView = (ImageView) event.getSource();
+        String urlImage = sourceImageView.getImage().getUrl();
+        int index = hboxAtril.getChildren().indexOf(sourceImageView);
 
-        if(((ImageView) event.getSource()).getImage().getUrl().equals(atrilVacioUrl)) {
-            return;
-
-        }else if (fichaSeleccionada == null || !fichaSeleccionada.getImage().getUrl().equals(urlImage)) {
-            fichaSeleccionada = new ImageView();
-            fichaSeleccionada.setImage(((ImageView) event.getSource()).getImage());
-            fichaSeleccionadaAux.setFitHeight(75);
-            fichaSeleccionadaAux.setFitWidth(75);
-            fichaSeleccionadaAux = (ImageView) event.getSource();
-            ((ImageView) event.getSource()).setFitHeight(95);
-            ((ImageView) event.getSource()).setFitWidth(95);
-            System.out.println("Ficha seleccionada: " + fichaSeleccionada.getImage().toString());
-
-        }else if(fichaSeleccionada.getImage().getUrl().equals(urlImage)) {
-            ((ImageView) event.getSource()).setFitHeight(75);
-            ((ImageView) event.getSource()).setFitWidth(75);
-            fichaSeleccionada = null;
+        if (urlImage.equals(atrilVacioUrl)) {
             return;
         }
+        if (ImagefichaSeleccionada == null || !ImagefichaSeleccionada.getImage().getUrl().equals(urlImage)) {
+            ImagefichaSeleccionada = new ImageView();
 
+            fichaSeleccionada = game.getJugadorActual().getAtril()[index];
+            ImagefichaSeleccionada.setImage(sourceImageView.getImage());
+
+            ImagefichaSeleccionadaAux.setFitHeight(75);
+            ImagefichaSeleccionadaAux.setFitWidth(75);
+            ImagefichaSeleccionadaAux = sourceImageView;
+            sourceImageView.setFitHeight(95);
+            sourceImageView.setFitWidth(95);
+
+            System.out.println("Ficha seleccionada: " + fichaSeleccionada);
+
+        } else if (ImagefichaSeleccionada.getImage().getUrl().equals(urlImage)) {
+            sourceImageView.setFitHeight(75);
+            sourceImageView.setFitWidth(75);
+            ImagefichaSeleccionada = null;
+            fichaSeleccionada = null;
+        }
     }
 
+    private void colocarFichaEnCasilla(int row, int col, ImageView cell) {
+        if (ImagefichaSeleccionada != null) {
+            int index = hboxAtril.getChildren().indexOf(ImagefichaSeleccionadaAux);
+            cell.setImage(ImagefichaSeleccionada.getImage());
+
+            game.ponerFicha(row, col, fichaSeleccionada);
+            ImagefichaSeleccionada = null; // Restablecer la ficha seleccionada
+            fichaSeleccionada = null;
+            game.getJugadorActual().getAtril()[index] = null;
+
+            ImagefichaSeleccionadaAux.setFitHeight(75);
+            ImagefichaSeleccionadaAux.setFitWidth(75);
+            ImagefichaSeleccionadaAux.setImage(new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png"))));
+
+            System.out.println(Arrays.toString(game.getJugadorActual().getAtril()));
+            System.out.println("Ficha colocada en [" + row + "][" + col + "]");
+        } else {
+            System.out.println("No hay ficha seleccionada");
+        }
+    }
+
+    private void recogerFichaEnCasilla(int row, int col, ImageView cell) {
+        devolverFichaAlAtril(row, col, cell);
+        game.quitarFicha(row, col);
+        cell.setImage(game.getBoard().getCasillas()[row][col].getImagen());
+    }
+
+    private void devolverFichaAlAtril(int row, int col, ImageView cell) {
+        Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
+        String atrilVacioUrl = atrilVacio.getUrl();
+
+        for (ImageView imageView : atril) {
+            if (imageView.getImage().getUrl().equals(atrilVacioUrl)) {
+                imageView.setImage(cell.getImage());
+                break;
+            }
+        }
+    }
+
+
     private void addClickEvent(ImageView cell, int row, int col) {
-        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> colocarFichaEnCasilla(row, col, cell));
+        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTablero(row, col, cell));
     }
 
 
@@ -141,5 +197,13 @@ public class ScrabbleController {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public Ficha getFichaSeleccionada() {
+        return fichaSeleccionada;
+    }
+
+    public void setFichaSeleccionada(Ficha fichaSeleccionada) {
+        this.fichaSeleccionada = fichaSeleccionada;
     }
 }

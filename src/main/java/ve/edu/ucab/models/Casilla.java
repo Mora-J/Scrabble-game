@@ -8,7 +8,7 @@ public class Casilla implements Cloneable {
     private Ficha ficha;
     private String bonificacion;
     private Image imagen;
-    private boolean isMovable = false;
+    private boolean isMovable = true;
 
     public Casilla(Ficha ficha, String bonificacion) {
         this.ficha = ficha;

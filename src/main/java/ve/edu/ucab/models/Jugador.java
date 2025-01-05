@@ -56,6 +56,15 @@ public class Jugador {
         return atril;
     }
 
+    public void addToAtril(Ficha ficha){
+        for (int i = 0; i < atril.length; i++) {
+            if(atril[i] == null){
+                atril[i] = ficha;
+                break;
+            }
+        }
+    }
+
     public void rellenarFichas(BolsaFichas bolsaFichas) {
         for (int i = 0; i < 7; i++) {
             int randomIndex = (int) (Math.random() * (bolsaFichas.getListaFichas().size() - 1));
@@ -171,4 +180,15 @@ public class Jugador {
         this.cantidadPalabrasColocadas += cantidadPalabras;
     }
 
+    public void mostrarAtrilEnConsola() {
+        StringBuilder atril = new StringBuilder();
+        for (Ficha ficha : this.atril) {
+            if (ficha != null) {
+                atril.append("[").append(ficha).append("]");
+            } else {
+                atril.append(" __ ");
+            }
+        }
+        System.out.println(atril.toString());
+    }
 }

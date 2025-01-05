@@ -22,6 +22,7 @@ public class Game {
         bolsaFichas = new BolsaFichas();
         board = new Board();
         this.turnoActual = 0;
+        jugadorActual = jugadores[turnoActual];
     }
 
     public Game(Jugador[] jugadores) {
@@ -30,6 +31,7 @@ public class Game {
         bolsaFichas = new BolsaFichas();
         board = new Board();
         this.turnoActual = 0;
+        jugadorActual = jugadores[turnoActual];
     }
 
     public void actualizarAtrilJugadores() {
@@ -41,6 +43,23 @@ public class Game {
     public void ponerFicha(int i, int j, Ficha ficha) {
         this.board.getCasillas()[i][j].setFicha(ficha);
         indiceFichasPuestas.add(new int[]{i, j});
+    }
+
+    public void quitarFicha(int i, int j) {
+        Ficha ficha = board.getCasillas()[i][j].getFicha();
+        jugadorActual.addToAtril(ficha);
+        board.getCasillas()[i][j].setFicha(new Ficha());
+        removerIndiceFichas(i, j);
+    }
+
+    private void removerIndiceFichas(int i, int j) {
+        for (int k = 0; k < indiceFichasPuestas.size(); k++) {
+            int[] indices = indiceFichasPuestas.get(k);
+            if (indices[0] == i && indices[1] == j) {
+                indiceFichasPuestas.remove(k);
+                break;
+            }
+        }
     }
 
     private boolean verificarIndicesValidos(ArrayList<int[]> indices) {
@@ -92,4 +111,14 @@ public class Game {
     public void setIndiceFichasPuestas(ArrayList<int[]> indiceFichasPuestas) {
         this.indiceFichasPuestas = indiceFichasPuestas;
     }
+
+    public Jugador getJugadorActual() {
+        return jugadorActual;
+    }
+
+    public void setJugadorActual(Jugador jugadorActual) {
+        this.jugadorActual = jugadorActual;
+    }
+
+
 }

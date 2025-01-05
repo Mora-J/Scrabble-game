@@ -29,4 +29,14 @@ public class Board {
         }
 
     }
+
+    public void mostrarTableroEnConsola() {
+        for (Casilla[] casilla : casillas) {
+            System.out.print("\t");
+            for (Casilla value : casilla) {
+                System.out.print("["+value.getFicha().toString()+"]");
+            }
+            System.out.print("\n");
+        }
+    }
 }
