@@ -115,8 +115,9 @@ public class Palabra {
     public int getMultiplicador(){
         int multiplicador = 1;
         for (Casilla casilla : palabra) {
-            if (casilla.getBonificacion().obtenerMultiplicadorPorPalabra() > 1){
+            if (casilla.getBonificacion().obtenerMultiplicadorPorPalabra() > 1 && casilla.isBonificacionPorPalabraActivada()){
                 multiplicador += casilla.getBonificacion().obtenerMultiplicadorPorPalabra();
+                casilla.setBonificacionPorPalabraActivada(false);
             }
         }
         return multiplicador;
