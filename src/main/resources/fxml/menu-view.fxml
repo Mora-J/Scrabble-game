@@ -1,72 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.MenuController">
+<HBox alignment="CENTER" cache="true" prefHeight="644.0" prefWidth="843.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.MenuController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="787.0" styleClass="pixel-art">
+      <VBox alignment="CENTER" prefHeight="644.0" prefWidth="336.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="340.0" layoutX="300.0" layoutY="103.0" stroke="BLACK" strokeType="INSIDE" width="200.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color green="0.18333333730697632" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.12751677852348994">
-                           <color>
-                              <Color green="0.18333333730697632" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.7986577181208053">
-                           <color>
-                              <Color green="0.8999999761581421" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color green="0.8999999761581421" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-            <Button fx:id="nuevaPartidaBtn" layoutX="320.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarNuevaPartida" prefWidth="160.0" text="Nueva Partida">
+            <Button fx:id="nuevaPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarNuevaPartida" prefHeight="25.0" prefWidth="181.0" styleClass="button-menu" text="Nueva Partida" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Region layoutX="320.0" layoutY="162.0" prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="salirBtn" layoutX="320.0" layoutY="385.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" prefWidth="160.0" text="Salir">
+               </font>
+            </Button>
+            <Region prefHeight="37.0" prefWidth="160.0" />
+            <Button fx:id="continuarPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#continuarPartida" styleClass="button-menu" text="Continuar Partida Anterior" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Region layoutX="320.0" layoutY="224.0" prefHeight="37.0" prefWidth="160.0" />
-            <Button layoutX="320.0" layoutY="261.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="160.0" text="Opciones">
+               </font>
+            </Button>
+            <Region prefHeight="37.0" prefWidth="160.0" />
+            <Button fx:id="opcionesBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="181.0" styleClass="button-menu" text="Opciones" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Region layoutX="320.0" layoutY="286.0" prefHeight="37.0" prefWidth="160.0" />
-            <Button layoutX="320.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="160.0" text="Ver Score">
+               </font>
+            </Button>
+            <Region prefHeight="37.0" prefWidth="160.0" />
+            <Button fx:id="verScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="181.0" styleClass="button-menu" text="Ver Score" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Region layoutX="320.0" layoutY="349.0" prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="continuarPartidaBtn" layoutX="320.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#continuarPartida" prefWidth="160.0" text="Continuar Partida Anterior">
+               </font>
+            </Button>
+            <Region prefHeight="37.0" prefWidth="160.0" />
+            <Button fx:id="salirBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" prefWidth="181.0" styleClass="button-menu" text="Salir" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="11.0" />
-               </font></Button>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
-</VBox>
+</HBox>

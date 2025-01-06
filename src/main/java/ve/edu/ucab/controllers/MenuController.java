@@ -8,8 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import ve.edu.ucab.models.Game;
 
 import java.io.IOException;
 
@@ -25,9 +28,35 @@ public class MenuController {
     private Button salirBtn;
 
     @FXML
+    private Button opcionesBtn;
+
+
+    @FXML
+    private Button verScoreBtn;
+
+
+    @FXML
     void continuarPartida(ActionEvent event) {
 
     }
+
+    @FXML
+    void initialize() {
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 12);
+        if (font != null) {
+            System.out.println("Font loaded successfully");
+            continuarPartidaBtn.setFont(font);
+            nuevaPartidaBtn.setFont(font);
+            salirBtn.setFont(font);
+            opcionesBtn.setFont(font);
+            verScoreBtn.setFont(font);
+
+        } else {
+            System.out.println("Font not found");
+        }
+
+    }
+
 
     @FXML
     void iniciarNuevaPartida(ActionEvent event) throws IOException {
