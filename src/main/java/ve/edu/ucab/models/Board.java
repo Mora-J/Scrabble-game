@@ -1,5 +1,8 @@
 package ve.edu.ucab.models;
 
+import javafx.scene.image.Image;
+import ve.edu.ucab.models.bonificadoresStrategy.*;
+
 public class Board {
     private Casilla[][] casillas;
 
@@ -15,9 +18,34 @@ public class Board {
         this.casillas = new Casilla[15][15];
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
-                this.casillas[i][j] = new Casilla();
+                BonificacionStrategy bonificador = new SinBonificacionStrategy(); // Estrategia por defecto
+
+                // Bonificación de Palabra Triple
+                if ((i == 0 || i == 7 || i == 14) && (j == 0 || j == 7 || j == 14)) {
+                    bonificador = new PalabraTripleStrategy();
+                }
+                // Bonificación de Palabra Doble
+                else if (i == j || i + j == 14) {
+                    bonificador = new PalabraDobleStrategy();
+                }
+                // Bonificación de Letra Triple
+                else if ((i == 5 || i == 9) && (j == 1 || j == 5 || j == 9 || j == 13) ||
+                        (i == 1 || i == 13) && (j == 5 || j == 9)) {
+                    bonificador = new LetraTripleStrategy();
+                }
+                // Bonificación de Letra Doble
+                else if ((i == 3 || i == 11) && (j == 0 || j == 7 || j == 14) ||
+                        (i == 0 || i == 7 || i == 14) && (j == 3 || j == 11) ||
+                        (i == 2 || i == 12) && (j == 6 || j == 8) ||
+                        (i == 6 || i == 8) && (j == 2 || j == 6 || j == 8 || j == 12) ||
+                        (i == 3 || i == 11) && (j == 3 || j == 11)) {
+                    bonificador = new LetraDobleStrategy();
+                }
+
+                this.casillas[i][j] = new Casilla(bonificador);
             }
         }
+        this.casillas[7][7].setImagen(new Image(String.valueOf(getClass().getResource("/images/casillaInicial.png"))));
     }
 
     public Board(Board board) {

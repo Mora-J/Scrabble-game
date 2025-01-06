@@ -29,14 +29,14 @@ public class PalabraExtractor {
         // Extraer palabra vertical hacia abajo
         for (int i = fila; i < board.getCasillas().length; i++) {
             if (!board.getCasillas()[i][columna].getFicha().isEmpty()) {
-                palabraVertical.add(board.getCasillas()[i][columna].getFicha());
+                palabraVertical.add(board.getCasillas()[i][columna]);
             } else break;
         }
 
         // Extraer palabra vertical hacia arriba
         for (int x = fila - 1; x >= 0; x--) {
             if (!board.getCasillas()[x][columna].getFicha().isEmpty()) {
-                palabraVertical.addFirst(board.getCasillas()[x][columna].getFicha());
+                palabraVertical.addFirst(board.getCasillas()[x][columna]);
             } else break;
         }
         return palabraVertical;
@@ -56,7 +56,7 @@ public class PalabraExtractor {
         // Extraer palabra horizontal hacia la derecha
         for (int j = columna; j < board.getCasillas()[0].length; j++) {
             if (!board.getCasillas()[fila][j].getFicha().isEmpty()) {
-                palabraHorizontal.add(board.getCasillas()[fila][j].getFicha());
+                palabraHorizontal.add(board.getCasillas()[fila][j]);
             } else {
                 break;
             }
@@ -65,7 +65,7 @@ public class PalabraExtractor {
         // Extraer palabra horizontal hacia la izquierda
         for (int y = columna - 1; y >= 0; y--) {
             if (!board.getCasillas()[fila][y].getFicha().isEmpty()) {
-                palabraHorizontal.addFirst(board.getCasillas()[fila][y].getFicha());
+                palabraHorizontal.addFirst(board.getCasillas()[fila][y]);
             } else break;
         }
         return palabraHorizontal;
@@ -106,7 +106,6 @@ public class PalabraExtractor {
      */
     public boolean verificarPalabrasFormadas(ArrayList<int[]> IndiceFichasPuestas, Board board, Jugador jugador) {
         HashSet<Palabra> palabrasSet = extraerPalabrasFormadas(IndiceFichasPuestas, board);
-        int puntosPalabras = 0;
         int cantidadPalabras = 0;
 
         if (palabrasSet == null) {
@@ -117,11 +116,11 @@ public class PalabraExtractor {
                     System.out.println("Palabra invalida: " + palabra);
                     return false;
                 }
-                puntosPalabras += palabra.getPuntaje();
+
                 cantidadPalabras++;
             }
         }
-        jugador.addToScore(puntosPalabras);
+
         jugador.addToCantidadPalabrasColocadas(cantidadPalabras);
 
         System.out.print("Palabras validas: ");
@@ -130,6 +129,18 @@ public class PalabraExtractor {
         }
 
         return true;
+    }
+
+    private int obtenerPuntajePalabras(HashSet<Palabra> palabrasSet, Board board, Jugador jugador){
+        int puntajeTotal = 0;
+        int puntajePorPalabra = 0;
+
+        for (Palabra palabra : palabrasSet) {
+            puntajePorPalabra += palabra.getPuntaje() * palabra.getMultiplicador();
+            puntajeTotal += puntajePorPalabra;
+            puntajePorPalabra = 0;
+        }
+        return puntajeTotal;
     }
 }
 

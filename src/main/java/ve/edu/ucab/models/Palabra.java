@@ -10,9 +10,10 @@ import java.util.Objects;
 public class Palabra {
 
     /**
-     * Lista de fichas que forman la palabra.
+     * Lista de casillas que forman la palabra.
      */
-    private ArrayList<Ficha> palabra = new ArrayList<>();
+    private ArrayList<Casilla> palabra = new ArrayList<>();
+
 
     /**
      * Indica si la palabra está dispuesta de manera vertical.
@@ -48,21 +49,21 @@ public class Palabra {
     }
 
     /**
-     * Añade una ficha al final de la palabra.
+     * Añade una casilla al final de la palabra.
      *
-     * @param ficha la ficha a añadir.
+     * @param casilla la ficha a añadir.
      */
-    public void add(Ficha ficha) {
-        palabra.add(ficha);
+    public void add(Casilla casilla) {
+        palabra.add(casilla);
     }
 
     /**
-     * Añade una ficha al inicio de la palabra.
+     * Añade una casilla al inicio de la palabra.
      *
-     * @param ficha la ficha a añadir.
+     * @param casilla la ficha a añadir.
      */
-    public void addFirst(Ficha ficha) {
-        palabra.addFirst(ficha);
+    public void addFirst(Casilla casilla) {
+        palabra.addFirst(casilla);
     }
 
     /**
@@ -79,7 +80,7 @@ public class Palabra {
      *
      * @return la lista de fichas.
      */
-    public ArrayList<Ficha> getPalabra() {
+    public ArrayList<Casilla> getPalabra() {
         return palabra;
     }
 
@@ -90,8 +91,8 @@ public class Palabra {
      */
     public int getPuntaje() {
         int puntaje = 0;
-        for (Ficha ficha : palabra) {
-            puntaje += ficha.getValor();
+        for (Casilla casilla : palabra) {
+            puntaje += casilla.getPuntaje();
         }
         return puntaje;
     }
@@ -104,10 +105,21 @@ public class Palabra {
     @Override
     public String toString() {
         StringBuilder palabraTexto = new StringBuilder();
-        for (Ficha ficha : palabra) {
-            palabraTexto.append(ficha.getLetra());
+        for (Casilla casilla : palabra) {
+            palabraTexto.append(casilla.getFicha().getLetra());
         }
         return palabraTexto.toString();
+    }
+
+
+    public int getMultiplicador(){
+        int multiplicador = 1;
+        for (Casilla casilla : palabra) {
+            if (casilla.getBonificacion().obtenerMultiplicadorPorPalabra() > 1){
+                multiplicador += casilla.getBonificacion().obtenerMultiplicadorPorPalabra();
+            }
+        }
+        return multiplicador;
     }
 
     /**
