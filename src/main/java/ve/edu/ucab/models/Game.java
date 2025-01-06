@@ -11,7 +11,7 @@ public class Game {
     private Jugador jugadorActual;
     private ArrayList<int[]> indiceFichasPuestas;
     private final PalabraExtractor palabraExtractor = new PalabraExtractor();
-    private boolean esPrimeraJugada = true;
+    private boolean esPrimeraJugada;
 
     public Game() {
         this.indiceFichasPuestas = new ArrayList<>();
@@ -25,6 +25,7 @@ public class Game {
         board = new Board();
         this.turnoActual = 0;
         jugadorActual = jugadores[turnoActual];
+        esPrimeraJugada = true;
     }
 
     public Game(Jugador[] jugadores) {
@@ -34,6 +35,8 @@ public class Game {
         board = new Board();
         this.turnoActual = 0;
         jugadorActual = jugadores[turnoActual];
+        esPrimeraJugada = true;
+
     }
 
     public void actualizarAtrilJugadores() {
@@ -94,7 +97,18 @@ public class Game {
     }
 
     private boolean verificarPosicionValida(ArrayList<int[]> indices) {
-        return verificarIndicesValidos(indices) && (verificarFichasConectadas(indices) || esPrimeraJugada);
+        return verificarIndicesValidos(indices) && (verificarFichasConectadas(indices) || verificarPrimeraJugada(indices));
+    }
+
+    private boolean verificarPrimeraJugada(ArrayList<int[]> indices) {
+        if (esPrimeraJugada) {
+            for (int[] indice : indices) {
+                if (indice[0] == 7 && indice[1] == 7) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean verificarIndicesValidos(ArrayList<int[]> indices) {

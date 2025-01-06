@@ -116,11 +116,11 @@ public class PalabraExtractor {
                     System.out.println("Palabra invalida: " + palabra);
                     return false;
                 }
-
                 cantidadPalabras++;
             }
         }
 
+        jugador.addToScore(obtenerPuntajePalabras(palabrasSet));
         jugador.addToCantidadPalabrasColocadas(cantidadPalabras);
 
         System.out.print("Palabras validas: ");
@@ -131,15 +131,17 @@ public class PalabraExtractor {
         return true;
     }
 
-    private int obtenerPuntajePalabras(HashSet<Palabra> palabrasSet, Board board, Jugador jugador){
+    private int obtenerPuntajePalabras(HashSet<Palabra> palabrasSet){
         int puntajeTotal = 0;
         int puntajePorPalabra = 0;
 
         for (Palabra palabra : palabrasSet) {
-            puntajePorPalabra += palabra.getPuntaje() * palabra.getMultiplicador();
+            puntajePorPalabra += (palabra.getPuntaje() * palabra.getMultiplicador());
             puntajeTotal += puntajePorPalabra;
+            System.out.println("Puntaje total: " + puntajePorPalabra);
             puntajePorPalabra = 0;
         }
+
         return puntajeTotal;
     }
 }

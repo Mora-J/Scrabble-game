@@ -113,12 +113,16 @@ public class Palabra {
 
 
     public int getMultiplicador(){
-        int multiplicador = 1;
+        int multiplicador = 0;
         for (Casilla casilla : palabra) {
             if (casilla.getBonificacion().obtenerMultiplicadorPorPalabra() > 1 && casilla.isBonificacionPorPalabraActivada()){
                 multiplicador += casilla.getBonificacion().obtenerMultiplicadorPorPalabra();
+                System.out.println(casilla.getBonificacion().obtenerMultiplicadorPorPalabra());
                 casilla.setBonificacionPorPalabraActivada(false);
             }
+        }
+        if(multiplicador == 0){
+            multiplicador = 1;
         }
         return multiplicador;
     }

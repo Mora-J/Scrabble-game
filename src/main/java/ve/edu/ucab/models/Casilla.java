@@ -13,12 +13,11 @@ public class Casilla implements Cloneable {
     private boolean bonificacionPorPalabraActivada;
     private Image imagen;
     private boolean isMovable = true;
-    private int puntaje;
+
 
     public Casilla(BonificacionStrategy bonificacion) {
         this.bonificacion = bonificacion;
         this.ficha = new Ficha();
-        this.puntaje = ficha.getValor();
         String casillaPath = "/images/"+this.bonificacion.obtenerPathImagen();
         this.imagen = new Image(Objects.requireNonNull(getClass().getResource(casillaPath)).toString());
         this.bonificacionIndividualActivada = bonificacion.isIndividual();
@@ -27,7 +26,7 @@ public class Casilla implements Cloneable {
 
     public int getPuntaje() {
         if (!this.bonificacionIndividualActivada) {
-            return this.puntaje;
+            return ficha.getValor();
         } else{
             bonificacionIndividualActivada = false;
             return bonificacion.obtenerbonificacion(ficha.getValor());
@@ -37,7 +36,6 @@ public class Casilla implements Cloneable {
 
     public Casilla() {
         this.ficha = new Ficha();
-        this.puntaje = ficha.getValor();
         this.bonificacion = new SinBonificacionStrategy();
         String casillaPath = "/images/"+this.bonificacion.obtenerPathImagen();
         this.imagen = new Image(Objects.requireNonNull(getClass().getResource(casillaPath)).toString());
@@ -90,10 +88,6 @@ public class Casilla implements Cloneable {
 
     public void setMovable(boolean movable) {
         isMovable = movable;
-    }
-
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
     }
 
     public boolean isBonificacionIndividualActivada() {
