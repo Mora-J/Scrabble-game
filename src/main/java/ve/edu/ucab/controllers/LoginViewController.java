@@ -95,10 +95,10 @@ public class LoginViewController {
     void confirmar(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         boolean wasFullScreen = stage.isFullScreen();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
-        stage.setTitle("Menu!");
+        stage.setTitle("Game!");
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
 

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class MenuApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
         Image icon = new Image(Objects.requireNonNull(getClass().getResource("/images/icon.png")).toString());
@@ -32,7 +32,7 @@ public class MenuApplication extends Application {
         stage.setResizable(false);
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setTitle("Login!");
+        stage.setTitle("Menu!");
 
         stage.setScene(scene);
         scene.setOnKeyPressed(event -> {

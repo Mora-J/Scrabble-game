@@ -31,7 +31,7 @@ public class MenuController {
 
     @FXML
     void iniciarNuevaPartida(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
 
         // Obtener la ventana (stage) desde cualquier nodo de la escena actual
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -39,8 +39,9 @@ public class MenuController {
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
-        stage.setTitle("Game!");
         stage.setFullScreen(wasFullScreen);
+        stage.setTitle("Login!");
+
 
         scene.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.F11) {
