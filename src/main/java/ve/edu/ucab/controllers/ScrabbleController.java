@@ -1,12 +1,15 @@
 package ve.edu.ucab.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import ve.edu.ucab.models.BolsaFichas;
 import ve.edu.ucab.models.Casilla;
 import ve.edu.ucab.models.Ficha;
 import ve.edu.ucab.models.Game;
@@ -42,6 +45,9 @@ public class ScrabbleController {
     private ImageView ficha7;
 
     @FXML
+    private Label indicadorBolsa;
+
+    @FXML
     private HBox hboxAtril;
 
     private ImageView ImagefichaSeleccionada;
@@ -60,16 +66,27 @@ public class ScrabbleController {
         configureBoard();
         rellenarAtrilJugadores();
         configureAtrilJugadores();
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 20);
+        if (font != null) {
+            System.out.println("Font loaded successfully");
+            indicadorBolsa.setFont(font);
+        }
+        actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
     }
 
     private void siguienteTurno(){
         if (game.confirmarJugada()){
             rellenarAtrilJugadores();
             configureAtrilJugadores();
+            actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
         }else System.out.println("Jugada no confirmada");
     }
 
-    void rellenarAtrilJugadores() {
+    private void actualizarDatosBolsa(BolsaFichas bolsaFichas, Label label){
+        label.setText(String.valueOf(bolsaFichas.getListaFichas().size()));
+    }
+
+    private void rellenarAtrilJugadores() {
         game.actualizarAtrilJugadores();
     }
 
