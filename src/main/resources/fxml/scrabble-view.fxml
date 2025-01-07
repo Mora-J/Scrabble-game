@@ -57,15 +57,6 @@
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="playButton" layoutX="804.0" layoutY="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#playPalabra" prefHeight="71.0" prefWidth="75.0" AnchorPane.bottomAnchor="107.0" AnchorPane.rightAnchor="102.0">
-         <graphic>
-            <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/playButton.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <AnchorPane layoutX="115.0" layoutY="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="90.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="115.0">
          <children>
             <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="-15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
@@ -83,5 +74,23 @@
             </Label>
          </children>
       </AnchorPane>
+      <Button fx:id="playButton" layoutX="804.0" layoutY="570.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#playPalabra" prefHeight="71.0" prefWidth="75.0" AnchorPane.bottomAnchor="157.0" AnchorPane.rightAnchor="102.0">
+         <graphic>
+            <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/playButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="redoButton" layoutX="804.0" layoutY="675.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#redoPress" prefHeight="71.0" prefWidth="75.0" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="102.0">
+         <graphic>
+            <ImageView fitHeight="107.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/redoButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

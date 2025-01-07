@@ -176,6 +176,10 @@ public class Game {
     }
 
     public ArrayList<int[]> getIndiceFichasPuestas() {
+        indiceFichasPuestas.removeIf(Objects::isNull);
+        if (indiceFichasPuestas.isEmpty()) {
+            return null;
+        }
         return indiceFichasPuestas;
     }
 

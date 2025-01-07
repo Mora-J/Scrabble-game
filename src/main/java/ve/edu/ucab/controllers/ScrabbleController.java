@@ -1,6 +1,7 @@
 package ve.edu.ucab.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,6 +50,9 @@ public class ScrabbleController {
 
     @FXML
     private HBox hboxAtril;
+
+    @FXML
+    private Button redoButton;
 
     private ImageView ImagefichaSeleccionada;
     private ImageView ImagefichaSeleccionadaAux = new ImageView();
@@ -217,6 +221,26 @@ public class ScrabbleController {
     @FXML
     private void playPalabra(){
         siguienteTurno();
+    }
+
+    @FXML
+    private void redoPress(){
+        ImageView imagen;
+
+        if (game.getIndiceFichasPuestas() != null) {
+            int [] indices = game.getIndiceFichasPuestas().getLast();
+            imagen = obtenerNodoEnGridPane(scrabbleBoard, indices[0], indices[1]);
+            recogerFichaEnCasilla(indices[0], indices[1], imagen);
+        }
+    }
+
+    private ImageView obtenerNodoEnGridPane(GridPane gridPane, int row, int col) {
+        for (Node imagen : gridPane.getChildren()){
+            if(imagen instanceof ImageView && GridPane.getRowIndex(imagen) == row && GridPane.getColumnIndex(imagen) == col){
+                return (ImageView) imagen;
+            }
+        }
+        return null;
     }
 
     private void addClickEvent(ImageView cell, int row, int col) {
