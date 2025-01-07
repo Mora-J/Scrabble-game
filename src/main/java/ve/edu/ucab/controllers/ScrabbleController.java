@@ -254,7 +254,8 @@ public class ScrabbleController {
         ArrayList<int[]> indices = game.getIndiceFichasPuestas();
 
         if (indices != null) {
-            for (int[]indice : indices) {
+            ArrayList<int[]> indicesAux = new ArrayList<>(indices);
+            for (int[]indice : indicesAux) {
                 imagen = obtenerNodoEnGridPane(scrabbleBoard, indice[0], indice[1]);
                 recogerFichaEnCasilla(indice[0], indice[1], imagen);
             }
