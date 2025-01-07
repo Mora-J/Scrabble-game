@@ -15,6 +15,7 @@ import ve.edu.ucab.models.Casilla;
 import ve.edu.ucab.models.Ficha;
 import ve.edu.ucab.models.Game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ScrabbleController {
@@ -53,6 +54,9 @@ public class ScrabbleController {
 
     @FXML
     private Button redoButton;
+
+    @FXML
+    private Button passButton;
 
     private ImageView ImagefichaSeleccionada;
     private ImageView ImagefichaSeleccionadaAux = new ImageView();
@@ -241,6 +245,24 @@ public class ScrabbleController {
             }
         }
         return null;
+    }
+
+    @FXML
+    private void passPress(){
+        if (game.isEsPrimeraJugada()) return;
+        ImageView imagen;
+        ArrayList<int[]> indices = game.getIndiceFichasPuestas();
+
+        if (indices != null) {
+            for (int[]indice : indices) {
+                imagen = obtenerNodoEnGridPane(scrabbleBoard, indice[0], indice[1]);
+                recogerFichaEnCasilla(indice[0], indice[1], imagen);
+            }
+        }
+        game.pasarTurno();
+        rellenarAtrilJugadores();
+        configureAtrilJugadores();
+        actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
     }
 
     private void addClickEvent(ImageView cell, int row, int col) {

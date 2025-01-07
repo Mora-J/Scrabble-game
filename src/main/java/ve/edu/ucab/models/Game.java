@@ -90,6 +90,13 @@ public class Game {
         }
     }
 
+    public void pasarTurno(){
+        if (!esPrimeraJugada) {
+            turnoActual = (turnoActual + 1) % jugadores.length;
+            jugadorActual = jugadores[turnoActual];
+        }
+    }
+
     private void fijarCasillas(ArrayList<int[]> indices){
         for (int[] indice : indices) {
             board.getCasillas()[indice[0]][indice[1]].setMovable(false);
