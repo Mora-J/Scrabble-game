@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -17,10 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import ve.edu.ucab.models.BolsaFichas;
-import ve.edu.ucab.models.Casilla;
-import ve.edu.ucab.models.Ficha;
-import ve.edu.ucab.models.Game;
+import ve.edu.ucab.models.*;
 
 
 import java.io.IOException;
@@ -30,10 +28,11 @@ import java.util.Objects;
 
 public class ScrabbleController {
     @FXML
-    private Button playButton;
+    private AnchorPane capaGris;
 
     @FXML
-    private GridPane scrabbleBoard;
+    private AnchorPane estadisticas;
+
 
     @FXML
     private ImageView ficha1;
@@ -57,43 +56,25 @@ public class ScrabbleController {
     private ImageView ficha7;
 
     @FXML
-    private Label indicadorBolsa;
+    private AnchorPane finPartida;
+
+    @FXML
+    private Label finPartidaLabel;
 
     @FXML
     private HBox hboxAtril;
 
     @FXML
-    private Label player1;
-
-    @FXML
-    private Label player2;
-
-    @FXML
-    private Label puntos1;
-
-    @FXML
-    private Label puntos2;
+    private Label indicadorBolsa;
 
     @FXML
     private VBox jugador1;
 
     @FXML
-    private VBox jugador2;
-
-    @FXML
-    private Button redoButton;
-
-    @FXML
-    private Button passButton;
-
-    @FXML
-    private AnchorPane capaGris;
-
-    @FXML
-    private AnchorPane finPartida;
-
-    @FXML
     private Label jugador1Final;
+
+    @FXML
+    private VBox jugador2;
 
     @FXML
     private Label jugador2Final;
@@ -110,6 +91,28 @@ public class ScrabbleController {
     @FXML
     private Label palabrasNumeros2;
 
+
+    @FXML
+    private Button passButton;
+
+    @FXML
+    private Button passButton1;
+
+    @FXML
+    private Button playButton;
+
+    @FXML
+    private Label player1;
+
+    @FXML
+    private Label player2;
+
+    @FXML
+    private Label puntos1;
+
+    @FXML
+    private Label puntos2;
+
     @FXML
     private Label puntosFinal1;
 
@@ -123,6 +126,9 @@ public class ScrabbleController {
     private Label puntosNumeros2;
 
     @FXML
+    private Button redoButton;
+
+    @FXML
     private ImageView resultado1;
 
     @FXML
@@ -131,8 +137,54 @@ public class ScrabbleController {
     @FXML
     private Button salirBtn;
 
+
     @FXML
-    private Label finPartidaLabel;
+    private GridPane scrabbleBoard;
+
+    @FXML
+    private Label tiempo1;
+
+    @FXML
+    private Label tiempo2;
+
+    @FXML
+    private Label tiempoJugado1;
+
+    @FXML
+    private Label tiempoJugado2;
+
+    @FXML
+    private Label palabrasTotales1;
+
+    @FXML
+    private Label palabrasTotales2;
+
+    @FXML
+    private Label jugador2Final1;
+
+    @FXML
+    private Label jugador1Final1;
+
+    @FXML
+    private Label score1;
+
+    @FXML
+    private Label score2;
+
+    @FXML
+    private Label scoreTotal1;
+
+    @FXML
+    private Label scoreTotal2;
+
+    @FXML
+    private Label palabras1;
+
+    @FXML
+    private Label palabras2;
+
+    @FXML
+    private Label estadisticasLabel;
 
 
     private ImageView ImagefichaSeleccionada;
@@ -143,6 +195,19 @@ public class ScrabbleController {
 
     private Game game;
 
+    private void configureStats(){
+        Jugador jugador1 = game.getJugadores()[0];
+        Jugador jugador2 = game.getJugadores()[1];
+
+        jugador1Final1.setText(jugador1.getAlias());
+        jugador2Final1.setText(jugador2.getAlias());
+        score1.setText(String.valueOf(jugador1.getScoreTotal()));
+        score2.setText(String.valueOf(jugador2.getScoreTotal()));
+        tiempo1.setText(jugador1.getTiempoJugado());
+        tiempo2.setText(jugador1.getTiempoJugado());
+    }
+
+
     @FXML
     void initialize() {
         atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
@@ -151,6 +216,7 @@ public class ScrabbleController {
         configureBoard();
         rellenarAtrilJugadores();
         configureAtrilJugadores();
+        configureStats();
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 20);
         Font font15 = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 15);
 
@@ -161,6 +227,7 @@ public class ScrabbleController {
 
         capaGris.setVisible(false);
         finPartida.setVisible(false);
+        estadisticas.setVisible(false);
 
         if (font != null) {
             System.out.println("Font loaded successfully");
@@ -234,6 +301,8 @@ public class ScrabbleController {
             }
         }
     }
+
+
 
     private void actualizarDatosBolsa(BolsaFichas bolsaFichas, Label label){
         label.setText(String.valueOf(bolsaFichas.getListaFichas().size()));
@@ -439,6 +508,25 @@ public class ScrabbleController {
         stage.show();
     }
 
+    @FXML
+    void mostrarEstadisticasEsc(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            mostrarEstadisticas();
+        }
+    }
+
+    @FXML
+    void mostrarEstadisticas(){
+        if (!estadisticas.isVisible()) {
+            estadisticas.setVisible(true);
+            capaGris.setVisible(true);
+        }else {
+            estadisticas.setVisible(false);
+            capaGris.setVisible(false);
+        }
+
+    }
+
 
     public Game getGame() {
         return game;
@@ -455,4 +543,5 @@ public class ScrabbleController {
     public void setFichaSeleccionada(Ficha fichaSeleccionada) {
         this.fichaSeleccionada = fichaSeleccionada;
     }
+
 }

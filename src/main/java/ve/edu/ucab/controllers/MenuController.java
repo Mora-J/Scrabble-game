@@ -71,12 +71,13 @@ public class MenuController {
         stage.setFullScreen(wasFullScreen);
         stage.setTitle("Game!");
 
-
         scene.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.F11) {
                 stage.setFullScreen(!stage.isFullScreen());
             }
         });
+
+
 
         stage.show();
     }
