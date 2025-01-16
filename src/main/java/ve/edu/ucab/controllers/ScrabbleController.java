@@ -1,23 +1,32 @@
 package ve.edu.ucab.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import ve.edu.ucab.models.BolsaFichas;
 import ve.edu.ucab.models.Casilla;
 import ve.edu.ucab.models.Ficha;
 import ve.edu.ucab.models.Game;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ScrabbleController {
     @FXML
@@ -77,6 +86,55 @@ public class ScrabbleController {
     @FXML
     private Button passButton;
 
+    @FXML
+    private AnchorPane capaGris;
+
+    @FXML
+    private AnchorPane finPartida;
+
+    @FXML
+    private Label jugador1Final;
+
+    @FXML
+    private Label jugador2Final;
+
+    @FXML
+    private Label palabrasColocadas1;
+
+    @FXML
+    private Label palabrasColocadas2;
+
+    @FXML
+    private Label palabrasNumeros1;
+
+    @FXML
+    private Label palabrasNumeros2;
+
+    @FXML
+    private Label puntosFinal1;
+
+    @FXML
+    private Label puntosFinal2;
+
+    @FXML
+    private Label puntosNumeros1;
+
+    @FXML
+    private Label puntosNumeros2;
+
+    @FXML
+    private ImageView resultado1;
+
+    @FXML
+    private ImageView resultado2;
+
+    @FXML
+    private Button salirBtn;
+
+    @FXML
+    private Label finPartidaLabel;
+
+
     private ImageView ImagefichaSeleccionada;
     private ImageView ImagefichaSeleccionadaAux = new ImageView();
     private Ficha fichaSeleccionada;
@@ -94,6 +152,16 @@ public class ScrabbleController {
         rellenarAtrilJugadores();
         configureAtrilJugadores();
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 20);
+        Font font15 = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 15);
+
+        player1.setText(game.getJugadores()[0].getAlias());
+        player2.setText(game.getJugadores()[1].getAlias());
+        jugador1Final.setText(game.getJugadores()[0].getAlias());
+        jugador2Final.setText(game.getJugadores()[1].getAlias());
+
+        capaGris.setVisible(false);
+        finPartida.setVisible(false);
+
         if (font != null) {
             System.out.println("Font loaded successfully");
             indicadorBolsa.setFont(font);
@@ -101,8 +169,20 @@ public class ScrabbleController {
             player2.setFont(font);
             puntos1.setFont(font);
             puntos2.setFont(font);
-        }
+            puntosFinal1.setFont(font15);
+            puntosFinal2.setFont(font15);
+            finPartidaLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 30));
+            puntosNumeros1.setFont(font15);
+            puntosNumeros2.setFont(font15);
+            palabrasColocadas1.setFont(font15);
+            palabrasColocadas2.setFont(font15);
+            palabrasNumeros1.setFont(font15);
+            palabrasNumeros2.setFont(font15);
+            jugador1Final.setFont(font);
+            jugador2Final.setFont(font);
+            salirBtn.setFont(font);
 
+        }
         cambiarOpacidad();
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
 
@@ -120,11 +200,39 @@ public class ScrabbleController {
 
     private void siguienteTurno(){
         if (game.confirmarJugada()){
+            terminarPartida();
             rellenarAtrilJugadores();
             configureAtrilJugadores();
+            actualizarPuntajeVista();
             actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
             cambiarOpacidad();
         }else System.out.println("Jugada no confirmada");
+    }
+
+    private void actualizarPuntajeVista(){
+        puntos1.setText(String.valueOf(game.getJugadores()[0].getScoreInGame()));
+        puntos2.setText(String.valueOf(game.getJugadores()[1].getScoreInGame()));
+    }
+
+    private void terminarPartida(){
+        Image victoria = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/victoria.png")));
+        Image derrota = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/derrota.png")));
+        if(game.esPartidaTerminada()){
+            puntosNumeros1.setText(String.valueOf(game.getJugadores()[0].getScoreInGame()));
+            puntosNumeros2.setText(String.valueOf(game.getJugadores()[1].getScoreInGame()));
+            palabrasNumeros1.setText(String.valueOf(game.getJugadores()[0].getCantidadPalabrasColocadas()));
+            palabrasNumeros2.setText(String.valueOf(game.getJugadores()[1].getCantidadPalabrasColocadas()));
+            capaGris.setVisible(true);
+            finPartida.setVisible(true);
+            int index = game.calcularGanador();
+            if(index == 0){
+                resultado1.setImage(victoria);
+                resultado2.setImage(derrota);
+            }else if(index == 1){
+                resultado1.setImage(derrota);
+                resultado2.setImage(victoria);
+            }
+        }
     }
 
     private void actualizarDatosBolsa(BolsaFichas bolsaFichas, Label label){
@@ -286,6 +394,7 @@ public class ScrabbleController {
 
     @FXML
     private void passPress(){
+        terminarPartida();
         if (game.isEsPrimeraJugada()) return;
         ImageView imagen;
         ArrayList<int[]> indices = game.getIndiceFichasPuestas();
@@ -306,6 +415,28 @@ public class ScrabbleController {
 
     private void addClickEvent(ImageView cell, int row, int col) {
         cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTablero(row, col, cell));
+    }
+
+    @SuppressWarnings("DuplicatedCode")
+    @FXML
+    void salir(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        boolean wasFullScreen = stage.isFullScreen();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+        stage.setTitle("Menu!");
+        stage.setScene(scene);
+        stage.setFullScreen(wasFullScreen);
+
+
+        scene.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.F11) {
+                stage.setFullScreen(!stage.isFullScreen());
+            }
+        });
+
+        stage.show();
     }
 
 

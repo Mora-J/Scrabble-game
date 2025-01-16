@@ -32,7 +32,7 @@ public class MenuApplication extends Application {
         stage.setResizable(false);
         stage.setFullScreenExitHint("");
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setTitle("Menu!");
+        stage.setTitle("Login!");
 
         stage.setScene(scene);
         scene.setOnKeyPressed(event -> {

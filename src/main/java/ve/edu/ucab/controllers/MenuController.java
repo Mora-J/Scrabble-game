@@ -69,7 +69,7 @@ public class MenuController {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
-        stage.setTitle("Login!");
+        stage.setTitle("Game!");
 
 
         scene.setOnKeyPressed(keyEvent -> {

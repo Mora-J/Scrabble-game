@@ -98,7 +98,7 @@ public class LoginViewController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
-        stage.setTitle("Game!");
+        stage.setTitle("Menu!");
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
 

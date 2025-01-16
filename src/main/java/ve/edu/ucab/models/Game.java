@@ -1,6 +1,7 @@
 package ve.edu.ucab.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -13,6 +14,8 @@ public class Game {
     private ArrayList<int[]> indiceFichasPuestas;
     private final PalabraExtractor palabraExtractor = new PalabraExtractor();
     private boolean esPrimeraJugada;
+    private int contadorPases = 0;
+    private boolean estaFinalizada = false;
 
     public Game() {
         this.indiceFichasPuestas = new ArrayList<>();
@@ -86,6 +89,7 @@ public class Game {
         jugadorActual = jugadores[turnoActual];
         fijarCasillas(indiceFichasPuestas);
         indiceFichasPuestas = new ArrayList<>();
+        contadorPases = 0;
         if(esPrimeraJugada) {
             esPrimeraJugada = false;
         }
@@ -95,6 +99,7 @@ public class Game {
         if (!esPrimeraJugada) {
             turnoActual = (turnoActual + 1) % jugadores.length;
             jugadorActual = jugadores[turnoActual];
+            contadorPases++;
         }
     }
 
@@ -102,6 +107,28 @@ public class Game {
         for (int[] indice : indices) {
             board.getCasillas()[indice[0]][indice[1]].setMovable(false);
         }
+    }
+
+    public boolean esPartidaTerminada() {
+       if((jugadorActual.atrilIsEmpty() && bolsaFichas.isEmpty()) || contadorPases == 3){
+           estaFinalizada = true;
+            return true;
+       } else {
+           return false;
+       }
+    }
+
+    public int calcularGanador() {
+        int mayor = 0;
+        Jugador ganador = null;
+        for (Jugador jugador : jugadores) {
+            if(jugador.getScoreInGame() > mayor){
+                mayor = jugador.getScoreInGame();
+                ganador = jugador;
+            }
+
+        }
+        return Arrays.asList(jugadores).indexOf(ganador);
     }
 
     private boolean verificarPosicionValida(ArrayList<int[]> indices) {
@@ -209,5 +236,21 @@ public class Game {
 
     public void setEsPrimeraJugada(boolean esPrimeraJugada) {
         this.esPrimeraJugada = esPrimeraJugada;
+    }
+
+    public int getContadorPases() {
+        return contadorPases;
+    }
+
+    public void setContadorPases(int contadorPases) {
+        this.contadorPases = contadorPases;
+    }
+
+    public boolean isEstaFinalizada() {
+        return estaFinalizada;
+    }
+
+    public void setEstaFinalizada(boolean estaFinalizada) {
+        this.estaFinalizada = estaFinalizada;
     }
 }

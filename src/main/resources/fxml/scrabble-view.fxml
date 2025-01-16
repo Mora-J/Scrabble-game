@@ -135,5 +135,79 @@
             </ImageView>
          </graphic>
       </Button>
+      <AnchorPane fx:id="capaGris" layoutX="-1.0" opacity="0.5" prefHeight="798.0" prefWidth="981.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="finPartida" prefHeight="581.0" prefWidth="583.0" styleClass="boton3" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="199.0" AnchorPane.topAnchor="105.0">
+         <children>
+            <HBox alignment="CENTER" layoutY="19.0" prefHeight="81.0" prefWidth="583.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0">
+               <children>
+                  <Label fx:id="finPartidaLabel" text="FIN DE LA PARTIDA" textFill="WHITE">
+                     <font>
+                        <Font name="JoystixMonospace-Regular" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="jugador1Final" layoutX="75.0" layoutY="182.0" text="JUGADOR 1" textFill="WHITE" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="182.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutY="493.0" prefHeight="81.0" prefWidth="583.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="salirBtn" mnemonicParsing="false" onAction="#salir" text="SALIR">
+                     <font>
+                        <Font name="JoystixMonospace-Regular" size="12.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <Label fx:id="jugador2Final" layoutX="392.0" layoutY="182.0" text="JUGADOR 2" textFill="WHITE" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="182.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="puntosFinal1" layoutX="24.0" layoutY="246.0" text="Puntos:" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="246.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="palabrasColocadas1" layoutX="24.0" layoutY="291.0" text="Palabras colocadas:" textFill="WHITE" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="puntosFinal2" layoutX="292.0" layoutY="246.0" text="Puntos:" textFill="WHITE" AnchorPane.rightAnchor="204.0" AnchorPane.topAnchor="246.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="palabrasColocadas2" layoutX="292.0" layoutY="291.0" text="Palabras colocadas:" textFill="WHITE" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="puntosNumeros1" layoutX="262.0" layoutY="246.0" text="0" textFill="WHITE" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="246.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="palabrasNumeros1" layoutX="262.0" layoutY="291.0" text="0" textFill="WHITE" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="puntosNumeros2" layoutX="539.0" layoutY="246.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="246.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="palabrasNumeros2" layoutX="539.0" layoutY="291.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="resultado1" fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="321.0" />
+            <ImageView fx:id="resultado2" fitHeight="150.0" fitWidth="200.0" layoutX="344.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="327.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

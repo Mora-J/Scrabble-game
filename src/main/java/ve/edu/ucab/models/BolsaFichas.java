@@ -49,4 +49,8 @@ public class BolsaFichas {
     public ArrayList<Ficha> getListaFichas() {
         return listaFichas;
     }
+
+    public boolean isEmpty() {
+        return listaFichas.isEmpty();
+    }
 }

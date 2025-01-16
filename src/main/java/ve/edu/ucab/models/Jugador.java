@@ -25,6 +25,8 @@ public class Jugador {
 
     public Jugador() {
         this.atril = new Ficha[7];
+        this.alias = "Invitado";
+        this.scoreInGame = 0;
     }
 
     public Jugador(String alias,String correoElectronico, int scoreTotal, int horasJugadas, int minutosJugados, int segundosJugados, int cantidadDePalabras) {
