@@ -60,7 +60,7 @@ public class MenuController {
 
     @FXML
     void iniciarNuevaPartida(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));
 
         // Obtener la ventana (stage) desde cualquier nodo de la escena actual
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

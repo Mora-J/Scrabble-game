@@ -18,7 +18,7 @@ import java.util.Objects;
 public class MenuApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
         Image icon = new Image(Objects.requireNonNull(getClass().getResource("/images/icon.png")).toString());
