@@ -29,7 +29,13 @@ public class Jugador {
         this.scoreInGame = 0;
     }
 
-    public Jugador(String alias,String correoElectronico, int scoreTotal, int horasJugadas, int minutosJugados, int segundosJugados, int cantidadDePalabras) {
+    public Jugador(String alias) {
+        this.atril = new Ficha[7];
+        this.alias = alias;
+        this.scoreInGame = 0;
+    }
+
+    public Jugador(String alias, String correoElectronico, int scoreTotal, int horasJugadas, int minutosJugados, int segundosJugados, int cantidadDePalabras) {
         this.alias = alias;
         this.atril = new Ficha[7];
         this.correoElectronico = correoElectronico;

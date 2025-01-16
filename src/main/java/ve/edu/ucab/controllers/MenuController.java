@@ -13,8 +13,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ve.edu.ucab.models.Game;
+import ve.edu.ucab.models.Jugador;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MenuController {
 
@@ -33,6 +35,8 @@ public class MenuController {
 
     @FXML
     private Button verScoreBtn;
+
+    private ArrayList<Jugador> jugadores = new ArrayList<>();
 
 
     @FXML
@@ -67,6 +71,14 @@ public class MenuController {
         boolean wasFullScreen = stage.isFullScreen();
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        ScrabbleController scrabbleController = fxmlLoader.getController();
+
+        Jugador[] players = new Jugador[jugadores.size()];
+        jugadores.toArray(players);
+        Game game = new Game(players);
+
+        scrabbleController.setGame(game);
+
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
         stage.setTitle("Game!");
@@ -99,4 +111,11 @@ public class MenuController {
 
     }
 
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
 }

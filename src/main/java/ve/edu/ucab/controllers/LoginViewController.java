@@ -10,8 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import ve.edu.ucab.models.Jugador;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginViewController {
 
@@ -48,11 +50,14 @@ public class LoginViewController {
     @FXML
     private Button play;
 
+    private ArrayList<Jugador> jugadores = new ArrayList<>();
+
     @FXML
     boolean login(Label userLabel, TextField userTextField, Label confirmationLabel) {
         confirmError.setVisible(false);
         String user = userTextField.getText();
         if (validarUsuario(user)) {
+            cargarJugador(user);
             userLabel.setText(user);
             confirmationLabel.setText("Bienvenido, su usuario esta registrado");
             return true;
@@ -61,6 +66,10 @@ public class LoginViewController {
             confirmationLabel.setText("Su usuario no esta registrado, porfavor registrese");
             return false;
         }
+    }
+
+    private void cargarJugador(String nombre){
+        jugadores.add(new Jugador(nombre));
     }
 
     @FXML
@@ -99,6 +108,8 @@ public class LoginViewController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
+        MenuController menuController = fxmlLoader.getController();
+        menuController.setJugadores(jugadores);
         stage.setTitle("Menu!");
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
@@ -127,5 +138,13 @@ public class LoginViewController {
 
     public void setUser2Logged(boolean user2Logged) {
         this.user2Logged = user2Logged;
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
 }

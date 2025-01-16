@@ -186,7 +186,6 @@ public class ScrabbleController {
     @FXML
     private Label estadisticasLabel;
 
-
     private ImageView ImagefichaSeleccionada;
     private ImageView ImagefichaSeleccionadaAux = new ImageView();
     private Ficha fichaSeleccionada;
@@ -194,6 +193,7 @@ public class ScrabbleController {
     private ImageView[] atril;
 
     private Game game;
+
 
     private void configureStats(){
         Jugador jugador1 = game.getJugadores()[0];
@@ -207,23 +207,26 @@ public class ScrabbleController {
         tiempo2.setText(jugador1.getTiempoJugado());
     }
 
+    private void postInitialize(){
+        configureBoard();
+        rellenarAtrilJugadores();
+        configureAtrilJugadores();
+        configureStats();
+        player1.setText(game.getJugadores()[0].getAlias());
+        player2.setText(game.getJugadores()[1].getAlias());
+        jugador1Final.setText(game.getJugadores()[0].getAlias());
+        jugador2Final.setText(game.getJugadores()[1].getAlias());
+
+        cambiarOpacidad();
+        actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
+    }
 
     @FXML
     void initialize() {
         atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
 
-        game = new Game();
-        configureBoard();
-        rellenarAtrilJugadores();
-        configureAtrilJugadores();
-        configureStats();
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 20);
         Font font15 = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 15);
-
-        player1.setText(game.getJugadores()[0].getAlias());
-        player2.setText(game.getJugadores()[1].getAlias());
-        jugador1Final.setText(game.getJugadores()[0].getAlias());
-        jugador2Final.setText(game.getJugadores()[1].getAlias());
 
         capaGris.setVisible(false);
         finPartida.setVisible(false);
@@ -250,18 +253,20 @@ public class ScrabbleController {
             salirBtn.setFont(font);
 
         }
-        cambiarOpacidad();
-        actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
+    }
 
+    public void setGame(Game game) {
+        this.game = game;
+        postInitialize();
     }
 
     private void cambiarOpacidad(){
         if (game.getTurnoActual() == 0) {
             jugador1.setOpacity(1.0);
-            jugador2.setOpacity(0.25);
+            jugador2.setOpacity(0.5);
         }else if (game.getTurnoActual() == 1) {
             jugador2.setOpacity(1.0);
-            jugador1.setOpacity(0.25);
+            jugador1.setOpacity(0.5);
         }
     }
 
@@ -532,9 +537,6 @@ public class ScrabbleController {
         return game;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
 
     public Ficha getFichaSeleccionada() {
         return fichaSeleccionada;
