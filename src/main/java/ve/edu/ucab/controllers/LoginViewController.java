@@ -91,6 +91,7 @@ public class LoginViewController {
     }
 
 
+    @SuppressWarnings("DuplicatedCode")
     @FXML
     void confirmar(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
