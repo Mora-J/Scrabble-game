@@ -2,6 +2,7 @@ package ve.edu.ucab.models;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class Game {
     private Jugador[] jugadores;
@@ -23,7 +24,7 @@ public class Game {
 
         bolsaFichas = new BolsaFichas();
         board = new Board();
-        this.turnoActual = 0;
+        this.turnoActual = new Random().nextInt(2);
         jugadorActual = jugadores[turnoActual];
         esPrimeraJugada = true;
     }
@@ -33,7 +34,7 @@ public class Game {
         this.indiceFichasPuestas = new ArrayList<>();
         bolsaFichas = new BolsaFichas();
         board = new Board();
-        this.turnoActual = 0;
+        this.turnoActual = new Random().nextInt(2);
         jugadorActual = jugadores[turnoActual];
         esPrimeraJugada = true;
 

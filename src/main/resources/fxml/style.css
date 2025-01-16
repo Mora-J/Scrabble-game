@@ -1,6 +1,14 @@
 .boton {
-    -fx-background-image: url("https://raw.githubusercontent.com/Mora-J/Proyecto-POO-Grupo-1-Grafico/refs/heads/master/src/main/resources/images/fondoJugadores.png?token=GHSAT0AAAAAAC4RNPBV5NIRCZTB6GZP2HVCZ4JDCSA");
+    -fx-background-image: url("https://i.imgur.com/6wN4F0h.png");
     -fx-background-size: 100% 100%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: left center;
 }
+
+.boton2 {
+    -fx-background-image: url("https://i.imgur.com/S4WP1gQ.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+

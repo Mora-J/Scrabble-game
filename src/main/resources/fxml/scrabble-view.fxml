@@ -8,14 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="798.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.ScrabbleController">
+<AnchorPane prefHeight="798.0" prefWidth="981.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.ScrabbleController">
    <children>
       <HBox alignment="CENTER" layoutY="14.0" prefHeight="525.0" prefWidth="981.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
          <children>
+            <VBox fx:id="jugador1" alignment="TOP_CENTER" prefHeight="525.0" prefWidth="375.0" styleClass="boton">
+               <children>
+                  <Region prefHeight="121.0" prefWidth="375.0" />
+                  <Label fx:id="player1" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="121.0" prefWidth="375.0" />
+                  <Label fx:id="puntos1" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <Region prefHeight="525.0" prefWidth="80.0" />
             <GridPane fx:id="scrabbleBoard">
             </GridPane>
+            <Region prefWidth="80.0" />
+            <VBox fx:id="jugador2" alignment="TOP_CENTER" prefWidth="375.0" styleClass="boton">
+               <children>
+                  <Region prefHeight="121.0" prefWidth="375.0" />
+                  <Label fx:id="player2" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="121.0" prefWidth="375.0" />
+                  <Label fx:id="puntos2" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
          </children>
       </HBox>
       <HBox fx:id="hboxAtril" alignment="CENTER" layoutY="640.0" prefHeight="58.0" prefWidth="982.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

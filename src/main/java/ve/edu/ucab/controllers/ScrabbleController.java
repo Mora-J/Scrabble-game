@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import ve.edu.ucab.models.BolsaFichas;
 import ve.edu.ucab.models.Casilla;
@@ -53,6 +54,24 @@ public class ScrabbleController {
     private HBox hboxAtril;
 
     @FXML
+    private Label player1;
+
+    @FXML
+    private Label player2;
+
+    @FXML
+    private Label puntos1;
+
+    @FXML
+    private Label puntos2;
+
+    @FXML
+    private VBox jugador1;
+
+    @FXML
+    private VBox jugador2;
+
+    @FXML
     private Button redoButton;
 
     @FXML
@@ -78,8 +97,25 @@ public class ScrabbleController {
         if (font != null) {
             System.out.println("Font loaded successfully");
             indicadorBolsa.setFont(font);
+            player1.setFont(font);
+            player2.setFont(font);
+            puntos1.setFont(font);
+            puntos2.setFont(font);
         }
+
+        cambiarOpacidad();
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
+
+    }
+
+    private void cambiarOpacidad(){
+        if (game.getTurnoActual() == 0) {
+            jugador1.setOpacity(1.0);
+            jugador2.setOpacity(0.25);
+        }else if (game.getTurnoActual() == 1) {
+            jugador2.setOpacity(1.0);
+            jugador1.setOpacity(0.25);
+        }
     }
 
     private void siguienteTurno(){
@@ -87,6 +123,7 @@ public class ScrabbleController {
             rellenarAtrilJugadores();
             configureAtrilJugadores();
             actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
+            cambiarOpacidad();
         }else System.out.println("Jugada no confirmada");
     }
 
@@ -263,6 +300,7 @@ public class ScrabbleController {
         game.pasarTurno();
         rellenarAtrilJugadores();
         configureAtrilJugadores();
+        cambiarOpacidad();
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
     }
 
