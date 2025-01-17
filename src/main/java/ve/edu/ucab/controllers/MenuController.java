@@ -19,6 +19,9 @@ import ve.edu.ucab.models.Jugador;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controlador para la vista del menú principal del juego.
+ */
 public class MenuController {
 
     @FXML
@@ -37,9 +40,17 @@ public class MenuController {
     @FXML
     private Button verScoreBtn;
 
+    /**
+     * Lista de jugadores.
+     */
     private ArrayList<Jugador> jugadores = new ArrayList<>();
 
-
+    /**
+     * Maneja el evento para continuar una partida guardada.
+     *
+     * @param event El evento de acción.
+     * @throws IOException Si ocurre un error al cargar la vista.
+     */
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void continuarPartida(ActionEvent event) throws IOException {
@@ -74,6 +85,12 @@ public class MenuController {
         stage.show();
     }
 
+    /**
+     * Carga una partida guardada desde el archivo JSON.
+     *
+     * @param game El juego a cargar.
+     * @return El juego cargado.
+     */
     private Game cargarGame(Game game) {
         game = JsonUtil.cargarPartidaPendiente(game.getClaveJugadores());
         game.getBoard().recargarBoard();
@@ -81,6 +98,9 @@ public class MenuController {
         return game;
     }
 
+    /**
+     * Inicializa el controlador y carga la fuente personalizada.
+     */
     @FXML
     void initialize() {
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 12);
@@ -98,6 +118,12 @@ public class MenuController {
 
     }
 
+    /**
+     * Maneja el evento para iniciar una nueva partida.
+     *
+     * @param event El evento de acción.
+     * @throws IOException Si ocurre un error al cargar la vista.
+     */
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void iniciarNuevaPartida(ActionEvent event) throws IOException {
@@ -135,7 +161,11 @@ public class MenuController {
         stage.show();
     }
 
-
+    /**
+     * Maneja el evento para salir del juego.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void salir(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -152,10 +182,20 @@ public class MenuController {
 
     }
 
+    /**
+     * Obtiene la lista de jugadores.
+     *
+     * @return La lista de jugadores.
+     */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
 
+    /**
+     * Establece la lista de jugadores.
+     *
+     * @param jugadores La nueva lista de jugadores.
+     */
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }

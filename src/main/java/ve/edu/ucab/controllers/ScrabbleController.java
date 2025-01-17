@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Controlador para la vista del juego de Scrabble.
+ */
 public class ScrabbleController {
     @FXML
     private AnchorPane capaGris;
@@ -194,7 +197,9 @@ public class ScrabbleController {
 
     private Game game;
 
-
+    /**
+     * Configura las estadísticas del jugador en la interfaz.
+     */
     private void configureStats(){
         Jugador jugador1 = game.getJugadores()[0];
         Jugador jugador2 = game.getJugadores()[1];
@@ -207,6 +212,9 @@ public class ScrabbleController {
         tiempo2.setText(jugador1.getTiempoJugado());
     }
 
+    /**
+     * Inicializa configuraciones adicionales después de la inicialización básica.
+     */
     private void postInitialize(){
         configureBoard();
         rellenarAtrilJugadores();
@@ -222,6 +230,9 @@ public class ScrabbleController {
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
     }
 
+    /**
+     * Metodo llamado automáticamente después de la carga del archivo FXML.
+     */
     @FXML
     void initialize() {
         atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
@@ -260,11 +271,19 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Establece el juego actual y realiza la configuración posterior a la inicialización.
+     *
+     * @param game El juego a establecer.
+     */
     public void setGame(Game game) {
         this.game = game;
         postInitialize();
     }
 
+    /**
+     * Cambia la opacidad de los elementos de la interfaz según el turno actual del juego.
+     */
     private void cambiarOpacidad(){
         if (game.getTurnoActual() == 0) {
             jugador1.setOpacity(1.0);
@@ -275,6 +294,9 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Procede al siguiente turno del juego, actualizando las vistas y guardando la partida pendiente.
+     */
     private void siguienteTurno(){
         if (game.confirmarJugada()){
             terminarPartida();
@@ -287,11 +309,17 @@ public class ScrabbleController {
         }else System.out.println("Jugada no confirmada");
     }
 
+    /**
+     * Actualiza la vista del puntaje de los jugadores.
+     */
     private void actualizarPuntajeVista(){
         puntos1.setText(String.valueOf(game.getJugadores()[0].getScoreInGame()));
         puntos2.setText(String.valueOf(game.getJugadores()[1].getScoreInGame()));
     }
 
+    /**
+     * Termina la partida, mostrando los resultados y las estadísticas finales.
+     */
     private void terminarPartida(){
         Image victoria = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/victoria.png")));
         Image derrota = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/derrota.png")));
@@ -314,16 +342,26 @@ public class ScrabbleController {
     }
 
 
-
+    /**
+     * Actualiza los datos de la bolsa de fichas en la interfaz.
+     *
+     * @param bolsaFichas La bolsa de fichas.
+     * @param label       El Label donde se mostrarán los datos.
+     */
     private void actualizarDatosBolsa(BolsaFichas bolsaFichas, Label label){
         label.setText(String.valueOf(bolsaFichas.getListaFichas().size()));
     }
 
+    /**
+     * Rellena el atril de los jugadores con fichas de la bolsa.
+     */
     private void rellenarAtrilJugadores() {
         game.actualizarAtrilJugadores();
     }
 
-
+    /**
+     * Configura el atril de los jugadores en la interfaz, actualizando las imágenes de las fichas.
+     */
     private void configureAtrilJugadores() {
         Image imagen;
         for (int i = 0; i < 7; i++){
@@ -339,7 +377,9 @@ public class ScrabbleController {
         }
     }
 
-
+    /**
+     * Configura el tablero del juego, colocando las casillas y las fichas en la interfaz gráfica.
+     */
     private void configureBoard() {
         for (int row = 0; row < 15; row++) {
             for (int col = 0; col < 15; col++) {
@@ -359,16 +399,35 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Aplica un estilo a la celda especificada.
+     *
+     * @param cell La celda a estilizar.
+     */
     private void styleCell(ImageView cell) {
         cell.setStyle("-fx-border-color: black; -fx-pref-width: 35; -fx-pref-height: 35;");
     }
 
+    /**
+     * Coloca la celda en la posición especificada del GridPane.
+     *
+     * @param cell La celda a colocar.
+     * @param col  La columna en la que colocar la celda.
+     * @param row  La fila en la que colocar la celda.
+     */
     private void placeCellInGrid(ImageView cell, int col, int row) {
         GridPane.setColumnIndex(cell, col);
         GridPane.setRowIndex(cell, row);
         scrabbleBoard.getChildren().add(cell);
     }
 
+    /**
+     * Maneja los eventos de clic en el tablero.
+     *
+     * @param row  La fila de la celda clicada.
+     * @param col  La columna de la celda clicada.
+     * @param cell La celda clicada.
+     */
     private void eventoDeMouseEnTablero(int row, int col, ImageView cell){
 
         if(game.getBoard().getCasillas()[row][col].isMovable() && !game.getBoard().getCasillas()[row][col].getFicha().isEmpty()){
@@ -381,6 +440,11 @@ public class ScrabbleController {
 
     }
 
+    /**
+     * Maneja la selección de una ficha desde el atril.
+     *
+     * @param event El evento de mouse.
+     */
     @FXML
     private void seleccionarFicha(MouseEvent event) {
         Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
@@ -414,6 +478,13 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Coloca una ficha en una casilla del tablero.
+     *
+     * @param row  La fila de la casilla.
+     * @param col  La columna de la casilla.
+     * @param cell La celda donde colocar la ficha.
+     */
     private void colocarFichaEnCasilla(int row, int col, ImageView cell) {
         if (ImagefichaSeleccionada != null) {
             int index = hboxAtril.getChildren().indexOf(ImagefichaSeleccionadaAux);
@@ -435,12 +506,26 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Recoge una ficha de una casilla del tablero.
+     *
+     * @param row  La fila de la casilla.
+     * @param col  La columna de la casilla.
+     * @param cell La celda de la que recoger la ficha.
+     */
     private void recogerFichaEnCasilla(int row, int col, ImageView cell) {
         devolverFichaAlAtril(row, col, cell);
         game.quitarFicha(row, col);
         cell.setImage(game.getBoard().getCasillas()[row][col].getImagen());
     }
 
+    /**
+     * Devuelve una ficha al atril del jugador.
+     *
+     * @param row  La fila de la casilla.
+     * @param col  La columna de la casilla.
+     * @param cell La celda desde la que devolver la ficha.
+     */
     private void devolverFichaAlAtril(int row, int col, ImageView cell) {
         Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
         String atrilVacioUrl = atrilVacio.getUrl();
@@ -453,11 +538,17 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Maneja el evento de jugar una palabra.
+     */
     @FXML
     private void playPalabra(){
         siguienteTurno();
     }
 
+    /**
+     * Maneja el evento de rehacer la última acción.
+     */
     @FXML
     private void redoPress(){
         ImageView imagen;
@@ -469,6 +560,14 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Obtiene un nodo del GridPane en la posición especificada.
+     *
+     * @param gridPane El GridPane.
+     * @param row      La fila del nodo.
+     * @param col      La columna del nodo.
+     * @return El nodo en la posición especificada, o null si no se encuentra.
+     */
     private ImageView obtenerNodoEnGridPane(GridPane gridPane, int row, int col) {
         for (Node imagen : gridPane.getChildren()){
             if(imagen instanceof ImageView && GridPane.getRowIndex(imagen) == row && GridPane.getColumnIndex(imagen) == col){
@@ -478,6 +577,10 @@ public class ScrabbleController {
         return null;
     }
 
+    /**
+     * Maneja el evento de pasar el turno.
+     */
+    @SuppressWarnings("DuplicatedCode")
     @FXML
     private void passPress(){
         terminarPartida();
@@ -499,10 +602,23 @@ public class ScrabbleController {
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
     }
 
+    /**
+     * Añade un evento de clic a la celda especificada.
+     *
+     * @param cell La celda a la que añadir el evento.
+     * @param row  La fila de la celda.
+     * @param col  La columna de la celda.
+     */
     private void addClickEvent(ImageView cell, int row, int col) {
         cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTablero(row, col, cell));
     }
 
+    /**
+     * Maneja el evento de salir del juego.
+     *
+     * @param event El evento de acción.
+     * @throws IOException Si ocurre un error al cargar la vista del menú.
+     */
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void salir(ActionEvent event) throws IOException {
@@ -530,6 +646,11 @@ public class ScrabbleController {
         stage.show();
     }
 
+    /**
+     * Muestra las estadísticas cuando se presiona la tecla ESC.
+     *
+     * @param keyEvent El evento de tecla.
+     */
     @FXML
     void mostrarEstadisticasEsc(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
@@ -537,6 +658,9 @@ public class ScrabbleController {
         }
     }
 
+    /**
+     * Muestra u oculta las estadísticas del juego.
+     */
     @FXML
     void mostrarEstadisticas(){
         if (!estadisticas.isVisible()) {
@@ -549,16 +673,55 @@ public class ScrabbleController {
 
     }
 
+    /**
+     * Reemplaza las fichas del atril del jugador.
+     */
+    @SuppressWarnings("DuplicatedCode")
+    @FXML
+    void reemplazarFichas(){
+        if (game.isEsPrimeraJugada()) return;
+        ImageView imagen;
+        ArrayList<int[]> indices = game.getIndiceFichasPuestas();
 
+        if (indices != null) {
+            ArrayList<int[]> indicesAux = new ArrayList<>(indices);
+            for (int[]indice : indicesAux) {
+                imagen = obtenerNodoEnGridPane(scrabbleBoard, indice[0], indice[1]);
+                recogerFichaEnCasilla(indice[0], indice[1], imagen);
+            }
+        }
+        game.reemplazarFichas();
+        game.pasarTurno();
+        rellenarAtrilJugadores();
+        configureAtrilJugadores();
+        cambiarOpacidad();
+        actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
+
+    }
+
+    /**
+     * Obtiene el juego actual.
+     *
+     * @return El juego actual.
+     */
     public Game getGame() {
         return game;
     }
 
-
+    /**
+     * Obtiene la ficha seleccionada.
+     *
+     * @return La ficha seleccionada.
+     */
     public Ficha getFichaSeleccionada() {
         return fichaSeleccionada;
     }
 
+    /**
+     * Establece la ficha seleccionada.
+     *
+     * @param fichaSeleccionada La ficha a establecer como seleccionada.
+     */
     public void setFichaSeleccionada(Ficha fichaSeleccionada) {
         this.fichaSeleccionada = fichaSeleccionada;
     }

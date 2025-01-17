@@ -15,7 +15,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+
+/**
+ * Clase principal de la aplicación que maneja la vista del menú.
+ */
 public class MenuApplication extends Application {
+    /**
+     * Inicia la aplicación y configura el escenario principal.
+     *
+     * @param stage El escenario principal.
+     * @throws IOException Si ocurre un error al cargar el archivo FXML.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
@@ -44,11 +54,20 @@ public class MenuApplication extends Application {
         stage.show();
     }
 
-
+    /**
+     * Metodo principal que lanza la aplicación.
+     *
+     * @param args Los argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * Maneja el evento de salir del juego.
+     *
+     * @param stage El escenario principal.
+     */
     public void salir(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Salir");

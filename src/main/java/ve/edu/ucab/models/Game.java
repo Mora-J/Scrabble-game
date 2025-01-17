@@ -467,4 +467,23 @@ public class Game {
     public void setEstaFinalizada(boolean estaFinalizada) {
         this.estaFinalizada = estaFinalizada;
     }
+
+
+    /**
+     * reemplaza todas las fichas del jugador quien lo pulse
+     *
+     *
+     */
+    public void reemplazarFichas(){
+        Jugador jugadorActual = getJugadorActual();
+        for (int i = 0; i < 7; i++) {
+            if (!bolsaFichas.getListaFichas().isEmpty() && jugadorActual.getAtril()[i] != null) {
+                int randomIndex = (int) (Math.random() * (bolsaFichas.getListaFichas().size()));
+                bolsaFichas.getListaFichas().add(jugadorActual.getAtril()[i].clone());
+                jugadorActual.getAtril()[i] = bolsaFichas.getListaFichas().get(randomIndex).clone();
+                bolsaFichas.getListaFichas().remove(randomIndex);
+            }
+        }
+
+    }
 }
