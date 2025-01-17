@@ -132,6 +132,22 @@ public class Jugador {
 
     }
 
+    public Jugador(Usuario usuario) {
+        this.alias = usuario.getAlias();
+        this.atril = new Ficha[7];
+        this.correoElectronico = usuario.getCorreoElectronico();
+        this.scoreInGame = 0;
+        this.tiempoJugado = "0h 0m 0s";
+
+        //datos de usuario
+        this.scoreTotal = usuario.getScoreTotal();
+        this.horasJugadas = usuario.getHorasJugadas();
+        this.minutosJugados = usuario.getMinutosJugados();
+        this.segundosJugados = usuario.getSegundosJugados();
+        this.cantidadDePalabras = usuario.getCantidadDePalabras();
+
+    }
+
     /**
      * Obtiene la cantidad de palabras colocadas por el jugador en el juego actual.
      *

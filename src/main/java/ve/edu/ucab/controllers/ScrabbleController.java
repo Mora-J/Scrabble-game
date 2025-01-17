@@ -34,6 +34,9 @@ public class ScrabbleController {
     private AnchorPane capaGris;
 
     @FXML
+    private Label confirmError;
+
+    @FXML
     private AnchorPane estadisticas;
 
 
@@ -235,6 +238,7 @@ public class ScrabbleController {
      */
     @FXML
     void initialize() {
+        confirmError.setVisible(false);
         atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
 
         /*for (ImageView imageView : atril) {
@@ -298,6 +302,7 @@ public class ScrabbleController {
      * Procede al siguiente turno del juego, actualizando las vistas y guardando la partida pendiente.
      */
     private void siguienteTurno(){
+        confirmError.setVisible(false);
         if (game.confirmarJugada()){
             terminarPartida();
             rellenarAtrilJugadores();
@@ -306,7 +311,11 @@ public class ScrabbleController {
             actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
             cambiarOpacidad();
             JsonUtil.guardarPartidaPendiente(game);
-        }else System.out.println("Jugada no confirmada");
+        }else {
+            System.out.println("Jugada no confirmada");
+            confirmError.setVisible(true);
+            confirmError.setText("Usted hizo una jugada inválida!");
+        }
     }
 
     /**
@@ -551,6 +560,7 @@ public class ScrabbleController {
      */
     @FXML
     private void redoPress(){
+        confirmError.setVisible(true);
         ImageView imagen;
 
         if (game.getIndiceFichasPuestas() != null) {
@@ -583,6 +593,7 @@ public class ScrabbleController {
     @SuppressWarnings("DuplicatedCode")
     @FXML
     private void passPress(){
+        confirmError.setVisible(false);
         terminarPartida();
         if (game.isEsPrimeraJugada()) return;
         ImageView imagen;
@@ -653,6 +664,7 @@ public class ScrabbleController {
      */
     @FXML
     void mostrarEstadisticasEsc(KeyEvent keyEvent) {
+        confirmError.setVisible(false);
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             mostrarEstadisticas();
         }
@@ -679,6 +691,7 @@ public class ScrabbleController {
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void reemplazarFichas(){
+        confirmError.setVisible(false);
         if (game.isEsPrimeraJugada()) return;
         ImageView imagen;
         ArrayList<int[]> indices = game.getIndiceFichasPuestas();

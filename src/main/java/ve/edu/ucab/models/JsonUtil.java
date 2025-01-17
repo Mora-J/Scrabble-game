@@ -1,11 +1,13 @@
 package ve.edu.ucab.models;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,6 +18,12 @@ import java.nio.file.Paths;
  * Utilidades para guardar y cargar partidas pendientes en formato JSON.
  */
 public class JsonUtil {
+    private static final String ruta = "C:\\Users\\yeshu\\OneDrive\\Escritorio\\Curso_de_Java\\Proyecto-POO-Grupo1-RegistroDeUsuario-Grafico-master\\";
+
+    /**
+     * Nombre del archivo donde se guardan los usuarios.
+     */
+    private static final String archivoUsuarios = ruta + "usuarios.json";
 
     /**
      * Instancia de Gson para convertir objetos a formato JSON y viceversa.
@@ -82,6 +90,17 @@ public class JsonUtil {
             gson.toJson(partidasPendientes, writer);
         } catch (IOException e) {
             System.out.println("Error al guardar el archivo " + archivoPartidasPendientes);
+        }
+    }
+
+    public static List<Usuario> cargarUsuariosDesdeJson() {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(archivoUsuarios)) {
+            Type listType = new TypeToken<List<Usuario>>(){}.getType();
+            return gson.fromJson(reader, listType);
+        } catch (IOException e) {
+            System.out.println("Error al cargar los usuarios desde el archivo JSON.");
+            return null;
         }
     }
 

@@ -10,10 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import ve.edu.ucab.models.JsonUtil;
 import ve.edu.ucab.models.Jugador;
+import ve.edu.ucab.models.Usuario;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controlador para la vista de inicio de sesión de los jugadores.
@@ -60,6 +63,8 @@ public class LoginViewController {
     @FXML
     private Button play;
 
+    private List<Usuario> usuariosValidos = new ArrayList<>();
+
     /**
      * Lista de jugadores.
      */
@@ -76,10 +81,10 @@ public class LoginViewController {
     @FXML
     boolean login(Label userLabel, TextField userTextField, Label confirmationLabel) {
         confirmError.setVisible(false);
-        String user = userTextField.getText();
-        if (validarUsuario(user)) {
-            cargarJugador(user.toLowerCase());
-            userLabel.setText(user);
+        String alias = userTextField.getText();
+        if (validarUsuario(alias)) {
+            cargarJugador(getUsuario(alias));
+            userLabel.setText(alias);
             confirmationLabel.setText("Bienvenido, su usuario esta registrado");
             return true;
         }else{
@@ -92,10 +97,10 @@ public class LoginViewController {
     /**
      * Carga un jugador en la lista de jugadores.
      *
-     * @param nombre El nombre del jugador.
+     * @param user El nombre del jugador.
      */
-    private void cargarJugador(String nombre){
-        jugadores.add(new Jugador(nombre));
+    private void cargarJugador(Usuario user){
+        jugadores.add(new Jugador(user));
     }
 
     /**
@@ -121,11 +126,29 @@ public class LoginViewController {
     /**
      * Valida el nombre de usuario.
      *
-     * @param usuario El nombre de usuario a validar.
+     * @param alias El nombre de usuario a validar.
      * @return true si el nombre de usuario no es nulo y no está vacío, false en caso contrario.
      */
-    private boolean validarUsuario(String usuario) {
-        return usuario != null && !usuario.isEmpty();
+    public boolean validarUsuario(String alias) {
+        List<Usuario> usuarios = JsonUtil.cargarUsuariosDesdeJson();
+        if (usuarios != null) {
+            for (Usuario usuario : usuarios) {
+                if (usuario.getAlias().equals(alias)) {
+                    usuariosValidos.add(usuario);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Usuario getUsuario(String alias) {
+        for (Usuario usuario : usuariosValidos) {
+            if (usuario.getAlias().equals(alias)) {
+                return usuario;
+            }
+        }
+        return null;
     }
 
     /**
@@ -230,4 +253,13 @@ public class LoginViewController {
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
+    public List<Usuario> getUsuariosValidos() {
+        return usuariosValidos;
+    }
+
+    public void setUsuariosValidos(List<Usuario> usuariosValidos) {
+        this.usuariosValidos = usuariosValidos;
+    }
+
 }
