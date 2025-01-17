@@ -216,6 +216,7 @@ public class ScrabbleController {
         player2.setText(game.getJugadores()[1].getAlias());
         jugador1Final.setText(game.getJugadores()[0].getAlias());
         jugador2Final.setText(game.getJugadores()[1].getAlias());
+        actualizarPuntajeVista();
 
         cambiarOpacidad();
         actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
@@ -224,6 +225,10 @@ public class ScrabbleController {
     @FXML
     void initialize() {
         atril = new ImageView[]{ficha1, ficha2, ficha3, ficha4, ficha5, ficha6, ficha7};
+
+        /*for (ImageView imageView : atril) {
+            imageView.setImage(new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png"))));
+        }*/
 
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 20);
         Font font15 = Font.loadFont(getClass().getResourceAsStream("/fonts/arcade.otf"), 15);
@@ -278,6 +283,7 @@ public class ScrabbleController {
             actualizarPuntajeVista();
             actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
             cambiarOpacidad();
+            JsonUtil.guardarPartidaPendiente(game);
         }else System.out.println("Jugada no confirmada");
     }
 
@@ -318,15 +324,21 @@ public class ScrabbleController {
     }
 
     private void configureAtrilJugadores() {
-        for (int i = 0; i < 7; i++){
-            if(game.getJugadorActual().getAtril()[i] == null){
+        for (int i = 0; i < 7; i++) {
+            Ficha ficha = game.getJugadorActual().getAtril()[i];
+            if (ficha == null) {
                 atril[i].setImage(new Image(String.valueOf(ScrabbleController.class.getResource("/images/atrilVacio.png"))));
-            }else {
-                System.out.println("Actualizando casilla en posición: " + i + " con imagen: " + game.getJugadorActual().getAtril()[i].getImagen());
-                atril[i].setImage(game.getJugadorActual().getAtril()[i].getImagen());
+            } else {
+                if (ficha.getImagen() == null) {
+                    System.out.println("Error: La imagen de la ficha en la posición " + i + " es null");
+                } else {
+                    System.out.println("Actualizando casilla en posición: " + i + " con imagen: " + ficha.getImagen());
+                    atril[i].setImage(ficha.getImagen());
+                }
             }
         }
     }
+
 
     private void configureBoard() {
         for (int row = 0; row < 15; row++) {
@@ -494,6 +506,7 @@ public class ScrabbleController {
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void salir(ActionEvent event) throws IOException {
+        JsonUtil.guardarPartidaPendiente(game);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         boolean wasFullScreen = stage.isFullScreen();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));

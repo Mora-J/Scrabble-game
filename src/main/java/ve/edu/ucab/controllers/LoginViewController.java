@@ -57,7 +57,7 @@ public class LoginViewController {
         confirmError.setVisible(false);
         String user = userTextField.getText();
         if (validarUsuario(user)) {
-            cargarJugador(user);
+            cargarJugador(user.toLowerCase());
             userLabel.setText(user);
             confirmationLabel.setText("Bienvenido, su usuario esta registrado");
             return true;
@@ -110,6 +110,7 @@ public class LoginViewController {
 
         MenuController menuController = fxmlLoader.getController();
         menuController.setJugadores(jugadores);
+
         stage.setTitle("Menu!");
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);

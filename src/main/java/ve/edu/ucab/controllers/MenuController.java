@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ve.edu.ucab.models.Game;
+import ve.edu.ucab.models.JsonUtil;
 import ve.edu.ucab.models.Jugador;
 
 import java.io.IOException;
@@ -39,9 +40,45 @@ public class MenuController {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
 
 
+    @SuppressWarnings("DuplicatedCode")
     @FXML
-    void continuarPartida(ActionEvent event) {
+    void continuarPartida(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));
 
+        // Obtener la ventana (stage) desde cualquier nodo de la escena actual
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        boolean wasFullScreen = stage.isFullScreen();
+
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        ScrabbleController scrabbleController = fxmlLoader.getController();
+
+        Jugador[] players = new Jugador[jugadores.size()];
+        jugadores.toArray(players);
+        Game game = new Game(players);
+
+
+        scrabbleController.setGame(cargarGame(game));
+
+        stage.setScene(scene);
+        stage.setFullScreen(wasFullScreen);
+        stage.setTitle("Game!");
+
+        scene.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.F11) {
+                stage.setFullScreen(!stage.isFullScreen());
+            }
+        });
+
+        stage.show();
+    }
+
+    private Game cargarGame(Game game) {
+        game = JsonUtil.cargarPartidaPendiente(game.getClaveJugadores());
+        game.getBoard().recargarBoard();
+        for (Jugador jugador : game.getJugadores()) {
+            jugador.recargarAtril();
+        }
+        return game;
     }
 
     @FXML
@@ -61,7 +98,7 @@ public class MenuController {
 
     }
 
-
+    @SuppressWarnings("DuplicatedCode")
     @FXML
     void iniciarNuevaPartida(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));

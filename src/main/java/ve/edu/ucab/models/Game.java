@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Game {
     private Jugador[] jugadores;
@@ -96,6 +97,7 @@ public class Game {
     }
 
     public void pasarTurno(){
+        JsonUtil.guardarPartidaPendiente(this);
         if (!esPrimeraJugada) {
             turnoActual = (turnoActual + 1) % jugadores.length;
             jugadorActual = jugadores[turnoActual];
@@ -184,7 +186,9 @@ public class Game {
         return false;
     }
 
-
+    public String getClaveJugadores() {
+        return Arrays.stream(jugadores).map(Jugador::getAlias).sorted().collect(Collectors.joining("_"));
+    }
 
     public Jugador[] getJugadores() {
         return jugadores;

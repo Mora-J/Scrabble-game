@@ -1,5 +1,10 @@
 package ve.edu.ucab.models;
 
+import javafx.scene.image.Image;
+
+import java.net.URL;
+import java.util.Objects;
+
 public class Jugador {
 
     private String alias;
@@ -75,13 +80,32 @@ public class Jugador {
 
     public void rellenarFichas(BolsaFichas bolsaFichas) {
         for (int i = 0; i < 7; i++) {
-            int randomIndex = (int) (Math.random() * (bolsaFichas.getListaFichas().size() - 1));
             if (atril[i] == null && !bolsaFichas.getListaFichas().isEmpty()) {
+                int randomIndex = (int) (Math.random() * (bolsaFichas.getListaFichas().size() - 1));
                 atril[i] = bolsaFichas.getListaFichas().get(randomIndex).clone();
                 bolsaFichas.getListaFichas().remove(randomIndex);
             }
         }
     }
+
+    public void recargarAtril() {
+        Image imagen;
+        for (Ficha ficha : atril) {
+            String fichaPath = "/images/fichas/ficha" + ficha.getLetra() + ".png";
+            try {
+                if (!ficha.isEmpty()) {
+                    imagen = new Image(Objects.requireNonNull(getClass().getResource(fichaPath)).toString());
+                    ficha.setImagen(imagen);
+                    System.out.println("IMAGENES CARGADAS CORRECTAMENTE");
+                } else {
+                    System.out.println("Error: No se encontró la imagen de ficha en " + fichaPath);
+                }
+            } catch (Exception e) {
+                System.out.println("Error al cargar imagen de ficha: " + e.getMessage());
+            }
+        }
+    }
+
 
     public int getMinutosJugados() {
         return minutosJugados;

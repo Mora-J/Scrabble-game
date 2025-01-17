@@ -18,8 +18,8 @@ public class Ficha implements Cloneable {
      * Letra representada en la ficha.
      */
     private String letra;
-    private Label letraLabel;
-    private Image imagenFicha;
+    private transient Label letraLabel;
+    private transient Image imagenFicha;
 
     /**
      * Constructor que inicializa el valor y la letra de la ficha.

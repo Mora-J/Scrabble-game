@@ -2,6 +2,8 @@ package ve.edu.ucab.models.bonificadoresStrategy;
 
 public abstract class BonificacionStrategy {
 
+
+
     boolean individual;
 
     public boolean isIndividual() {

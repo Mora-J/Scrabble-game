@@ -9,7 +9,11 @@ module ve.edu.ucab.application {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires org.jsoup;
+    requires com.google.gson;
 
+
+    opens ve.edu.ucab.models to com.google.gson;
+    opens ve.edu.ucab.models.bonificadoresStrategy to com.google.gson;
     opens ve.edu.ucab.application to javafx.fxml;
     exports ve.edu.ucab.application;
     exports ve.edu.ucab.controllers;

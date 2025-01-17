@@ -1,6 +1,7 @@
 package ve.edu.ucab.models;
 
 import javafx.scene.image.Image;
+import kotlin.jvm.Transient;
 import ve.edu.ucab.models.bonificadoresStrategy.BonificacionStrategy;
 import ve.edu.ucab.models.bonificadoresStrategy.SinBonificacionStrategy;
 
@@ -8,10 +9,10 @@ import java.util.Objects;
 
 public class Casilla implements Cloneable {
     private Ficha ficha;
-    private BonificacionStrategy bonificacion;
+    private transient BonificacionStrategy bonificacion;
     private boolean bonificacionIndividualActivada;
     private boolean bonificacionPorPalabraActivada;
-    private Image imagen;
+    private transient Image imagen;
     private boolean isMovable = true;
 
 
