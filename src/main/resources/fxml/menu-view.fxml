@@ -6,35 +6,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" cache="true" prefHeight="644.0" prefWidth="843.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.MenuController">
+<HBox alignment="CENTER" cache="true" prefHeight="644.0" prefWidth="843.0" styleClass="fondo1" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.MenuController">
    <children>
       <VBox alignment="CENTER" prefHeight="644.0" prefWidth="336.0">
          <children>
-            <Button fx:id="nuevaPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarNuevaPartida" prefHeight="25.0" prefWidth="181.0" text="Nueva Partida" textFill="WHITE">
+            <Button fx:id="nuevaPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarNuevaPartida" prefHeight="25.0" prefWidth="181.0" text="Nueva Partida">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <Region prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="continuarPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#continuarPartida" text="Continuar Partida Anterior" textFill="WHITE">
+            <Button fx:id="continuarPartidaBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#continuarPartida" text="Continuar Partida Anterior">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <Region prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="opcionesBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="181.0" text="Opciones" textFill="WHITE">
+            <Region prefHeight="37.0" prefWidth="160.0" />
+            <Button fx:id="verScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verScore" prefWidth="181.0" text="Ver Score">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
             <Region prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="verScoreBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="181.0" text="Ver Score" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Region prefHeight="37.0" prefWidth="160.0" />
-            <Button fx:id="salirBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" prefWidth="181.0" text="Salir" textFill="WHITE">
+            <Button fx:id="salirBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" prefWidth="181.0" text="Salir">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

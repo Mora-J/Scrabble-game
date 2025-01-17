@@ -1,5 +1,7 @@
 package ve.edu.ucab.models;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -62,6 +64,10 @@ public class Game {
      */
     private boolean estaFinalizada = false;
 
+    private long startTime, endTime = 0;
+    private long totalTime;
+    private boolean tiempoCalculado = false;
+
     /**
      * Constructor que inicializa un juego con dos jugadores.
      */
@@ -93,7 +99,6 @@ public class Game {
         this.turnoActual = new Random().nextInt(2);
         jugadorActual = jugadores[turnoActual];
         esPrimeraJugada = true;
-
     }
 
     /**
@@ -183,6 +188,7 @@ public class Game {
      * Guarda la partida pendiente en un archivo JSON.
      */
     public void pasarTurno(){
+        endTime();
         JsonUtil.guardarPartidaPendiente(this);
         if (!esPrimeraJugada) {
             turnoActual = (turnoActual + 1) % jugadores.length;
@@ -470,7 +476,7 @@ public class Game {
 
 
     /**
-     * reemplaza todas las fichas del jugador quien lo pulse
+     * Reemplaza todas las fichas del jugador quien lo pulse
      *
      *
      */
@@ -485,5 +491,115 @@ public class Game {
             }
         }
 
+    }
+
+    /**
+     * Obtiene el tiempo de inicio de la partida
+     *
+     *
+     */
+    public double getStartTime() {
+        return startTime;
+    }
+
+    /**
+     * Guarda el tiempo en segundos en los que se inicio la partida
+     *
+     *
+     */
+    public void starTime(){
+        startTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+    }
+
+    /**
+     * Guarda el tiempo en segundos en los que se finaliza o cierra la partida
+     *
+     *
+     */
+    public void endTime(){
+        endTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+    }
+
+    /**
+     * Obtiene el tiempo total de la partida
+     *
+     *
+     */
+    public long getTime() {
+        return totalTime;
+    }
+
+    /**
+     * Calcula cuanto ha durado la partida
+     *
+     *
+     */
+    public void calculateTotalTime(){
+        totalTime += (endTime - startTime);
+        tiempoCalculado = true;
+    }
+
+    /**
+     * Calcula cuanto ha durado la partida
+     *
+     *
+     */
+    public void calculateTotalTimeDescartado(){
+        totalTime += (endTime - startTime);
+    }
+
+    /**
+     * Revisa si el tiempo se calculo antes de salir de la partida, en caso de que no, lo calcula
+     *
+     *
+     */
+    public void calcularTiempo(){
+        if (!tiempoCalculado) {
+            calculateTotalTimeDescartado();
+        }else {
+            tiempoCalculado = false;
+        }
+        starTime();
+    }
+
+    /**
+     * Ajusta el formato a horas: minutos: segundos del tiempo de la partida
+     *
+     *
+     */
+    public String getFormattedDuration() {
+        long duration = getTime();
+        long hours = duration / 3600;
+        long minutes = (duration % 3600) / 60;
+        long seconds = duration % 60;
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+
+    /**
+     * Suma el tiempo jugado a sus estadisticas
+     *
+     *
+     */
+    public void sumarTiempoJugadores(){
+        long duration = getTime();
+        long hours = duration / 3600;
+        long minutes = (duration % 3600) / 60;
+        long seconds = duration % 60;
+        for (Jugador jugador: jugadores){
+            jugador.addHorasJugadas((int) hours);
+            jugador.addMinutosJugados((int) minutes);
+            jugador.addSegundosJugados((int) seconds);
+            jugador.addToCantidadPalabras(jugador.getCantidadPalabrasColocadas());
+        }
+    }
+
+    public boolean isTiempoCalculado() {
+        return tiempoCalculado;
+    }
+
+
+    public void setTiempoCalculado(boolean tiempoCalculado) {
+        this.tiempoCalculado = tiempoCalculado;
     }
 }

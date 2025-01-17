@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="590.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ve.edu.ucab.controllers.ScoreViewController">
+   <children>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="185.0" prefHeight="46.0" prefWidth="181.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Region prefHeight="46.0" prefWidth="105.0" />
+            <Label fx:id="jugador1Final1" text="JUGADOR 1">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="105.0" />
+            <Label fx:id="jugador2Final1" text="JUGADOR 2">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="341.0" prefHeight="46.0" prefWidth="181.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="palabrasTotales1" text="PALABRAS TOTALES:">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="56.0" />
+            <Label fx:id="palabras1" text="0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="208.0" />
+            <Label fx:id="palabras2" text="0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="134.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="249.0" prefHeight="46.0" prefWidth="181.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="scoreTotal1" text="SCORE TOTAL:">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="76.0" />
+            <Label fx:id="score1" text="0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="199.0" />
+            <Label fx:id="score2" text="0">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="104.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="294.0" prefHeight="46.0" prefWidth="181.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="tiempoJugado1" text="Tiempo jugado:">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="29.0" />
+            <Label fx:id="tiempo1" text="00h 00m 00s">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="95.0" />
+            <Label fx:id="tiempo2" text="00h 00m 00s">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="15.0" />
+               </font>
+            </Label>
+            <Region prefHeight="46.0" prefWidth="54.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="88.0" layoutY="25.0" prefHeight="81.0" prefWidth="590.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="estadisticasLabel" text="Estadisticas">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="514.0" prefHeight="81.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#salir" text="  SALIR  ">
+               <font>
+                  <Font name="JoystixMonospace-Regular" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

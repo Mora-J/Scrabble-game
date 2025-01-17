@@ -24,6 +24,7 @@ import ve.edu.ucab.models.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -192,6 +193,9 @@ public class ScrabbleController {
     @FXML
     private Label estadisticasLabel;
 
+    @FXML
+    private Label tiempoLabel;
+
     private ImageView ImagefichaSeleccionada;
     private ImageView ImagefichaSeleccionadaAux = new ImageView();
     private Ficha fichaSeleccionada;
@@ -200,9 +204,13 @@ public class ScrabbleController {
 
     private Game game;
 
+    @FXML
+    private GridPane comodinPane;
+
     /**
      * Configura las estadísticas del jugador en la interfaz.
      */
+    @SuppressWarnings("DuplicatedCode")
     private void configureStats(){
         Jugador jugador1 = game.getJugadores()[0];
         Jugador jugador2 = game.getJugadores()[1];
@@ -213,6 +221,8 @@ public class ScrabbleController {
         score2.setText(String.valueOf(jugador2.getScoreTotal()));
         tiempo1.setText(jugador1.getTiempoJugado());
         tiempo2.setText(jugador1.getTiempoJugado());
+        palabras1.setText(String.valueOf(jugador1.getCantidadDePalabras()));
+        palabras2.setText(String.valueOf(jugador2.getCantidadDePalabras()));
     }
 
     /**
@@ -251,6 +261,7 @@ public class ScrabbleController {
         capaGris.setVisible(false);
         finPartida.setVisible(false);
         estadisticas.setVisible(false);
+        comodinPane.setVisible(false);
 
         if (font != null) {
             System.out.println("Font loaded successfully");
@@ -282,6 +293,7 @@ public class ScrabbleController {
      */
     public void setGame(Game game) {
         this.game = game;
+        game.calcularTiempo();
         postInitialize();
     }
 
@@ -310,11 +322,12 @@ public class ScrabbleController {
             actualizarPuntajeVista();
             actualizarDatosBolsa(game.getBolsaFichas(), indicadorBolsa);
             cambiarOpacidad();
+            game.endTime();
             JsonUtil.guardarPartidaPendiente(game);
         }else {
             System.out.println("Jugada no confirmada");
             confirmError.setVisible(true);
-            confirmError.setText("Usted hizo una jugada inválida!");
+            confirmError.setText("Usted hizo una jugada inválida! o su palabra no es Valida!");
         }
     }
 
@@ -347,6 +360,12 @@ public class ScrabbleController {
                 resultado1.setImage(derrota);
                 resultado2.setImage(victoria);
             }
+            game.endTime();
+            game.calculateTotalTime();
+            tiempoLabel.setText(game.getFormattedDuration());
+            game.sumarTiempoJugadores();
+            actualizarUsuarios();
+            JsonUtil.guardarPartidaTerminada(game);
         }
     }
 
@@ -409,6 +428,64 @@ public class ScrabbleController {
     }
 
     /**
+     * Configura el tablero del juego, colocando las casillas y las fichas en la interfaz gráfica.
+     */
+    private void configureBoardComodin(int index) {
+        BolsaFichas bolsaFichas = new BolsaFichas("sinShuffle");
+        int indexCounter = 0;
+        for (int row = 0; row < 10; row++) {
+            for (int col = 0; col < 10; col++) {
+                Ficha ficha = bolsaFichas.getListaFichas().get(indexCounter);
+                if (ficha != null && !ficha.isEmpty() && !ficha.getLetra().equals("#")) {
+                    Image image = ficha.getImagen();
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitHeight(50);
+                    imageView.setFitWidth(50);
+                    if (image != null) {
+                        styleCell(imageView);
+                        placeCellInGridComodin(imageView, col, row);
+                        addClickEventComodin(imageView, row, index, ficha);
+                    }
+                }
+                indexCounter++;
+            }
+        }
+    }
+
+    private void placeCellInGridComodin(ImageView cell, int col, int row) {
+        GridPane.setColumnIndex(cell, col);
+        GridPane.setRowIndex(cell, row);
+        comodinPane.getChildren().add(cell);
+    }
+
+    /**
+     * Maneja los eventos de clic en el tablero.
+     *
+     * @param row  La fila de la celda clicada.
+     * @param index  La ficha a cambiar.
+     * @param cell La celda clicada.
+     */
+    private void eventoDeMouseEnTableroComodin(int row, int index, ImageView cell, Ficha ficha) {
+        game.getJugadorActual().getAtril()[index] = ficha.clone();
+        game.getJugadorActual().getAtril()[index].setValor(0);
+        comodinPane.setVisible(false);
+        capaGris.setVisible(false);
+        confirmError.setVisible(true);
+        confirmError.setText("Ficha seleccionada: " + ficha.getLetra());
+    }
+
+    /**
+     * Añade un evento de clic a la celda especificada.
+     *
+     * @param cell La celda a la que añadir el evento.
+     * @param row  La fila de la celda.
+     * @param index  La ficha a cambiar.
+     */
+    private void addClickEventComodin(ImageView cell, int row, int index, Ficha ficha) {
+        cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTableroComodin(row, index, cell, ficha));
+    }
+
+    /**
      * Aplica un estilo a la celda especificada.
      *
      * @param cell La celda a estilizar.
@@ -457,6 +534,8 @@ public class ScrabbleController {
     @FXML
     private void seleccionarFicha(MouseEvent event) {
         Image atrilVacio = new Image(String.valueOf(getClass().getResource("/images/atrilVacio.png")));
+        Image comodin = new Image(String.valueOf(getClass().getResource("/images/fichas/ficha#.png")));
+        String comodinlUrl = comodin.getUrl();
         String atrilVacioUrl = atrilVacio.getUrl();
         ImageView sourceImageView = (ImageView) event.getSource();
         String urlImage = sourceImageView.getImage().getUrl();
@@ -464,6 +543,11 @@ public class ScrabbleController {
 
         if (urlImage.equals(atrilVacioUrl)) {
             return;
+        } else if (urlImage.equals(comodinlUrl)) {
+            this.comodinPane.setVisible(true);
+            capaGris.setVisible(true);
+            configureBoardComodin(index);
+
         }
         if (ImagefichaSeleccionada == null || !ImagefichaSeleccionada.getImage().getUrl().equals(urlImage)) {
             ImagefichaSeleccionada = new ImageView();
@@ -624,6 +708,7 @@ public class ScrabbleController {
         cell.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> eventoDeMouseEnTablero(row, col, cell));
     }
 
+
     /**
      * Maneja el evento de salir del juego.
      *
@@ -633,7 +718,10 @@ public class ScrabbleController {
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void salir(ActionEvent event) throws IOException {
+        game.endTime();
+        game.calculateTotalTime();
         JsonUtil.guardarPartidaPendiente(game);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         boolean wasFullScreen = stage.isFullScreen();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu-view.fxml"));
@@ -737,6 +825,40 @@ public class ScrabbleController {
      */
     public void setFichaSeleccionada(Ficha fichaSeleccionada) {
         this.fichaSeleccionada = fichaSeleccionada;
+    }
+
+
+    /**
+     * Actualiza los usuarios que terminaron la partida
+     *
+     *
+     */
+    public void actualizarUsuarios(){
+        for (Jugador jugador : game.getJugadores()) {
+            jugador.ajustarTiempo();
+            actualizarUsuarioYGuardar(jugador.getAlias(),jugador.getScoreInGame(), jugador.getHorasJugadas(), jugador.getMinutosJugados(), jugador.getSegundosJugados(), jugador.getCantidadPalabrasColocadas());
+        }
+    }
+
+
+    /**
+     * Actualiza el usuario que se le pase
+     *
+     *
+     */
+    public void actualizarUsuarioYGuardar(String alias, int score, int horas, int minutos, int segundos, int palabras) {
+        List<Usuario> usuarios = JsonUtil.cargarUsuariosDesdeJson();
+        if (usuarios != null) {
+            for (Usuario usuario : usuarios) {
+                if (usuario.getAlias().equals(alias)) {
+                    usuario.actualizarEstadisticas(score, horas, minutos, segundos, palabras);
+                    System.out.println("Estadísticas actualizadas para el usuario: " + usuario.getAlias());
+                    JsonUtil.guardarUsuariosEnJson(usuarios);
+                    return;
+                }
+            }
+        }
+        System.out.println("El usuario con alias " + alias + " no existe.");
     }
 
 }

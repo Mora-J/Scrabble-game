@@ -27,3 +27,25 @@
     -fx-background-position: center center;
 }
 
+.fondo1 {
+    -fx-background-image: url("https://i.imgur.com/6CimnWF.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.fondo2 {
+    -fx-background-image: url("https://i.imgur.com/AOI9EzS.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.fondo3 {
+    -fx-background-image: url("https://i.imgur.com/OUXH7Cg.jpeg");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+

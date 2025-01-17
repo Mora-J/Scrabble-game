@@ -52,23 +52,6 @@ public class Jugador {
      */
     private String tiempoJugado;
 
-
-    /**
-     * Horas jugadas por el jugador en el juego actual.
-     */
-    private int horasJugadasInGame;
-
-    /**
-     * Minutos jugados por el jugador en el juego actual.
-     */
-    private int minutosJugadosInGame;
-
-    /**
-     * Segundos jugados por el jugador en el juego actual.
-     */
-    private int segundosJugadosInGame;
-
-
     /**
      * Horas jugadas por el jugador.
      */
@@ -224,6 +207,15 @@ public class Jugador {
     }
 
     /**
+     * Establece los minutos jugados por el jugador.
+     *
+     * @param minutosJugados Los nuevos minutos jugados.
+     */
+    public void addMinutosJugados(int minutosJugados) {
+        this.minutosJugados += minutosJugados;
+    }
+
+    /**
      * Obtiene los segundos jugados por el jugador.
      *
      * @return Los segundos jugados.
@@ -239,6 +231,15 @@ public class Jugador {
      */
     public void setSegundosJugados(int segundosJugados) {
         this.segundosJugados = segundosJugados;
+    }
+
+    /**
+     * Establece los segundos jugados por el jugador.
+     *
+     * @param segundosJugados Los nuevos segundos jugados.
+     */
+    public void addSegundosJugados(int segundosJugados) {
+        this.segundosJugados += segundosJugados;
     }
 
     /**
@@ -260,13 +261,37 @@ public class Jugador {
     }
 
     /**
+     * Establece las horas jugadas por el jugador.
+     *
+     * @param horasJugadas Las nuevas horas jugadas.
+     */
+    public void addHorasJugadas(int horasJugadas) {
+        this.horasJugadas += horasJugadas;
+    }
+
+    /**
      * Obtiene el tiempo total jugado por el jugador.
      *
      * @return El tiempo jugado.
      */
     public String getTiempoJugado() {
+        ajustarTiempo();
+        tiempoJugado = String.format("%02d:%02d:%02d", horasJugadas, minutosJugados, segundosJugados);
         return tiempoJugado;
     }
+
+    public void ajustarTiempo(){
+        int totalSegundos = horasJugadas * 3600 + minutosJugados * 60 + segundosJugados;
+
+        int horas = totalSegundos / 3600;
+        int minutos = (totalSegundos % 3600) / 60;
+        int segundos = totalSegundos % 60;
+
+        horasJugadas = horas;
+        minutosJugados = minutos;
+        segundosJugados = segundos;
+    }
+
 
     /**
      * Establece el tiempo total jugado por el jugador.
@@ -446,5 +471,14 @@ public class Jugador {
     public void reiniciarJugador(){
         this.atril = new Ficha[7];
         this.scoreInGame = 0;
+    }
+
+    /**
+     * Añade una cantidad a la cantidad de palabras colocadas totales.
+     *
+     * @param cantidadPalabras La cantidad a añadir.
+     */
+    public void addToCantidadPalabras(int cantidadPalabras) {
+        this.cantidadDePalabras += cantidadPalabras;
     }
 }

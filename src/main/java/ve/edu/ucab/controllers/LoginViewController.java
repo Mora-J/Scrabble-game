@@ -81,7 +81,7 @@ public class LoginViewController {
     @FXML
     boolean login(Label userLabel, TextField userTextField, Label confirmationLabel) {
         confirmError.setVisible(false);
-        String alias = userTextField.getText();
+        String alias = userTextField.getText().toLowerCase();
         if (validarUsuario(alias)) {
             cargarJugador(getUsuario(alias));
             userLabel.setText(alias);

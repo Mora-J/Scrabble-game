@@ -52,6 +52,18 @@ public class Usuario {
     }
 
     /**
+     * Suma las estadisticas que se le pasaron por parametros.
+     */
+    public void actualizarEstadisticas(int score, int horas, int minutos, int segundos, int palabras) {
+        this.scoreTotal += score;
+        this.horasJugadas += horas;
+        this.minutosJugados += minutos;
+        this.segundosJugados += segundos;
+        this.cantidadDePalabras += palabras;
+    }
+
+
+    /**
      * Constructor por defecto.
      */
     public Usuario() {

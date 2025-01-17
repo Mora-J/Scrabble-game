@@ -109,7 +109,6 @@ public class MenuController {
             continuarPartidaBtn.setFont(font);
             nuevaPartidaBtn.setFont(font);
             salirBtn.setFont(font);
-            opcionesBtn.setFont(font);
             verScoreBtn.setFont(font);
 
         } else {
@@ -198,5 +197,35 @@ public class MenuController {
      */
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+
+    @FXML
+    void verScore(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/score-view.fxml"));
+
+        // Obtener la ventana (stage) desde cualquier nodo de la escena actual
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        boolean wasFullScreen = stage.isFullScreen();
+
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        ScoreViewController scoreViewController = fxmlLoader.getController();
+
+
+        Jugador[] players = new Jugador[jugadores.size()];
+        jugadores.toArray(players);
+        scoreViewController.setJugadores(players);
+
+        stage.setScene(scene);
+        stage.setFullScreen(wasFullScreen);
+        stage.setTitle("Score!");
+
+        scene.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.F11) {
+                stage.setFullScreen(!stage.isFullScreen());
+            }
+        });
+
+
+        stage.show();
     }
 }
