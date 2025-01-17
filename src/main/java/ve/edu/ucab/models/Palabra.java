@@ -111,7 +111,11 @@ public class Palabra {
         return palabraTexto.toString();
     }
 
-
+    /**
+     * Calcula el multiplicador total de la palabra en función de las casillas y sus bonificaciones.
+     *
+     * @return El multiplicador total de la palabra. Si no hay bonificaciones por palabra, retorna 1.
+     */
     public int getMultiplicador(){
         int multiplicador = 0;
         for (Casilla casilla : palabra) {

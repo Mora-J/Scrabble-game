@@ -43,6 +43,14 @@ public class MenuController {
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void continuarPartida(ActionEvent event) throws IOException {
+        Jugador[] players = new Jugador[jugadores.size()];
+        jugadores.toArray(players);
+        Game game = new Game(players);
+
+        if(cargarGame(game).isEstaFinalizada()){
+            return;
+        }
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scrabble-view.fxml"));
 
         // Obtener la ventana (stage) desde cualquier nodo de la escena actual
@@ -51,12 +59,6 @@ public class MenuController {
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         ScrabbleController scrabbleController = fxmlLoader.getController();
-
-        Jugador[] players = new Jugador[jugadores.size()];
-        jugadores.toArray(players);
-        Game game = new Game(players);
-
-
         scrabbleController.setGame(cargarGame(game));
 
         stage.setScene(scene);
@@ -75,9 +77,7 @@ public class MenuController {
     private Game cargarGame(Game game) {
         game = JsonUtil.cargarPartidaPendiente(game.getClaveJugadores());
         game.getBoard().recargarBoard();
-        for (Jugador jugador : game.getJugadores()) {
-            jugador.recargarAtril();
-        }
+
         return game;
     }
 
@@ -112,6 +112,10 @@ public class MenuController {
 
         Jugador[] players = new Jugador[jugadores.size()];
         jugadores.toArray(players);
+        for (Jugador jugador : players){
+            jugador.reiniciarJugador();
+        }
+
         Game game = new Game(players);
 
         scrabbleController.setGame(game);

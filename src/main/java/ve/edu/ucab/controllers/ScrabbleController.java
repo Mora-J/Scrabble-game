@@ -323,19 +323,19 @@ public class ScrabbleController {
         game.actualizarAtrilJugadores();
     }
 
+
     private void configureAtrilJugadores() {
-        for (int i = 0; i < 7; i++) {
+        Image imagen;
+        for (int i = 0; i < 7; i++){
             Ficha ficha = game.getJugadorActual().getAtril()[i];
-            if (ficha == null) {
+            String fichaPath = "/images/fichas/ficha"+ficha.getLetra()+".png";
+            if(game.getJugadorActual().getAtril()[i] == null) {
                 atril[i].setImage(new Image(String.valueOf(ScrabbleController.class.getResource("/images/atrilVacio.png"))));
             } else {
-                if (ficha.getImagen() == null) {
-                    System.out.println("Error: La imagen de la ficha en la posición " + i + " es null");
-                } else {
-                    System.out.println("Actualizando casilla en posición: " + i + " con imagen: " + ficha.getImagen());
-                    atril[i].setImage(ficha.getImagen());
-                }
-            }
+                imagen = new Image(Objects.requireNonNull(getClass().getResource(fichaPath)).toString());
+                game.getJugadorActual().getAtril()[i].setImagen(imagen);
+                System.out.println("Actualizando casilla en posición: " + i + " con imagen: " + game.getJugadorActual().getAtril()[i].getImagen());
+                atril[i].setImage(imagen);}
         }
     }
 
@@ -515,6 +515,10 @@ public class ScrabbleController {
         stage.setTitle("Menu!");
         stage.setScene(scene);
         stage.setFullScreen(wasFullScreen);
+
+        MenuController menuController = fxmlLoader.getController();
+        ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(game.getJugadores()));
+        menuController.setJugadores(jugadores);
 
 
         scene.setOnKeyPressed(keyEvent -> {

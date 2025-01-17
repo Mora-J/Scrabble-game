@@ -7,18 +7,27 @@ import javafx.scene.image.Image;
  * La clase Ficha representa una fecha de juego con un valor, una letra y un simbolo.
  * Esta clase implementa la interfaz {@code Cloneable}, lo que permite clonar objetos de esta clase.
  */
-
 public class Ficha implements Cloneable {
+
     /**
      * Valor de la ficha.
      */
-
     private int valor;
     /**
      * Letra representada en la ficha.
      */
     private String letra;
+
+    /**
+     * El Label de la letra asociado a esta ficha.
+     * No se serializa debido a la palabra clave 'transient'.
+     */
     private transient Label letraLabel;
+
+    /**
+     * La imagen asociada a esta ficha.
+     * No se serializa debido a la palabra clave 'transient'.
+     */
     private transient Image imagenFicha;
 
     /**
@@ -105,22 +114,48 @@ public class Ficha implements Cloneable {
         return letra;
     }
 
+    /**
+     * Obtiene el Label de la letra asociada a esta ficha.
+     *
+     * @return El Label de la letra.
+     */
     public Label getLetraLabel() {
         return letraLabel;
     }
 
+
+    /**
+     * Establece el Label de la letra para esta ficha.
+     *
+     * @param letraLabel El nuevo Label de la letra.
+     */
     public void setLetraLabel(Label letraLabel) {
         this.letraLabel = letraLabel;
     }
 
+    /**
+     * Obtiene la imagen asociada a esta ficha.
+     *
+     * @return La imagen de la ficha.
+     */
     public Image getImagen() {
         return imagenFicha;
     }
 
+    /**
+     * Establece la imagen para esta ficha.
+     *
+     * @param imagenFicha La nueva imagen de la ficha.
+     */
     public void setImagen(Image imagenFicha) {
         this.imagenFicha = imagenFicha;
     }
 
+    /**
+     * Verifica si la ficha está vacía.
+     *
+     * @return true si la ficha está vacía, false en caso contrario.
+     */
     public boolean isEmpty() {
         return (letra.equals(" "));
     }

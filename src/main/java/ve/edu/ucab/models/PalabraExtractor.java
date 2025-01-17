@@ -131,6 +131,12 @@ public class PalabraExtractor {
         return true;
     }
 
+    /**
+     * Calcula el puntaje total de un conjunto de palabras, considerando sus multiplicadores.
+     *
+     * @param palabrasSet El conjunto de palabras a evaluar.
+     * @return El puntaje total de todas las palabras en el conjunto.
+     */
     private int obtenerPuntajePalabras(HashSet<Palabra> palabrasSet){
         int puntajeTotal = 0;
         int puntajePorPalabra = 0;

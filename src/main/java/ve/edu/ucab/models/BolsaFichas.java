@@ -50,6 +50,11 @@ public class BolsaFichas {
         return listaFichas;
     }
 
+    /**
+     * Verifica si la lista de fichas está vacía.
+     *
+     * @return true si la lista de fichas está vacía, false en caso contrario.
+     */
     public boolean isEmpty() {
         return listaFichas.isEmpty();
     }

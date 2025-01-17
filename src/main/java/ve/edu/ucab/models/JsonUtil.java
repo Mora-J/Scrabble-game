@@ -12,10 +12,28 @@ import java.nio.file.Paths;
 
 
 
+/**
+ * Utilidades para guardar y cargar partidas pendientes en formato JSON.
+ */
 public class JsonUtil {
+
+    /**
+     * Instancia de Gson para convertir objetos a formato JSON y viceversa.
+     * Configurada para imprimir de forma legible.
+     */
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+
+    /**
+     * Nombre del archivo donde se guardan las partidas pendientes.
+     */
     private static final String archivoPartidasPendientes = "partidas_pendientes.json";
 
+    /**
+     * Guarda una partida pendiente en el archivo JSON.
+     *
+     * @param juego La partida a guardar.
+     */
     public static void guardarPartidaPendiente(Game juego) {
         Map<String, Game> partidasPendientes = cargarPartidasPendientes();
         String claveJugadores = juego.getClaveJugadores();
@@ -23,7 +41,11 @@ public class JsonUtil {
         guardarPartidasPendientes(partidasPendientes);
     }
 
-
+    /**
+     * Carga las partidas pendientes desde el archivo JSON.
+     *
+     * @return Un mapa con las partidas pendientes cargadas.
+     */
     private static Map<String, Game> cargarPartidasPendientes() {
         File file = new File(archivoPartidasPendientes);
         if (file.exists() && file.length() > 0) {
@@ -39,12 +61,22 @@ public class JsonUtil {
         }
     }
 
-
+    /**
+     * Carga una partida pendiente específica desde el archivo JSON.
+     *
+     * @param claveJugadores La clave que identifica la partida pendiente.
+     * @return La partida pendiente, o null si no se encuentra.
+     */
     public static Game cargarPartidaPendiente(String claveJugadores) {
         Map<String, Game> partidasPendientes = cargarPartidasPendientes();
         return partidasPendientes.getOrDefault(claveJugadores, null);
     }
 
+    /**
+     * Guarda todas las partidas pendientes en el archivo JSON.
+     *
+     * @param partidasPendientes El mapa de partidas pendientes a guardar.
+     */
     private static void guardarPartidasPendientes(Map<String, Game> partidasPendientes) {
         try (FileWriter writer = new FileWriter(archivoPartidasPendientes)) {
             gson.toJson(partidasPendientes, writer);

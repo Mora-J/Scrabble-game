@@ -5,17 +5,36 @@ import ve.edu.ucab.models.bonificadoresStrategy.*;
 
 import java.util.Objects;
 
+/**
+ * La clase Board representa un tablero de juego compuesto por una matriz de casillas.
+ */
 public class Board {
     private Casilla[][] casillas;
 
+    /**
+     * Devuelve la matriz de casillas del tablero.
+     *
+     * @return casillas La matriz de casillas.
+     */
     public Casilla[][] getCasillas() {
         return casillas;
     }
 
+    /**
+     * Establece la matriz de casillas del tablero.
+     *
+     * @param casillas La matriz de casillas a establecer.
+     */
     public void setCasillas(Casilla[][] casillas) {
         this.casillas = casillas;
     }
 
+
+    /**
+     * Constructor de la clase Board. Inicializa el tablero de juego con una
+     * matriz de casillas de 15x15 y asigna estrategias de bonificación a cada
+     * casilla según las reglas del juego.
+     */
     public Board() {
         this.casillas = new Casilla[15][15];
         for (int i = 0; i < 15; i++) {
@@ -58,6 +77,11 @@ public class Board {
         //this.casillas[7][7].setImagen(new Image(String.valueOf(getClass().getResource("/images/casillaInicial.png"))));
     }
 
+    /**
+     * Constructor que crea una copia profunda de un objeto de tipo Board.
+     *
+     * @param board el objeto Board a copiar.
+     */
     public Board(Board board) {
         this.casillas = new Casilla[board.getCasillas().length][board.getCasillas().length];
         for (int i = 0; i < board.getCasillas().length; i++) {
@@ -68,6 +92,12 @@ public class Board {
 
     }
 
+    /**
+     * Recarga el tablero de juego, estableciendo las bonificaciones y las imágenes de las casillas.
+     * Este metodo inicializa cada casilla del tablero con una bonificación específica y la imagen
+     * correspondiente a esa bonificación. Además, si una casilla contiene una ficha, también establece
+     * la imagen de la ficha.
+     */
     public void recargarBoard() {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
@@ -121,6 +151,17 @@ public class Board {
         //this.casillas[7][7].setImagen(new Image(String.valueOf(getClass().getResource("/images/casillaInicial.png"))));
     }
 
+    /**
+     * Muestra el estado actual del tablero en la consola.
+     *
+     * Recorre todas las casillas del tablero y utiliza la representación en cadena
+     * de la ficha en cada casilla para imprimir el tablero en un formato legible.
+     *
+     * Por ejemplo:
+     *     [X][O][X]
+     *     [O][X][O]
+     *     [X][O][X]
+     */
     public void mostrarTableroEnConsola() {
         for (Casilla[] casilla : casillas) {
             System.out.print("\t");
