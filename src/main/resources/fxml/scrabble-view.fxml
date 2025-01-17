@@ -144,8 +144,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane fx:id="capaGris" layoutX="-1.0" opacity="0.5" prefHeight="798.0" prefWidth="981.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="estadisticas" layoutX="200.0" layoutY="105.0" prefHeight="581.0" prefWidth="583.0" styleClass="boton4" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="199.0" AnchorPane.topAnchor="105.0">
+      <AnchorPane fx:id="capaGris" layoutX="-1.0" opacity="0.5" prefHeight="798.0" prefWidth="981.0" style="-fx-background-color: black;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="estadisticas" layoutX="200.0" layoutY="105.0" prefHeight="581.0" prefWidth="583.0" styleClass="boton4" visible="false" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="199.0" AnchorPane.topAnchor="105.0">
          <children>
             <HBox alignment="CENTER" layoutY="14.0" prefHeight="81.0" prefWidth="583.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
                <children>
@@ -316,5 +316,14 @@
             <ImageView fx:id="resultado2" fitHeight="150.0" fitWidth="200.0" layoutX="344.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="327.0" />
          </children>
       </AnchorPane>
+      <Button layoutX="55.0" layoutY="660.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#mostrarEstadisticas" prefHeight="52.0" prefWidth="51.0" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="24.0">
+         <graphic>
+            <ImageView fitHeight="88.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/statsButton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

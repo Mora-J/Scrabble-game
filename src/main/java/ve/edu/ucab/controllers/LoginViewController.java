@@ -15,9 +15,19 @@ import ve.edu.ucab.models.Jugador;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controlador para la vista de inicio de sesión de los jugadores.
+ */
 public class LoginViewController {
 
+    /**
+     * Indica si el usuario 1 ha iniciado sesión.
+     */
     protected boolean user1Logged = false;
+
+    /**
+     * Indica si el usuario 2 ha iniciado sesión.
+     */
     private boolean user2Logged = false;
 
     @FXML
@@ -50,8 +60,19 @@ public class LoginViewController {
     @FXML
     private Button play;
 
+    /**
+     * Lista de jugadores.
+     */
     private ArrayList<Jugador> jugadores = new ArrayList<>();
 
+    /**
+     * Método de inicio de sesión para un usuario.
+     *
+     * @param userLabel          El Label donde se mostrará el nombre del usuario.
+     * @param userTextField      El campo de texto donde el usuario ingresa su nombre.
+     * @param confirmationLabel  El Label donde se mostrará el mensaje de confirmación.
+     * @return true si el usuario es válido y se carga correctamente, false en caso contrario.
+     */
     @FXML
     boolean login(Label userLabel, TextField userTextField, Label confirmationLabel) {
         confirmError.setVisible(false);
@@ -68,24 +89,50 @@ public class LoginViewController {
         }
     }
 
+    /**
+     * Carga un jugador en la lista de jugadores.
+     *
+     * @param nombre El nombre del jugador.
+     */
     private void cargarJugador(String nombre){
         jugadores.add(new Jugador(nombre));
     }
 
+    /**
+     * Maneja el evento de inicio de sesión para el usuario 1.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void login1(ActionEvent event) {
         user1Logged = login(user1, campo1, confirmacion1);
     }
 
+    /**
+     * Maneja el evento de inicio de sesión para el usuario 2.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void login2(ActionEvent event) {
         user2Logged = login(user2, campo2, confirmacion2);
     }
 
+    /**
+     * Valida el nombre de usuario.
+     *
+     * @param usuario El nombre de usuario a validar.
+     * @return true si el nombre de usuario no es nulo y no está vacío, false en caso contrario.
+     */
     private boolean validarUsuario(String usuario) {
         return usuario != null && !usuario.isEmpty();
     }
 
+    /**
+     * Maneja el evento de inicio del juego.
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void play(ActionEvent event) {
         if (!user1Logged || !user2Logged) {
@@ -99,7 +146,12 @@ public class LoginViewController {
         }
     }
 
-
+    /**
+     * Confirma el inicio del juego y carga la vista del menú.
+     *
+     * @param event El evento de acción.
+     * @throws IOException Si ocurre un error al cargar la vista del menú.
+     */
     @SuppressWarnings("DuplicatedCode")
     @FXML
     void confirmar(ActionEvent event) throws IOException {
@@ -125,26 +177,56 @@ public class LoginViewController {
         stage.show();
     }
 
+    /**
+     * Verifica si el usuario 1 ha iniciado sesión.
+     *
+     * @return true si el usuario 1 ha iniciado sesión, false en caso contrario.
+     */
     public boolean isUser1Logged() {
         return user1Logged;
     }
 
+        /**
+     * Establece si el usuario 1 ha iniciado sesión.
+     *
+     * @param user1Logged true si el usuario 1 ha iniciado sesión, false en caso contrario.
+     */
     public void setUser1Logged(boolean user1Logged) {
         this.user1Logged = user1Logged;
     }
 
+    /**
+     * Verifica si el usuario 2 ha iniciado sesión.
+     *
+     * @return true si el usuario 2 ha iniciado sesión, false en caso contrario.
+     */
     public boolean isUser2Logged() {
         return user2Logged;
     }
 
+    /**
+     * Establece si el usuario 2 ha iniciado sesión.
+     *
+     * @param user2Logged true si el usuario 2 ha iniciado sesión, false en caso contrario.
+     */
     public void setUser2Logged(boolean user2Logged) {
         this.user2Logged = user2Logged;
     }
 
+    /**
+     * Obtiene la lista de jugadores.
+     *
+     * @return La lista de jugadores.
+     */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
 
+    /**
+     * Establece la lista de jugadores.
+     *
+     * @param jugadores La nueva lista de jugadores.
+     */
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
