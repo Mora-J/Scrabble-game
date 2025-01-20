@@ -467,6 +467,7 @@ public class ScrabbleController {
      */
     private void eventoDeMouseEnTableroComodin(int row, int index, ImageView cell, Ficha ficha) {
         game.getJugadorActual().getAtril()[index] = ficha.clone();
+        game.getJugadorActual().getAtril()[index].setLetra(ficha.getLetra());
         game.getJugadorActual().getAtril()[index].setValor(0);
         comodinPane.setVisible(false);
         capaGris.setVisible(false);
@@ -644,7 +645,7 @@ public class ScrabbleController {
      */
     @FXML
     private void redoPress(){
-        confirmError.setVisible(true);
+        confirmError.setVisible(false);
         ImageView imagen;
 
         if (game.getIndiceFichasPuestas() != null) {

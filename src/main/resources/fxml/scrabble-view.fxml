@@ -155,7 +155,7 @@
       </Button>
       <HBox alignment="CENTER" layoutX="391.0" layoutY="720.0" prefHeight="52.0" prefWidth="200.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="confirmError" alignment="CENTER" prefHeight="50.0" prefWidth="555.0" text="ERROR" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="confirmError" alignment="CENTER" style="-fx-background-color: white;" text="error" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="JoystixMonospace-Regular" size="13.0" />
                </font>

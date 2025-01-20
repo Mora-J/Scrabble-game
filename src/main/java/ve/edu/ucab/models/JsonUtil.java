@@ -1,30 +1,26 @@
 package ve.edu.ucab.models;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 
 
 /**
  * Utilidades para guardar y cargar partidas pendientes en formato JSON.
  */
 public class JsonUtil {
-    private static final String ruta = "C:\\Users\\yeshu\\OneDrive\\Escritorio\\Curso_de_Java\\Proyecto-POO-Grupo1-RegistroDeUsuario-Grafico-master\\";
+    private static final String ruta = Paths.get("..", "resources") + "/";
 
     /**
      * Nombre del archivo donde se guardan los usuarios.
      */
-    private static final String archivoUsuarios = ruta + "usuarios.json";
+    private static final String ARCHIVO_USUARIOS = ruta + "usuarios.json";
 
     /**
      * Instancia de Gson para convertir objetos a formato JSON y viceversa.
@@ -36,12 +32,12 @@ public class JsonUtil {
     /**
      * Nombre del archivo donde se guardan las partidas pendientes.
      */
-    private static final String archivoPartidasPendientes = "partidas_pendientes.json";
+    private static final String PARTIDAS_PENDIENTES_JSON = ruta + "partidas_pendientes.json";
 
     /**
      * Nombre del archivo donde se guardan las partidas finalizadas.
      */
-    private static final String archivoPartidasTerminadas = "partidas_terminadas.json";
+    private static final String PARTIDAS_TERMINADAS_JSON = ruta + "partidas_terminadas.json";
     /**
      * Guarda una partida pendiente en el archivo JSON.
      *
@@ -60,9 +56,9 @@ public class JsonUtil {
      * @return Un mapa con las partidas pendientes cargadas.
      */
     private static Map<String, Game> cargarPartidasPendientes() {
-        File file = new File(archivoPartidasPendientes);
+        File file = new File(PARTIDAS_PENDIENTES_JSON);
         if (file.exists() && file.length() > 0) {
-            try (FileReader reader = new FileReader(archivoPartidasPendientes)) {
+            try (FileReader reader = new FileReader(PARTIDAS_PENDIENTES_JSON)) {
                 Type mapType = new TypeToken<HashMap<String, Game>>() {}.getType();
                 return gson.fromJson(reader, mapType);
             } catch (Exception e) {
@@ -91,10 +87,10 @@ public class JsonUtil {
      * @param partidasPendientes El mapa de partidas pendientes a guardar.
      */
     private static void guardarPartidasPendientes(Map<String, Game> partidasPendientes) {
-        try (FileWriter writer = new FileWriter(archivoPartidasPendientes)) {
+        try (FileWriter writer = new FileWriter(PARTIDAS_PENDIENTES_JSON)) {
             gson.toJson(partidasPendientes, writer);
         } catch (IOException e) {
-            System.out.println("Error al guardar el archivo " + archivoPartidasPendientes);
+            System.out.println("Error al guardar el archivo " + PARTIDAS_PENDIENTES_JSON);
         }
     }
 
@@ -105,7 +101,7 @@ public class JsonUtil {
      */
     public static List<Usuario> cargarUsuariosDesdeJson() {
         Gson gson = new Gson();
-        try (FileReader reader = new FileReader(archivoUsuarios)) {
+        try (FileReader reader = new FileReader(ARCHIVO_USUARIOS)) {
             Type listType = new TypeToken<List<Usuario>>(){}.getType();
             return gson.fromJson(reader, listType);
         } catch (IOException e) {
@@ -121,7 +117,7 @@ public class JsonUtil {
      */
     public static void guardarUsuariosEnJson(List<Usuario> usuarios) {
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(archivoUsuarios)) {
+        try (FileWriter writer = new FileWriter(ARCHIVO_USUARIOS)) {
             gson.toJson(usuarios, writer);
             System.out.println("Usuarios guardados correctamente.");
         } catch (IOException e) {
@@ -137,9 +133,9 @@ public class JsonUtil {
     }
 
     private static Map<String, Game> cargarPartidasTerminadas() {
-        File file = new File(archivoPartidasTerminadas);
+        File file = new File(PARTIDAS_TERMINADAS_JSON);
         if (file.exists() && file.length() > 0) {
-            try (FileReader reader = new FileReader(archivoPartidasTerminadas)) {
+            try (FileReader reader = new FileReader(PARTIDAS_TERMINADAS_JSON)) {
                 Type mapType = new TypeToken<HashMap<String, Game>>() {}.getType();
                 return gson.fromJson(reader, mapType);
             } catch (Exception e) {
@@ -152,10 +148,10 @@ public class JsonUtil {
     }
 
     private static void guardarPartidasTerminadas(Map<String, Game> partidasTerminadas) {
-        try (FileWriter writer = new FileWriter(archivoPartidasTerminadas)) {
+        try (FileWriter writer = new FileWriter(PARTIDAS_TERMINADAS_JSON)) {
             gson.toJson(partidasTerminadas, writer);
         } catch (IOException e) {
-            System.out.println("Error al guardar el archivo " + archivoPartidasTerminadas);
+            System.out.println("Error al guardar el archivo " + PARTIDAS_TERMINADAS_JSON);
         }
     }
 

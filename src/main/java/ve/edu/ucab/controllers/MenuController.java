@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
@@ -45,6 +46,10 @@ public class MenuController {
      */
     private ArrayList<Jugador> jugadores = new ArrayList<>();
 
+    @FXML
+    private Label errorGuardado;
+
+
     /**
      * Maneja el evento para continuar una partida guardada.
      *
@@ -58,7 +63,7 @@ public class MenuController {
         jugadores.toArray(players);
         Game game = new Game(players);
 
-        if(cargarGame(game).isEstaFinalizada()){
+        if(cargarGame(game).isEstaFinalizada() || cargarGame(game) == null ){
             return;
         }
 
@@ -92,9 +97,14 @@ public class MenuController {
      * @return El juego cargado.
      */
     private Game cargarGame(Game game) {
-        game = JsonUtil.cargarPartidaPendiente(game.getClaveJugadores());
-        game.getBoard().recargarBoard();
+        try {
+            game = JsonUtil.cargarPartidaPendiente(game.getClaveJugadores());
+            game.getBoard().recargarBoard();
 
+            return game;
+        } catch (NullPointerException e) {
+            errorGuardado.setVisible(true);
+        }
         return game;
     }
 

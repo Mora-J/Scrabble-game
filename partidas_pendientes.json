@@ -4,13 +4,13 @@
       {
         "alias": "jesus",
         "scoreTotal": 41,
-        "scoreInGame": 0,
+        "scoreInGame": 4,
         "cantidadDePalabras": 10,
-        "cantidadPalabrasColocadas": 0,
+        "cantidadPalabrasColocadas": 1,
         "atril": [
           {
-            "valor": 3,
-            "letra": "M"
+            "valor": 1,
+            "letra": "A"
           },
           {
             "valor": 1,
@@ -37,7 +37,7 @@
             "letra": "A"
           }
         ],
-        "tiempoJugado": "0h 0m 0s",
+        "tiempoJugado": "00:00:00",
         "horasJugadas": 0,
         "minutosJugados": 0,
         "segundosJugados": 0
@@ -45,9 +45,9 @@
       {
         "alias": "mora",
         "scoreTotal": 36,
-        "scoreInGame": 0,
+        "scoreInGame": 7,
         "cantidadDePalabras": 8,
-        "cantidadPalabrasColocadas": 0,
+        "cantidadPalabrasColocadas": 1,
         "atril": [
           {
             "valor": 8,
@@ -58,12 +58,12 @@
             "letra": "C"
           },
           {
-            "valor": 1,
-            "letra": "A"
+            "valor": 4,
+            "letra": "P"
           },
           {
-            "valor": 2,
-            "letra": "N"
+            "valor": 1,
+            "letra": "E"
           },
           {
             "valor": 1,
@@ -86,9 +86,9 @@
       {
         "alias": "mora",
         "scoreTotal": 36,
-        "scoreInGame": 0,
+        "scoreInGame": 5,
         "cantidadDePalabras": 8,
-        "cantidadPalabrasColocadas": 0,
+        "cantidadPalabrasColocadas": 1,
         "atril": [
           {
             "valor": 1,
@@ -111,8 +111,8 @@
             "letra": "U"
           },
           {
-            "valor": 2,
-            "letra": "R"
+            "valor": 3,
+            "letra": "D"
           },
           {
             "valor": 1,
@@ -238,10 +238,6 @@
         {
           "valor": 1,
           "letra": "I"
-        },
-        {
-          "valor": 3,
-          "letra": "D"
         },
         {
           "valor": 1,
@@ -377,10 +373,6 @@
         },
         {
           "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
           "letra": "S"
         },
         {
@@ -416,16 +408,8 @@
           "letra": "R"
         },
         {
-          "valor": 4,
-          "letra": "P"
-        },
-        {
           "valor": 1,
           "letra": "I"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
         },
         {
           "valor": 1,
@@ -1344,6 +1328,2540 @@
           },
           {
             "ficha": {
+              "valor": 2,
+              "letra": "R"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 3,
+              "letra": "M"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 3,
+              "letra": "M"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 1,
+              "letra": "E"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 2,
+              "letra": "N"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 1,
+              "letra": "A"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          }
+        ]
+      ]
+    },
+    "turnoActual": 1,
+    "jugadorActual": {
+      "alias": "mora",
+      "scoreTotal": 36,
+      "scoreInGame": 7,
+      "cantidadDePalabras": 8,
+      "cantidadPalabrasColocadas": 1,
+      "atril": [
+        {
+          "valor": 8,
+          "letra": "RR"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
+        },
+        {
+          "valor": 4,
+          "letra": "P"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        }
+      ],
+      "tiempoJugado": "0h 0m 0s",
+      "horasJugadas": 0,
+      "minutosJugados": 0,
+      "segundosJugados": 0
+    },
+    "indiceFichasPuestas": [],
+    "palabraExtractor": {},
+    "esPrimeraJugada": false,
+    "contadorPases": 0,
+    "estaFinalizada": false,
+    "startTime": 1737100664,
+    "endTime": 1737100735,
+    "totalTime": 28,
+    "tiempoCalculado": false
+  },
+  "gabriel_nahomi": {
+    "jugadores": [
+      {
+        "alias": "gabriel",
+        "correoElectronico": "lopezmail@gmail.com",
+        "scoreTotal": 15,
+        "scoreInGame": 6,
+        "cantidadDePalabras": 3,
+        "cantidadPalabrasColocadas": 1,
+        "atril": [
+          {
+            "valor": 3,
+            "letra": "D"
+          },
+          {
+            "valor": 10,
+            "letra": "J"
+          },
+          {
+            "valor": 10,
+            "letra": "Ñ"
+          },
+          {
+            "valor": 1,
+            "letra": "S"
+          },
+          {
+            "valor": 5,
+            "letra": "F"
+          },
+          {
+            "valor": 0,
+            "letra": "A"
+          },
+          {
+            "valor": 0,
+            "letra": "A"
+          }
+        ],
+        "tiempoJugado": "00:05:30",
+        "horasJugadas": 0,
+        "minutosJugados": 5,
+        "segundosJugados": 30
+      },
+      {
+        "alias": "nahomi",
+        "correoElectronico": "ejemplo@gmail.com",
+        "scoreTotal": 23,
+        "scoreInGame": 3,
+        "cantidadDePalabras": 3,
+        "cantidadPalabrasColocadas": 1,
+        "atril": [
+          {
+            "valor": 1,
+            "letra": "S"
+          },
+          {
+            "valor": 4,
+            "letra": "P"
+          },
+          {
+            "valor": 3,
+            "letra": "C"
+          },
+          {
+            "valor": 1,
+            "letra": "O"
+          },
+          {
+            "valor": 1,
+            "letra": "O"
+          },
+          {
+            "valor": 1,
+            "letra": "U"
+          },
+          {
+            "valor": 1,
+            "letra": "S"
+          }
+        ],
+        "tiempoJugado": "0h 0m 0s",
+        "horasJugadas": 0,
+        "minutosJugados": 5,
+        "segundosJugados": 30
+      }
+    ],
+    "bolsaFichas": {
+      "listaFichas": [
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 8,
+          "letra": "CH"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 4,
+          "letra": "P"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 10,
+          "letra": "X"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 5,
+          "letra": "H"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 4,
+          "letra": "B"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 3,
+          "letra": "G"
+        },
+        {
+          "valor": 3,
+          "letra": "M"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 3,
+          "letra": "M"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 8,
+          "letra": "RR"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 5,
+          "letra": "H"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 4,
+          "letra": "V"
+        },
+        {
+          "valor": 8,
+          "letra": "Q"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 8,
+          "letra": "LL"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
+        },
+        {
+          "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 4,
+          "letra": "B"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 5,
+          "letra": "Y"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 10,
+          "letra": "Z"
+        },
+        {
+          "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 3,
+          "letra": "G"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        }
+      ]
+    },
+    "board": {
+      "casillas": [
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": true,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          }
+        ],
+        [
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 0,
+              "letra": " "
+            },
+            "bonificacionIndividualActivada": true,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": true
+          },
+          {
+            "ficha": {
+              "valor": 1,
+              "letra": "E"
+            },
+            "bonificacionIndividualActivada": false,
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
+          },
+          {
+            "ficha": {
               "valor": 0,
               "letra": " "
             },
@@ -1472,21 +3990,21 @@
           },
           {
             "ficha": {
-              "valor": 0,
-              "letra": " "
+              "valor": 2,
+              "letra": "L"
             },
             "bonificacionIndividualActivada": false,
-            "bonificacionPorPalabraActivada": true,
-            "isMovable": true
+            "bonificacionPorPalabraActivada": false,
+            "isMovable": false
           },
           {
             "ficha": {
-              "valor": 0,
-              "letra": " "
+              "valor": 1,
+              "letra": "A"
             },
-            "bonificacionIndividualActivada": true,
+            "bonificacionIndividualActivada": false,
             "bonificacionPorPalabraActivada": false,
-            "isMovable": true
+            "isMovable": false
           },
           {
             "ficha": {
@@ -2506,55 +5024,56 @@
     },
     "turnoActual": 0,
     "jugadorActual": {
-      "alias": "jesus",
-      "scoreTotal": 41,
-      "scoreInGame": 0,
-      "cantidadDePalabras": 10,
-      "cantidadPalabrasColocadas": 0,
+      "alias": "gabriel",
+      "correoElectronico": "lopezmail@gmail.com",
+      "scoreTotal": 15,
+      "scoreInGame": 6,
+      "cantidadDePalabras": 3,
+      "cantidadPalabrasColocadas": 1,
       "atril": [
         {
           "valor": 3,
-          "letra": "M"
+          "letra": "D"
+        },
+        {
+          "valor": 10,
+          "letra": "J"
+        },
+        {
+          "valor": 10,
+          "letra": "Ñ"
         },
         {
           "valor": 1,
-          "letra": "I"
+          "letra": "S"
         },
         {
-          "valor": 1,
-          "letra": "E"
+          "valor": 5,
+          "letra": "F"
         },
         {
-          "valor": 1,
-          "letra": "E"
+          "valor": 0,
+          "letra": "A"
         },
         {
-          "valor": 8,
-          "letra": "Q"
-        },
-        {
-          "valor": 2,
-          "letra": "R"
-        },
-        {
-          "valor": 1,
+          "valor": 0,
           "letra": "A"
         }
       ],
-      "tiempoJugado": "0h 0m 0s",
+      "tiempoJugado": "00:05:30",
       "horasJugadas": 0,
-      "minutosJugados": 0,
-      "segundosJugados": 0
+      "minutosJugados": 5,
+      "segundosJugados": 30
     },
     "indiceFichasPuestas": [],
     "palabraExtractor": {},
-    "esPrimeraJugada": true,
+    "esPrimeraJugada": false,
     "contadorPases": 0,
     "estaFinalizada": false,
-    "startTime": 1737080033,
-    "endTime": 1737080061,
-    "totalTime": 28,
-    "tiempoCalculado": true
+    "startTime": 1737102226,
+    "endTime": 1737102268,
+    "totalTime": 0,
+    "tiempoCalculado": false
   },
   "jesus_mora": {
     "jugadores": [
@@ -2562,21 +5081,25 @@
         "alias": "jesus",
         "correoElectronico": "nigger@plebe.com",
         "scoreTotal": 83,
-        "scoreInGame": 0,
+        "scoreInGame": 4,
         "cantidadDePalabras": 17,
-        "cantidadPalabrasColocadas": 0,
+        "cantidadPalabrasColocadas": 1,
         "atril": [
           {
-            "valor": 10,
-            "letra": "Ñ"
-          },
-          {
             "valor": 8,
-            "letra": "Q"
+            "letra": "LL"
           },
           {
-            "valor": 5,
-            "letra": "F"
+            "valor": 1,
+            "letra": "A"
+          },
+          {
+            "valor": 1,
+            "letra": "U"
+          },
+          {
+            "valor": 1,
+            "letra": "S"
           },
           {
             "valor": 3,
@@ -2584,15 +5107,11 @@
           },
           {
             "valor": 2,
-            "letra": "T"
+            "letra": "N"
           },
           {
-            "valor": 1,
-            "letra": "E"
-          },
-          {
-            "valor": 4,
-            "letra": "P"
+            "valor": 3,
+            "letra": "C"
           }
         ],
         "tiempoJugado": "00:01:20",
@@ -2604,7 +5123,7 @@
         "alias": "mora",
         "correoElectronico": "g@mail.ce",
         "scoreTotal": 65,
-        "scoreInGame": 6,
+        "scoreInGame": 7,
         "cantidadDePalabras": 15,
         "cantidadPalabrasColocadas": 1,
         "atril": [
@@ -2613,8 +5132,8 @@
             "letra": "C"
           },
           {
-            "valor": 0,
-            "letra": "#"
+            "valor": 1,
+            "letra": "E"
           },
           {
             "valor": 1,
@@ -2622,19 +5141,19 @@
           },
           {
             "valor": 1,
+            "letra": "I"
+          },
+          {
+            "valor": 1,
+            "letra": "A"
+          },
+          {
+            "valor": 10,
+            "letra": "J"
+          },
+          {
+            "valor": 1,
             "letra": "E"
-          },
-          {
-            "valor": 4,
-            "letra": "V"
-          },
-          {
-            "valor": 3,
-            "letra": "D"
-          },
-          {
-            "valor": 2,
-            "letra": "R"
           }
         ],
         "tiempoJugado": "0h 0m 0s",
@@ -2647,27 +5166,151 @@
       "listaFichas": [
         {
           "valor": 2,
-          "letra": "R"
+          "letra": "N"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
         },
         {
           "valor": 8,
-          "letra": "LL"
+          "letra": "Q"
         },
         {
-          "valor": 10,
-          "letra": "J"
+          "valor": 1,
+          "letra": "E"
         },
         {
           "valor": 4,
-          "letra": "P"
+          "letra": "B"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 4,
+          "letra": "V"
         },
         {
           "valor": 2,
           "letra": "R"
         },
         {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 0,
+          "letra": "#"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 3,
+          "letra": "M"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
           "valor": 1,
           "letra": "S"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 5,
+          "letra": "F"
+        },
+        {
+          "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
+          "valor": 4,
+          "letra": "B"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 2,
+          "letra": "N"
+        },
+        {
+          "valor": 4,
+          "letra": "P"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 1,
+          "letra": "U"
         },
         {
           "valor": 8,
@@ -2675,11 +5318,23 @@
         },
         {
           "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 4,
+          "letra": "P"
+        },
+        {
+          "valor": 8,
+          "letra": "CH"
+        },
+        {
+          "valor": 2,
           "letra": "L"
         },
         {
-          "valor": 3,
-          "letra": "D"
+          "valor": 1,
+          "letra": "A"
         },
         {
           "valor": 2,
@@ -2687,47 +5342,19 @@
         },
         {
           "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
           "letra": "A"
         },
         {
           "valor": 1,
-          "letra": "O"
+          "letra": "U"
         },
         {
-          "valor": 2,
-          "letra": "N"
-        },
-        {
-          "valor": 5,
-          "letra": "H"
-        },
-        {
-          "valor": 3,
-          "letra": "D"
+          "valor": 1,
+          "letra": "I"
         },
         {
           "valor": 1,
           "letra": "O"
-        },
-        {
-          "valor": 1,
-          "letra": "S"
-        },
-        {
-          "valor": 3,
-          "letra": "D"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
         },
         {
           "valor": 5,
@@ -2735,7 +5362,47 @@
         },
         {
           "valor": 1,
+          "letra": "S"
+        },
+        {
+          "valor": 1,
           "letra": "A"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 10,
+          "letra": "Z"
+        },
+        {
+          "valor": 1,
+          "letra": "A"
+        },
+        {
+          "valor": 10,
+          "letra": "Ñ"
+        },
+        {
+          "valor": 3,
+          "letra": "G"
+        },
+        {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 2,
+          "letra": "L"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
         },
         {
           "valor": 1,
@@ -2744,38 +5411,6 @@
         {
           "valor": 1,
           "letra": "O"
-        },
-        {
-          "valor": 1,
-          "letra": "I"
-        },
-        {
-          "valor": 1,
-          "letra": "S"
-        },
-        {
-          "valor": 3,
-          "letra": "D"
-        },
-        {
-          "valor": 1,
-          "letra": "I"
-        },
-        {
-          "valor": 3,
-          "letra": "C"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 2,
-          "letra": "N"
-        },
-        {
-          "valor": 2,
-          "letra": "L"
         },
         {
           "valor": 1,
@@ -2786,102 +5421,18 @@
           "letra": "R"
         },
         {
-          "valor": 10,
-          "letra": "X"
-        },
-        {
-          "valor": 3,
-          "letra": "M"
+          "valor": 5,
+          "letra": "H"
         },
         {
           "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "S"
-        },
-        {
-          "valor": 0,
-          "letra": "#"
-        },
-        {
-          "valor": 4,
-          "letra": "B"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
-          "letra": "S"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "O"
+          "letra": "U"
         },
         {
           "valor": 5,
           "letra": "H"
         },
         {
-          "valor": 2,
-          "letra": "T"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
-          "letra": "I"
-        },
-        {
-          "valor": 3,
-          "letra": "G"
-        },
-        {
-          "valor": 1,
-          "letra": "I"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
-          "letra": "U"
-        },
-        {
-          "valor": 1,
-          "letra": "S"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "O"
-        },
-        {
-          "valor": 1,
-          "letra": "I"
-        },
-        {
-          "valor": 2,
-          "letra": "T"
-        },
-        {
           "valor": 1,
           "letra": "E"
         },
@@ -2890,6 +5441,38 @@
           "letra": "C"
         },
         {
+          "valor": 2,
+          "letra": "R"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 2,
+          "letra": "T"
+        },
+        {
+          "valor": 0,
+          "letra": "#"
+        },
+        {
+          "valor": 1,
+          "letra": "E"
+        },
+        {
+          "valor": 3,
+          "letra": "D"
+        },
+        {
+          "valor": 1,
+          "letra": "I"
+        },
+        {
+          "valor": 1,
+          "letra": "O"
+        },
+        {
           "valor": 1,
           "letra": "E"
         },
@@ -2898,36 +5481,12 @@
           "letra": "I"
         },
         {
-          "valor": 2,
-          "letra": "N"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "O"
-        },
-        {
-          "valor": 1,
-          "letra": "U"
-        },
-        {
-          "valor": 2,
-          "letra": "N"
-        },
-        {
           "valor": 10,
-          "letra": "Z"
+          "letra": "X"
         },
         {
-          "valor": 1,
-          "letra": "O"
+          "valor": 3,
+          "letra": "D"
         },
         {
           "valor": 1,
@@ -2936,50 +5495,6 @@
         {
           "valor": 3,
           "letra": "M"
-        },
-        {
-          "valor": 4,
-          "letra": "B"
-        },
-        {
-          "valor": 8,
-          "letra": "CH"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 2,
-          "letra": "T"
-        },
-        {
-          "valor": 1,
-          "letra": "U"
-        },
-        {
-          "valor": 1,
-          "letra": "A"
-        },
-        {
-          "valor": 2,
-          "letra": "L"
-        },
-        {
-          "valor": 1,
-          "letra": "U"
-        },
-        {
-          "valor": 2,
-          "letra": "L"
-        },
-        {
-          "valor": 3,
-          "letra": "C"
         }
       ]
     },
@@ -3882,8 +6397,8 @@
           },
           {
             "ficha": {
-              "valor": 2,
-              "letra": "T"
+              "valor": 3,
+              "letra": "D"
             },
             "bonificacionIndividualActivada": false,
             "bonificacionPorPalabraActivada": false,
@@ -4010,8 +6525,8 @@
           },
           {
             "ficha": {
-              "valor": 2,
-              "letra": "N"
+              "valor": 1,
+              "letra": "S"
             },
             "bonificacionIndividualActivada": false,
             "bonificacionPorPalabraActivada": false,
@@ -5042,22 +7557,22 @@
         ]
       ]
     },
-    "turnoActual": 1,
+    "turnoActual": 0,
     "jugadorActual": {
-      "alias": "mora",
-      "correoElectronico": "g@mail.ce",
-      "scoreTotal": 65,
-      "scoreInGame": 6,
-      "cantidadDePalabras": 15,
+      "alias": "jesus",
+      "correoElectronico": "nigger@plebe.com",
+      "scoreTotal": 83,
+      "scoreInGame": 4,
+      "cantidadDePalabras": 17,
       "cantidadPalabrasColocadas": 1,
       "atril": [
         {
-          "valor": 3,
-          "letra": "C"
+          "valor": 8,
+          "letra": "LL"
         },
         {
-          "valor": 0,
-          "letra": "#"
+          "valor": 1,
+          "letra": "A"
         },
         {
           "valor": 1,
@@ -5065,34 +7580,34 @@
         },
         {
           "valor": 1,
-          "letra": "E"
-        },
-        {
-          "valor": 4,
-          "letra": "V"
+          "letra": "S"
         },
         {
           "valor": 3,
-          "letra": "D"
+          "letra": "G"
         },
         {
           "valor": 2,
-          "letra": "R"
+          "letra": "N"
+        },
+        {
+          "valor": 3,
+          "letra": "C"
         }
       ],
-      "tiempoJugado": "0h 0m 0s",
+      "tiempoJugado": "00:01:20",
       "horasJugadas": 0,
       "minutosJugados": 1,
-      "segundosJugados": 45
+      "segundosJugados": 20
     },
     "indiceFichasPuestas": [],
     "palabraExtractor": {},
     "esPrimeraJugada": false,
     "contadorPases": 0,
     "estaFinalizada": false,
-    "startTime": 1737093893,
-    "endTime": 1737093916,
-    "totalTime": 21,
+    "startTime": 1737100902,
+    "endTime": 1737100921,
+    "totalTime": 0,
     "tiempoCalculado": false
   }
 }
