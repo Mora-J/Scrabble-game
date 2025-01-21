@@ -104,5 +104,9 @@ public class ScoreViewController {
         palabras2.setText(String.valueOf(jugador2.getCantidadDePalabras()));
     }
 
+    @FXML
+    void initialize() {
+        configureStats();
+    }
 
 }

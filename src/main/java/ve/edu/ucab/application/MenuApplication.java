@@ -101,7 +101,6 @@ public class MenuApplication extends Application {
         scriptPath = scriptPath.replace("/", "\\");
         scriptPath = "\"" + scriptPath + "\"";
 
-
         // Ejecutar el script de PowerShell
         try {
             ProcessBuilder processBuilder = new ProcessBuilder("powershell.exe", "-ExecutionPolicy", "Bypass", "-File", scriptPath);
