@@ -13,6 +13,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 
@@ -28,6 +30,7 @@ public class MenuApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        descargarFuente();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
@@ -80,4 +83,29 @@ public class MenuApplication extends Application {
         }
 
     }
+
+    /**
+     * Descarga la fuente pixel art necesaria para el juego, utiliza un script de powershell
+     */
+
+    public void descargarFuente(){
+        // Ruta al script de PowerShell
+        String scriptPath = Objects.requireNonNull(getClass().getResource("/scripts/fontInstaller.ps1")).getPath();
+        scriptPath = URLDecoder.decode(scriptPath, StandardCharsets.UTF_8);
+        scriptPath = scriptPath.replace("\\", "\\\\");
+
+        // Ejecutar el script de PowerShell
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder("powershell.exe", "-ExecutionPolicy", "Bypass", "-File", scriptPath);
+            processBuilder.inheritIO();
+            Process process = processBuilder.start();
+            process.waitFor();
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Continuar con la ejecución del programa
+        System.out.println("Fuente instalada, continuando con el programa...");
+    }
+
 }
