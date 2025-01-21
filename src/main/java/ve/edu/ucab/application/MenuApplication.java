@@ -92,7 +92,15 @@ public class MenuApplication extends Application {
         // Ruta al script de PowerShell
         String scriptPath = Objects.requireNonNull(getClass().getResource("/scripts/fontInstaller.ps1")).getPath();
         scriptPath = URLDecoder.decode(scriptPath, StandardCharsets.UTF_8);
-        scriptPath = scriptPath.replace("\\", "\\\\");
+
+
+        if (scriptPath.startsWith("/")) {
+            scriptPath = scriptPath.substring(1);
+        }
+
+        scriptPath = scriptPath.replace("/", "\\");
+        scriptPath = "\"" + scriptPath + "\"";
+
 
         // Ejecutar el script de PowerShell
         try {
